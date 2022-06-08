@@ -1,7 +1,7 @@
 variable "project_id" {
-    default = ""
+    type = string
 }
 
 variable "region" {
-    default = "
+    type = string
 }
