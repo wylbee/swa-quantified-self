@@ -5,3 +5,7 @@ variable "project_id" {
 variable "region" {
     type = string
 }
+
+variable "gcp_creds" {
+    type = string
+}
