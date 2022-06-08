@@ -1,7 +1,7 @@
 variable "project_id" {
-    default = "qs-dev-352513"
+    default = ""
 }
 
 variable "region" {
-    default = "us-east1"
+    default = "
 }
