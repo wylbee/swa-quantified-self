@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: gcs_raw
+    database: qs-dev-352513
+    loader: gcloud storage
+  
+    tables:      
+      # alternatively, BigQuery can infer your schema (columns + partitions)
+      - name: lh001_checkmarks
+        external:
+          location: 'gs://qs-dev-352513-raw/loop-habits/loop-habits/LH001/checkmarks/*'
+          options:
+            format: csv
+            skip_leading_rows: 0
+            #hive_partition_uri_prefix: 'gs://bucket/path/'
+      
