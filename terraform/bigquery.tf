@@ -1,8 +1,8 @@
 resource "google_bigquery_dataset" "gcs_raw_dataset" {
   project                     = var.project_id
-  dataset_id                  = "${var.project_id}-raw"
-  friendly_name               = "test"
-  description                 = "This is a test description"
+  dataset_id                  = "gcs_raw"
+  friendly_name               = "gcs_raw"
+  description                 = "External tables for the raw GCS bucket."
   location                    = var.region
   default_table_expiration_ms = 3600000
 
