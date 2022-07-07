@@ -8,11 +8,31 @@ sources:
     tables:
       - name: checkmarks
         external:
-          location: 'gs://qs-dev-352513-raw/loop-habits/checkmarks/*'
+          location: 'gs://qs-dev-352513-raw/loop_habits/Checkmarks/*'
           options:
             format: csv
             skip_leading_rows: 0
-            hive_partition_uri_prefix: 'gs://qs-dev-352513-raw/loop-habits/checkmarks/'
+            hive_partition_uri_prefix: 'gs://qs-dev-352513-raw/loop_habits/Checkmarks/'
+          partitions:               
+            - name: dt_processed
+              data_type: date
+      - name: habits
+        external:
+          location: 'gs://qs-dev-352513-raw/loop_habits/Habits/*'
+          options:
+            format: csv
+            skip_leading_rows: 0
+            hive_partition_uri_prefix: 'gs://qs-dev-352513-raw/loop_habits/Habits/'
+          partitions:               
+            - name: dt_processed
+              data_type: date
+      - name: scores
+        external:
+          location: 'gs://qs-dev-352513-raw/loop_habits/Scores/*'
+          options:
+            format: csv
+            skip_leading_rows: 0
+            hive_partition_uri_prefix: 'gs://qs-dev-352513-raw/loop_habits/Scores/'
           partitions:               
             - name: dt_processed
               data_type: date
