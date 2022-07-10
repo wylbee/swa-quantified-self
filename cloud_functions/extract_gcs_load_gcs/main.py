@@ -14,6 +14,7 @@ def extract_gcs_load_gcs(event, context):
     unizp_destination_path = 'tmp/dump'
     processed_destination_path = 'tmp/clean'
 
+    os.makedirs(os.path.dirname("tmp/zip/"), exist_ok=True)
     client = storage.Client()
     bucket = client.bucket('qs-dev-352513-raw')
     blob = bucket.blob(event['name'])
