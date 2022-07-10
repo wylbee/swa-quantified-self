@@ -30,4 +30,7 @@ resource "google_cloudfunctions_function" "extract_gcs_load_gcs" {
       event_type = "google.storage.object.finalize"
       resource = "${var.project_id}-landing"
     }
+    depends_on = [
+        google_project_service.data_project_services
+    ]
 }
