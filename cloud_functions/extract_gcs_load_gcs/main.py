@@ -16,7 +16,7 @@ def extract_gcs_load_gcs(event, context):
 
     client = storage.Client()
     bucket = client.get_bucket('qs-dev-352513-raw')
-    blob = bucket.blob(source_path)
+    blob = bucket.blob(source_uri)
     blob.download_to_filename(source_path)
 
     
