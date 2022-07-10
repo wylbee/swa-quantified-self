@@ -11,7 +11,7 @@ def extract_gcs_load_gcs(event, context):
     tmpdir = tempfile.gettempdir()
     source_uri = os.path.join('gs://', event['bucket'], event['name'])
     print(source_uri)
-    source_path = f"{tmpdir}/new_file.zip}"
+    source_path = f"{tmpdir}/new_file.zip"
     print(source_path)
     unizp_destination_path = f'{tmpdir}/dump'
     processed_destination_path = f'{tmpdir}/clean'
