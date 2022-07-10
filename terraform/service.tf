@@ -8,6 +8,7 @@ resource "google_project_service" "data_project_services" {
       "serviceusage.googleapis.com",
       "cloudresourcemanager.googleapis.com",
       "iam.googleapis.com",
+      "cloudfunctions.googleapis.com"
     ]
   )
   service                    = each.key
