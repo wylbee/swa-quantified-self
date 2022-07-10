@@ -1,7 +1,14 @@
+data "archive_file" "source" {
+    type        = "zip"
+    source_dir  = "../cloud_functions/extract_gcs_load_gcs"
+    output_path = "/tmp/extract_gcs_load_gcs.zip"
+}
+
 resource "google_storage_bucket_object" "archive" {
-  name   = "index.zip"
-  bucket = google_storage_bucket.archive_bucket.name
-  source = "../cloud_functions/extract_gcs_load_gcs"
+    name   = "index.zip"
+    content_type = "application/zip"
+    bucket = google_storage_bucket.archive_bucket.name
+    source       = data.archive_file.source.output_path
 }
 
 resource "google_cloudfunctions_function" "extract_gcs_load_gcs" {
