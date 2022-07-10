@@ -23,8 +23,8 @@ resource "google_service_account" "cf_sa" {
   project      = var.project_id
   display_name = "Cloud Function Service Account"
   description  = "Cloud Function service account"
-  cloud_function = google_cloudfunctions_function.function.function-extract-gcs-load-gcs
 }
+
 # cf service account key
 resource "google_service_account_key" "cf_sa_key" {
   service_account_id = google_service_account.cf_sa.name
