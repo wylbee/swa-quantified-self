@@ -5,10 +5,11 @@ data "archive_file" "source" {
 }
 
 resource "google_storage_bucket_object" "archive" {
-    name   = "index.zip"
-    content_type = "application/zip"
-    bucket = google_storage_bucket.archive_bucket.name
     source       = data.archive_file.source.output_path
+    content_type = "application/zip"
+    name = "src-${data.archive_file.source.output_md5}.zip"
+    bucket = google_storage_bucket.archive_bucket.name
+
 }
 
 resource "google_cloudfunctions_function" "extract_gcs_load_gcs" {
