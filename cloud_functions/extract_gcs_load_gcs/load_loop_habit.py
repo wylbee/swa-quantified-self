@@ -45,7 +45,8 @@ def load_loop_habit(source_path: str, destination_path: str, partition_date: str
         shutil.copy(item[0], destination_filepath)
 
         #print(destinaton_folder_file)
-        client = storage.Client.from_service_account_json('/home/brown5628/gcp/cf_sa.json')
+        #client = storage.Client.from_service_account_json('/home/brown5628/gcp/cf_sa.json')
+        client = storage.Client()
         bucket = client.get_bucket('qs-dev-352513-raw')
         blob = bucket.blob(destination_filepath)
         blob.upload_from_filename(destination_filepath)
