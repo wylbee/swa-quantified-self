@@ -23,7 +23,7 @@ resource "google_storage_bucket_iam_member" "raw_bucket_admin" {
 
 resource "google_cloudfunctions_function_iam_member" "cf_invoker" {
   project        = google_cloudfunctions_function.extract_gcs_load_gcs.project
-  region         = google_cloudfunctions_function.extract_gcs_load_gcsn.region
+  region         = google_cloudfunctions_function.extract_gcs_load_gcs.region
   cloud_function = google_cloudfunctions_function.extract_gcs_load_gcs.name
 
   role   = "roles/cloudfunctions.invoker"
