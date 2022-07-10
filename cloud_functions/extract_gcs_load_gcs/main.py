@@ -18,9 +18,11 @@ def extract_gcs_load_gcs(event, context):
 
     os.makedirs(os.path.dirname(f"{tmpdir}/zip/"), exist_ok=True)
     client = storage.Client()
-    bucket = client.bucket('qs-dev-352513-raw')
-    blob = bucket.blob(event['name'])
-    blob.download_to_filename(source_path)
+    #bucket = client.bucket('qs-dev-352513-raw')
+    #blob = bucket.blob(event['name'])
+    #blob.download_to_filename(source_path)
+    with open(source_path, 'wb') as file_obj:
+        client.download_blob_to_file(source_uri, file_obj)
 
     
     inferred_date = infer_date_from_filename(source_path)
