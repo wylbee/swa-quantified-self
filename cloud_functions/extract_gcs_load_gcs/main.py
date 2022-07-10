@@ -1,6 +1,6 @@
 # %%
 import os
-from google.cloud import storage
+from gcloud import storage
 from infer_date_from_filename import infer_date_from_filename
 from unzip_file import unzip_file
 from load_loop_habit import load_loop_habit
