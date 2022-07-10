@@ -11,7 +11,7 @@ def extract_gcs_load_gcs(event, context):
     tmpdir = tempfile.gettempdir()
     source_uri = os.path.join('gs://', event['bucket'], event['name'])
     print(source_uri)
-    source_path = f"{tmpdir}/{event['name']}"
+    source_path = f"{tmpdir}/new_file.zip}"
     print(source_path)
     unizp_destination_path = f'{tmpdir}/dump'
     processed_destination_path = f'{tmpdir}/clean'
@@ -26,6 +26,6 @@ def extract_gcs_load_gcs(event, context):
     #    client.download_blob_to_file(source_uri, file_obj)
 
     
-    inferred_date = infer_date_from_filename(source_path)
+    inferred_date = infer_date_from_filename(source_uri)
     unzip_file(source_path, unizp_destination_path)
     load_loop_habit(unizp_destination_path, processed_destination_path, inferred_date)
