@@ -28,13 +28,11 @@ def load_loop_habit(source_path: str, destination_path: str, partition_date: str
 
     for item in id_list:
         # create directory strings
-        folder_structure = f'{item[2]}/dt_processed={partition_date}/'
-        destination_directory = (
-            f"{destination_path}/{folder_structure}"
-        )
+        folder_structure = f"{item[2]}/dt_processed={partition_date}/"
+        destination_directory = f"{destination_path}/{folder_structure}"
         destination_filename = f"{item[1]}.csv"
         destination_filepath = f"{destination_directory}{destination_filename}"
-        destinaton_folder_file = f'loop_habits/{folder_structure}{destination_filename}'
+        destinaton_folder_file = f"loop_habits/{folder_structure}{destination_filename}"
 
         # Skip habits with no id
         if "Habits" not in item[2] and "LH" not in item[1]:
@@ -44,10 +42,10 @@ def load_loop_habit(source_path: str, destination_path: str, partition_date: str
         os.makedirs(os.path.dirname(destination_directory), exist_ok=True)
         shutil.copy(item[0], destination_filepath)
 
-        #print(destinaton_folder_file)
-        #client = storage.Client.from_service_account_json('/home/brown5628/gcp/cf_sa.json')
+        # print(destinaton_folder_file)
+        # client = storage.Client.from_service_account_json('/home/brown5628/gcp/cf_sa.json')
         client = storage.Client()
-        bucket = client.get_bucket('qs-dev-352513-raw')
+        bucket = client.get_bucket("qs-dev-352513-raw")
         blob = bucket.blob(destination_filepath)
         blob.upload_from_filename(destination_filepath)
         bucket.rename_blob(blob, destinaton_folder_file)
