@@ -18,7 +18,7 @@ def extract_gcs_load_gcs(event, context):
 
     os.makedirs(os.path.dirname(f"{tmpdir}/zip/"), exist_ok=True)
     client = storage.Client()
-    bucket = client.bucket('qs-dev-352513-raw')
+    bucket = client.bucket('qs-dev-352513-landing')
     blob = bucket.blob(event['name'])
     print(blob)
     blob.download_to_filename(source_path)
