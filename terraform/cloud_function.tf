@@ -4,6 +4,6 @@ resource "google_cloudfunctions_function" "extract_gcs_load_gcs" {
     entry_point = "extract_gcs_load_gcs"
     event_trigger {
       event_type = "google.storage.object.finalize"
-      resource = google_storage_bucket.raw_bucket
+      resource = "${var.project_id}-landing"
     }
 }
