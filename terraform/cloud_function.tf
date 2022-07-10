@@ -2,6 +2,14 @@ data "archive_file" "source" {
     type        = "zip"
     source_dir  = "../cloud_functions/extract_gcs_load_gcs"
     output_path = "/tmp/extract_gcs_load_gcs.zip"
+  depends_on = [
+    random_string.r
+  ]
+}
+
+resource "random_string" "r" {
+  length  = 16
+  special = false
 }
 
 resource "google_storage_bucket_object" "archive" {
