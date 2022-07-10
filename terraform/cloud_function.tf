@@ -8,7 +8,7 @@ data "archive_file" "source" {
 }
 
 resource "random_string" "r" {
-  length  = 16
+  length  = 20
   special = false
 }
 
