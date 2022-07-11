@@ -4,10 +4,9 @@ import shutil
 from gcloud import storage
 
 
-def load_loop_habit(source_path: str, destination_path: str, partition_date: str):
-    # Remove summary files
-    # os.remove(f'{source_path}/Checkmarks.csv')
-    # os.remove(f'{source_path}/Scores.csv')
+def load_loop_habit(
+    source_path: str, destination_path: str, partition_date: str, gcp_project: str
+):
 
     # get file list
     file_list = []
@@ -26,6 +25,7 @@ def load_loop_habit(source_path: str, destination_path: str, partition_date: str
             id_habit = "Habits"
         id_list.append([file_name, id_habit, file_type])
 
+    # upload file to GCS
     for item in id_list:
         # create directory strings
         folder_structure = f"{item[2]}/dt_processed={partition_date}/"
@@ -42,10 +42,9 @@ def load_loop_habit(source_path: str, destination_path: str, partition_date: str
         os.makedirs(os.path.dirname(destination_directory), exist_ok=True)
         shutil.copy(item[0], destination_filepath)
 
-        # print(destinaton_folder_file)
-        # client = storage.Client.from_service_account_json('/home/brown5628/gcp/cf_sa.json')
+        # Upload file to GCS
         client = storage.Client()
-        bucket = client.get_bucket("qs-dev-352513-raw")
+        bucket = client.get_bucket(f"{gcp_project}-raw")
         blob = bucket.blob(destination_filepath)
         blob.upload_from_filename(destination_filepath)
         bucket.rename_blob(blob, destinaton_folder_file)

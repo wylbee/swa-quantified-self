@@ -7,21 +7,32 @@ from load_loop_habit import load_loop_habit
 
 
 def extract_gcs_load_gcs(event, context):
+
+    # set local filepaths
     tmpdir = tempfile.gettempdir()
-    source_uri = os.path.join("gs://", event["bucket"], event["name"])
-    print(source_uri)
     source_path = f"{tmpdir}/new_file.zip"
-    print(source_path)
     unizp_destination_path = f"{tmpdir}/dump"
     processed_destination_path = f"{tmpdir}/clean"
 
-    os.makedirs(os.path.dirname(f"{tmpdir}/zip/"), exist_ok=True)
+    # infer project string
+    event_bucket = event["bucket"]
+    project_index = event_bucket.rfind("-")
+    gcp_project = event_bucket[0:project_index]
+
+    # download local copy of triggering file
     client = storage.Client()
-    bucket = client.bucket("qs-dev-352513-landing")
+    bucket = client.bucket(f"{gcp_project}-landing")
     blob = bucket.blob(event["name"])
-    print(blob)
     blob.download_to_filename(source_path)
 
-    inferred_date = infer_date_from_filename(source_uri)
+    # unzip locally
     unzip_file(source_path, unizp_destination_path)
-    load_loop_habit(unizp_destination_path, processed_destination_path, inferred_date)
+
+    # infer date from filename
+    source_uri = os.path.join("gs://", event["bucket"], event["name"])
+    inferred_date = infer_date_from_filename(source_uri)
+
+    # load file in correct format
+    load_loop_habit(
+        unizp_destination_path, processed_destination_path, inferred_date, gcp_project
+    )
