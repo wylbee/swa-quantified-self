@@ -1,17 +1,17 @@
 import os
 import tempfile
-from gcloud import storage
 from infer_date_from_filename import infer_date_from_filename
 from unzip_file import unzip_file
 from load_loop_habit import load_loop_habit
 from archive_landing import archive_landing
+from download_gcs_to_local import download_gcs_to_local
 
 
 def extract_gcs_load_gcs(event, context):
 
     # set local filepaths
     tmpdir = tempfile.gettempdir()
-    source_path = f"{tmpdir}/new_file.zip"
+    zip_destination_path = f"{tmpdir}/new_file.zip"
     unizp_destination_path = f"{tmpdir}/dump"
     processed_destination_path = f"{tmpdir}/clean"
 
@@ -24,13 +24,14 @@ def extract_gcs_load_gcs(event, context):
     blob_file_name = event["name"]
 
     # download local copy of triggering file
-    client = storage.Client()
-    bucket = client.bucket(f"{gcp_project}-landing")
-    blob = bucket.blob(blob_file_name)
-    blob.download_to_filename(source_path)
+    download_gcs_to_local(
+        source_bucket=f"{gcp_project}-landing",
+        blob_file_name=blob_file_name,
+        destination_path=zip_destination_path,
+    )
 
     # unzip locally
-    unzip_file(source_path, unizp_destination_path)
+    unzip_file(zip_destination_path, unizp_destination_path)
 
     # infer date from filename
     source_uri = os.path.join("gs://", event_bucket, blob_file_name)

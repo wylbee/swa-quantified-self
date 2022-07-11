@@ -6,7 +6,7 @@ def archive_landing(
 ):
     storage_client = storage.Client()
     source_bucket = storage_client.get_bucket(source_bucket_name)
-    source_blob_file = storage_client.blob(blob_file_name)
+    source_blob_file = source_bucket.blob(blob_file_name)
     destination_bucket = storage_client.get_bucket(destination_bucket_name)
 
     # copy to new
