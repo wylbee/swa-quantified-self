@@ -19,17 +19,20 @@ def extract_gcs_load_gcs(event, context):
     project_index = event_bucket.rfind("-")
     gcp_project = event_bucket[0:project_index]
 
+    # get filename
+    blob_file_name = event["name"]
+
     # download local copy of triggering file
     client = storage.Client()
     bucket = client.bucket(f"{gcp_project}-landing")
-    blob = bucket.blob(event["name"])
+    blob = bucket.blob(blob_file_name)
     blob.download_to_filename(source_path)
 
     # unzip locally
     unzip_file(source_path, unizp_destination_path)
 
     # infer date from filename
-    source_uri = os.path.join("gs://", event["bucket"], event["name"])
+    source_uri = os.path.join("gs://", event_bucket, blob_file_name)
     inferred_date = infer_date_from_filename(source_uri)
 
     # load file in correct format
