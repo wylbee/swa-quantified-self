@@ -1,6 +1,5 @@
 import os
 import tempfile
-from cloud_functions.extract_gcs_load_gcs.archive_landing import archive_landing
 from gcloud import storage
 from infer_date_from_filename import infer_date_from_filename
 from unzip_file import unzip_file
