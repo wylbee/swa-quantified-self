@@ -1,9 +1,11 @@
 import os
 import tempfile
+from cloud_functions.extract_gcs_load_gcs.archive_landing import archive_landing
 from gcloud import storage
 from infer_date_from_filename import infer_date_from_filename
 from unzip_file import unzip_file
 from load_loop_habit import load_loop_habit
+from archive_landing import archive_landing
 
 
 def extract_gcs_load_gcs(event, context):
@@ -38,4 +40,11 @@ def extract_gcs_load_gcs(event, context):
     # load file in correct format
     load_loop_habit(
         unizp_destination_path, processed_destination_path, inferred_date, gcp_project
+    )
+
+    # archive & clear landing
+    archive_landing(
+        source_bucket_name=event_bucket,
+        destination_bucket_name=f"{gcp_project}-archive",
+        blob_file_name=blob_file_name,
     )
