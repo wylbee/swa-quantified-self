@@ -1,7 +1,7 @@
 from gcloud import storage
 
 
-def archive_landing(
+def archive_gcs_to_gcs(
     source_bucket_name: str, destination_bucket_name: str, blob_file_name: str
 ):
     storage_client = storage.Client()

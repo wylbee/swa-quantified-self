@@ -3,7 +3,7 @@ import tempfile
 from infer_date_from_filename import infer_date_from_filename
 from unzip_file import unzip_file
 from load_loop_habit import load_loop_habit
-from archive_landing import archive_landing
+from archive_gcs_to_gcs import archive_gcs_to_gcs
 from download_gcs_to_local import download_gcs_to_local
 
 
@@ -43,7 +43,7 @@ def extract_gcs_load_gcs(event, context):
     )
 
     # archive & clear landing
-    archive_landing(
+    archive_gcs_to_gcs(
         source_bucket_name=event_bucket,
         destination_bucket_name=f"{gcp_project}-archive",
         blob_file_name=blob_file_name,
