@@ -1,7 +1,8 @@
 with
     source as (
 
-        select *, _file_name as str_gcs_file_name from {{ source("gcs_raw", "habits") }}
+        select *, _file_name as str_gcs_file_name
+        from {{ source("gcs_raw", "scores") }}
 
     ),
 
@@ -10,7 +11,9 @@ with
         select
             *,
             substr(
-                name, (strpos(name, '[') + 1), (length(name) - strpos(name, '[') -1)
+                str_gcs_file_name,
+                (strpos(str_gcs_file_name, 'LH')),
+                (length(str_gcs_file_name) - strpos(str_gcs_file_name, '.') + 2)
             ) as id_habit
 
         from source
@@ -29,36 +32,24 @@ with
                 then 'LH023'
                 else id_habit
             end as id_habit,
-
             {{
                 dbt_utils.surrogate_key(
                     [
-                        "Position",
-                        "Name",
-                        "Question",
-                        "Description",
-                        "NumRepetitions",
-                        "`Interval`",
-                        "Color",
+                        "date_field_0",
+                        "double_field_1",
                         "id_habit",
                     ]
                 )
             }} as id_meta_row_check_hash,
-
-            position as val_habit_position,
-            name as str_habit_name,
-            question as str_habit_prompt,
-            description as str_habit_description,
-            numrepetitions as val_habit_target,
-            `Interval` as val_habit_interval,
-            color as str_habit_color_hex,
+            date_field_0 as dt_habit_evaluation,
+            double_field_1 as val_habit_score,
             dt_processed as dt_meta_exported,
             str_gcs_file_name as str_meta_file_name
+
 
         from parsed
 
     ),
-
     change_event as (
 
         select

@@ -52,3 +52,77 @@ models:
 
       - name: dt_meta_valid_to
         description: ""
+
+  - name: scd2_loop_habits__checkmarks
+    description: ""
+    columns:
+      - name: id_habit
+        description: ""
+        tests:
+          - unique:
+              config:
+                where: "dt_meta_valid_to is null"
+
+      - name: id_meta_row_check_hash
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: dt_habit_evaluation
+        description: ""
+
+      - name: val_habit_evalution
+        description: ""
+
+      - name: dt_meta_exported
+        description: ""
+
+      - name: str_meta_file_name
+        description: ""
+
+      - name: dt_meta_last_change_event
+        description: ""
+
+      - name: dt_meta_valid_from
+        description: ""
+
+      - name: dt_meta_valid_to
+        description: ""
+
+  - name: scd2_loop_habits__scores
+    description: ""
+    columns:
+      - name: id_habit
+        description: ""
+        tests:
+          - unique:
+              config:
+                where: "dt_meta_valid_to is null"
+
+      - name: id_meta_row_check_hash
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: dt_habit_evaluation
+        description: ""
+
+      - name: val_habit_score
+        description: ""
+
+      - name: dt_meta_exported
+        description: ""
+
+      - name: str_meta_file_name
+        description: ""
+
+      - name: dt_meta_last_change_event
+        description: ""
+
+      - name: dt_meta_valid_from
+        description: ""
+
+      - name: dt_meta_valid_to
+        description: ""

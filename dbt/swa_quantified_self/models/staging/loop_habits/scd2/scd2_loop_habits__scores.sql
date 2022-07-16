@@ -11,7 +11,7 @@ with
     all_or_new as (
 
         select *
-        from {{ ref("corz_loop_habits__habits") }}
+        from {{ ref("corz_loop_habits__scores") }}
 
         {% if is_incremental() %}
 
