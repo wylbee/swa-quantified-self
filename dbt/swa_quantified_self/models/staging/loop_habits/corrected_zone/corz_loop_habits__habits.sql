@@ -17,9 +17,11 @@ with
 
     ),
 
-    cleaned as (
+    corrected as (
 
-        select
+        select *
+        except
+            (id_habit, description),
             case
                 when id_habit = 'L0H24'
                 then 'LH024'
@@ -29,6 +31,21 @@ with
                 then 'LH023'
                 else id_habit
             end as id_habit,
+            case
+                when
+                    id_habit = 'LH018'
+                    and str_gcs_file_name
+                    = 'gs://qs-dev-352513-raw/loop_habits/Habits/dt_processed=2022-06-12/Habits.csv'
+                then 'temp-break-fix'
+                else description
+            end as description
+        from parsed
+    ),
+
+    cleaned as (
+
+        select
+            id_habit,
 
             {{
                 dbt_utils.surrogate_key(
@@ -55,7 +72,7 @@ with
             dt_processed as dt_meta_exported,
             str_gcs_file_name as str_meta_file_name
 
-        from parsed
+        from corrected
 
     ),
 

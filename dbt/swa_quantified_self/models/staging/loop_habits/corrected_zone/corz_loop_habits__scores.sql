@@ -1,8 +1,7 @@
 with
     source as (
 
-        select *, _file_name as str_gcs_file_name
-        from {{ source("gcs_raw", "scores") }}
+        select *, _file_name as str_gcs_file_name from {{ source("gcs_raw", "scores") }}
 
     ),
 
