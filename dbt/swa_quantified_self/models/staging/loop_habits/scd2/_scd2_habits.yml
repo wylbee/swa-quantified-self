@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: scd2_loop_habits__habits
+    description: ""
+    columns:
+      - name: id_habit
+        description: ""
+        tests:
+          - unique:
+              config:
+                where: "dt_meta_valid_to is null"
+
+      - name: id_meta_row_check_hash
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: val_habit_position
+        description: ""
+
+      - name: str_habit_name
+        description: ""
+
+      - name: str_habit_prompt
+        description: ""
+
+      - name: str_habit_description
+        description: ""
+
+      - name: val_habit_target
+        description: ""
+
+      - name: val_habit_interval
+        description: ""
+
+      - name: str_habit_color_hex
+        description: ""
+
+      - name: dt_meta_exported
+        description: ""
+
+      - name: str_meta_file_name
+        description: ""
+
+      - name: dt_meta_last_change_event
+        description: ""
+
+      - name: dt_meta_valid_from
+        description: ""
+
+      - name: dt_meta_valid_to
+        description: ""
