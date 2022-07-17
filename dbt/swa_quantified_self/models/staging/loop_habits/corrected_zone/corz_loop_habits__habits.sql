@@ -21,7 +21,7 @@ with
 
         select *
         except
-            (id_habit, description),
+            (id_habit),
             case
                 when id_habit = 'L0H24'
                 then 'LH024'
@@ -30,15 +30,7 @@ with
                 when id_habit = 'LH23'
                 then 'LH023'
                 else id_habit
-            end as id_habit,
-            case
-                when
-                    id_habit = 'LH018'
-                    and str_gcs_file_name
-                    = 'gs://qs-dev-352513-raw/loop_habits/Habits/dt_processed=2022-06-12/Habits.csv'
-                then 'temp-break-fix'
-                else description
-            end as description
+            end as id_habit
         from parsed
     ),
 
@@ -95,18 +87,41 @@ with
 
     ),
 
-    final as (
+    last_change as (
 
-        select *
-        except
-            (dt_meta_change_event),
+        select *,
             min(dt_meta_change_event) over (
                 partition by id_meta_row_check_hash
             ) as dt_meta_last_change_event
         from change_event
 
-    )
+    ),
 
+    change_reversion as (
+
+        select 
+            *,dense_rank() over (partition by id_habit order by coalesce(dt_meta_change_event,dt_meta_last_change_event)) as val_meta_change_sequence
+        
+        from last_change
+    ),
+
+    change_id as (
+        select * except (id_meta_row_check_hash),
+                    {{
+                dbt_utils.surrogate_key(["id_meta_row_check_hash","val_meta_change_sequence"]) }} as id_meta_row_check_hash
+            from change_reversion
+                           
+
+    ),
+
+    final as (
+
+        select * except (dt_meta_last_change_event, dt_meta_change_event),
+                    min(dt_meta_change_event) over (
+                partition by id_meta_row_check_hash
+            ) as dt_meta_last_change_event
+        from change_id
+    )
 
 select *
 from final

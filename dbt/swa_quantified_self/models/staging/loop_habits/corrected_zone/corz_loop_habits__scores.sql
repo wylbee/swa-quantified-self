@@ -49,6 +49,7 @@ with
         from parsed
 
     ),
+
     change_event as (
 
         select
@@ -68,18 +69,41 @@ with
 
     ),
 
-    final as (
+    last_change as (
 
-        select *
-        except
-            (dt_meta_change_event),
+        select *,
             min(dt_meta_change_event) over (
                 partition by id_meta_row_check_hash
             ) as dt_meta_last_change_event
         from change_event
 
-    )
+    ),
 
+    change_reversion as (
+
+        select 
+            *,dense_rank() over (partition by id_habit order by coalesce(dt_meta_change_event,dt_meta_last_change_event)) as val_meta_change_sequence
+        
+        from last_change
+    ),
+
+    change_id as (
+        select * except (id_meta_row_check_hash),
+                    {{
+                dbt_utils.surrogate_key(["id_meta_row_check_hash","val_meta_change_sequence"]) }} as id_meta_row_check_hash
+            from change_reversion
+                           
+
+    ),
+
+    final as (
+
+        select * except (dt_meta_last_change_event, dt_meta_change_event),
+                    min(dt_meta_change_event) over (
+                partition by id_meta_row_check_hash
+            ) as dt_meta_last_change_event
+        from change_id
+    )
 
 select *
 from final
