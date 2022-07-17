@@ -10,11 +10,11 @@ with
 
         select
             *,
-            substr(
+            replace(substr(
                 str_gcs_file_name,
                 (strpos(str_gcs_file_name, 'LH')),
                 (length(str_gcs_file_name) - strpos(str_gcs_file_name, '.') + 2)
-            ) as id_habit
+            ),'.','') as id_habit,
 
         from source
 
@@ -23,6 +23,14 @@ with
     cleaned as (
 
         select
+                        {{
+                dbt_utils.surrogate_key(
+                    [
+                        "date_field_0",
+                        "id_habit",
+                    ]
+                )
+            }} as id_track,
             case
                 when id_habit = 'L0H24'
                 then 'LH024'
@@ -41,8 +49,8 @@ with
                     ]
                 )
             }} as id_meta_row_check_hash,
-            date_field_0 as dt_habit_evaluation,
-            int64_field_1 as val_habit_evalution,
+            date_field_0 as dt_track,
+            int64_field_1 as val_track,
             dt_processed as dt_meta_exported,
             str_gcs_file_name as str_meta_file_name
 
@@ -59,7 +67,7 @@ with
                 when
                     coalesce(
                         lag(id_meta_row_check_hash) over (
-                            partition by id_habit order by dt_meta_exported
+                            partition by id_track order by dt_meta_exported
                         ),
                         'new_row'
                     ) != id_meta_row_check_hash
@@ -83,7 +91,7 @@ with
     change_reversion as (
 
         select 
-            *,dense_rank() over (partition by id_habit order by coalesce(dt_meta_change_event,dt_meta_last_change_event)) as val_meta_change_sequence
+            *,dense_rank() over (partition by id_track order by coalesce(dt_meta_change_event,dt_meta_last_change_event)) as val_meta_change_sequence
         
         from last_change
     ),

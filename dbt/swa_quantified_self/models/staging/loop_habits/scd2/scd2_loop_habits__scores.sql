@@ -30,11 +30,11 @@ with
     dates as (
 
         select
-            id_habit,
+            id_track,
             id_meta_row_check_hash,
             dt_meta_last_change_event,
             lead(dt_meta_last_change_event) over (
-                partition by id_habit order by dt_meta_last_change_event
+                partition by id_track order by dt_meta_last_change_event
             ) as dt_meta_next_change_event
 
         from all_or_new

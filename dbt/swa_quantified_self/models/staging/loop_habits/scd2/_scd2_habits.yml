@@ -56,7 +56,7 @@ models:
   - name: scd2_loop_habits__checkmarks
     description: ""
     columns:
-      - name: id_habit
+      - name: id_track
         description: ""
         tests:
           - unique:
@@ -68,6 +68,9 @@ models:
         tests:
           - unique
           - not_null
+      
+      - name: id_habit
+        description: ""
 
       - name: dt_habit_evaluation
         description: ""
@@ -93,7 +96,7 @@ models:
   - name: scd2_loop_habits__scores
     description: ""
     columns:
-      - name: id_habit
+      - name: id_track
         description: ""
         tests:
           - unique:
@@ -105,6 +108,10 @@ models:
         tests:
           - unique
           - not_null
+      
+      - name: id_habit
+        description: ""
+
 
       - name: dt_habit_evaluation
         description: ""
