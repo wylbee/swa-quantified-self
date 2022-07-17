@@ -9,11 +9,15 @@ with
 
         select
             *,
-            replace(substr(
-                str_gcs_file_name,
-                (strpos(str_gcs_file_name, 'LH')),
-                (length(str_gcs_file_name) - strpos(str_gcs_file_name, '.') + 2)
-            ),'.','') as id_habit
+            replace(
+                substr(
+                    str_gcs_file_name,
+                    (strpos(str_gcs_file_name, 'LH')),
+                    (length(str_gcs_file_name) - strpos(str_gcs_file_name, '.') + 2)
+                ),
+                '.',
+                ''
+            ) as id_habit
 
         from source
 
@@ -22,7 +26,7 @@ with
     cleaned as (
 
         select
-                                {{
+            {{
                 dbt_utils.surrogate_key(
                     [
                         "date_field_0",
@@ -79,7 +83,8 @@ with
 
     last_change as (
 
-        select *,
+        select
+            *,
             min(dt_meta_change_event) over (
                 partition by id_meta_row_check_hash
             ) as dt_meta_last_change_event
@@ -89,25 +94,36 @@ with
 
     change_reversion as (
 
-        select 
-            *,dense_rank() over (partition by id_track order by coalesce(dt_meta_change_event,dt_meta_last_change_event)) as val_meta_change_sequence
-        
+        select
+            *,
+            dense_rank() over (
+                partition by id_track
+                order by coalesce(dt_meta_change_event, dt_meta_last_change_event)
+            ) as val_meta_change_sequence
+
         from last_change
     ),
 
     change_id as (
-        select * except (id_meta_row_check_hash),
-                    {{
-                dbt_utils.surrogate_key(["id_meta_row_check_hash","val_meta_change_sequence"]) }} as id_meta_row_check_hash
-            from change_reversion
-                           
+        select *
+        except
+            (id_meta_row_check_hash),
+            {{
+                dbt_utils.surrogate_key(
+                    ["id_meta_row_check_hash", "val_meta_change_sequence"]
+                )
+            }} as id_meta_row_check_hash
+        from change_reversion
+
 
     ),
 
     final as (
 
-        select * except (dt_meta_last_change_event, dt_meta_change_event),
-                    min(dt_meta_change_event) over (
+        select *
+        except
+            (dt_meta_last_change_event, dt_meta_change_event),
+            min(dt_meta_change_event) over (
                 partition by id_meta_row_check_hash
             ) as dt_meta_last_change_event
         from change_id

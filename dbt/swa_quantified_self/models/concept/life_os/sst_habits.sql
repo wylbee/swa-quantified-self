@@ -1,8 +1,4 @@
-with
+with habits as (select * from {{ ref("scd2_loop_habits__habits") }})
 
-habits as (
-
-    select * from {{ ref('scd2_loop_habits__habits') }}
-)
-
-select * from habits
+select *
+from habits
