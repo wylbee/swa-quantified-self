@@ -8,7 +8,7 @@ select
 
     
 
-from `qs-dev-352513`.`dbt_backstop`.`sst_tracks`
+from `dbt_backstop`.`sst_tracks`
 
 group by 1
 )
