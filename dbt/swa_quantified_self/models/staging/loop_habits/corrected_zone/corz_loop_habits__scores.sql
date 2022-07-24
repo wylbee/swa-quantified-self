@@ -5,6 +5,12 @@ with
 
     ),
 
+    mappings as (
+
+        select * from {{ ref('habit_hex_to_category') }}
+
+    ),
+
     parsed as (
 
         select

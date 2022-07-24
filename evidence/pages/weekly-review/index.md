@@ -3,7 +3,7 @@
 ```eligible_weeks
 
 select distinct
-    cast(extract(year from dt_track) as string)||'-' || cast(extract(isoweek from dt_track) as string) as str_year_iso_week
+    cast(extract(year from dt_track) as string)||'-W' || cast(extract(isoweek from dt_track) as string) as str_year_iso_week
 
 from `dbt_backstop`.`sst_tracks`
 

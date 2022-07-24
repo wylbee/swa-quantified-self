@@ -1,5 +1,5 @@
-# {$page.params.str_year_iso_week}
-
+# Weekly Review - {$page.params.str_year_iso_week}
+## Life OS
 ```daily_tracks
 
 with
@@ -13,17 +13,101 @@ with
 
 select 
     *,
-    cast(extract(year from dt_track) as string)||'-' || cast(extract(isoweek from dt_track) as string) as str_year_iso_week,
+    cast(extract(year from dt_track) as string)||'-W' || cast(extract(isoweek from dt_track) as string) as str_year_iso_week,
     (amt_tracks / amt_tracks_possible)*100 as val_track_success, 80 as val_track_target
 from daily_tracks
 order by 1 desc
 
 
 ```
+```weekly_tracks
+
+with
+    weekly_tracks as (
+        select             cast(extract(year from sst_tracks.dt_track) as string)||'-W' || cast(extract(isoweek from sst_tracks.dt_track) as string) as str_year_iso_week,extract(isoweek from sst_tracks.dt_track) as val_iso_week, sum(is_track) as amt_tracks, count(*) as amt_tracks_possible
+
+        from `dbt_backstop`.`sst_tracks`
+
+        group by 1,2
+    )
+
+select 
+    *,
+    (amt_tracks / amt_tracks_possible)*100 as val_track_success, 80 as val_track_target
+from weekly_tracks
+order by val_iso_week
+
+
+```
+```category_tracks
+with
+    category_tracks as (
+        select 
+            cast(extract(year from sst_tracks.dt_track) as string)||'-W' || cast(extract(isoweek from sst_tracks.dt_track) as string) as str_year_iso_week, 
+            sst_habits.cat_habit_grouping,
+            
+            sum(sst_tracks.is_track) as amt_tracks, count(sst_tracks.dt_track) as amt_tracks_possible
+
+        from `dbt_backstop`.`sst_tracks`
+
+        left outer join `dbt_backstop`.`sst_habits`
+            on sst_tracks.id_habit = sst_habits.id_habit
+
+        group by 1,2
+    )
+
+select 
+    *,
+
+    (amt_tracks / amt_tracks_possible)*100 as val_track_success, 80 as val_track_target
+from category_tracks 
+order by 1 desc
+
+```
+```dimming_days
+select 
+    str_year_iso_week,
+    format_date('%A', dt_track) as str_track_dow, 
+    val_track_success
+from ${daily_tracks}
+where val_track_success < val_track_target
+order by 1
+
+```
+```dimming_categories
+select 
+    str_year_iso_week,
+    cat_habit_grouping, 
+    val_track_success
+from ${category_tracks}
+where val_track_success < val_track_target
+order by 1
+
+```
+This week, my lights score was <Value data={weekly_tracks.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week)} column=val_track_success/>%.
 
 <BarChart 
     title='Lights'
-    data={daily_tracks.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week)}
-    x=dt_track
+    data={weekly_tracks.filter(d => d.str_year_iso_week <= $page.params.str_year_iso_week)}
+    x=str_year_iso_week
     y=val_track_success
+    sort= false
 />
+
+For review, the following categories were in a dimmed state this week:
+
+*Dimming categories*
+
+{#each dimming_categories.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week) as dc}
+
+- **{dc.cat_habit_grouping}** - <Value data={dc} column=val_track_success/>%  
+
+{/each}
+
+*Dimming days*
+
+{#each dimming_days.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week) as dd}
+
+- **{dd.str_track_dow}** - <Value data={dd} column=val_track_success/>%  
+
+{/each}

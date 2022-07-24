@@ -5,6 +5,12 @@ with
 
     ),
 
+    mappings as (
+
+        select * from {{ ref('habit_hex_to_category') }}
+
+    ),
+
     parsed as (
 
         select
@@ -68,6 +74,19 @@ with
 
     ),
 
+    joined as (
+
+        select 
+            cleaned.*,
+            mappings.cat_habit_grouping
+        
+        from cleaned
+
+        left outer join mappings
+            on cleaned.str_habit_color_hex = mappings.str_habit_color_hex
+
+    ),
+
     change_event as (
 
         select
@@ -83,7 +102,7 @@ with
                 then dt_meta_exported
             end as dt_meta_change_event
 
-        from cleaned
+        from joined
 
     ),
 
