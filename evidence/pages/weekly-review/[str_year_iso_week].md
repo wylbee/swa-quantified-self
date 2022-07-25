@@ -51,7 +51,7 @@ with
         from `dbt_backstop`.`sst_tracks`
 
         left outer join `dbt_backstop`.`sst_habits`
-            on sst_tracks.id_habit = sst_habits.id_habit
+            on sst_tracks.id_habit = sst_habits.id_habit and sst_habits.dt_meta_valid_to is null
 
         group by 1,2
     )
@@ -84,6 +84,38 @@ where val_track_success < val_track_target
 order by 1
 
 ```
+```dimming_habits
+with query as (
+select 
+    cast(extract(year from dt_track) as string)||'-W' || cast(extract(isoweek from dt_track) as string) as str_year_iso_week,
+    id_habit,
+sum(is_track) as amt_tracks, count(*) as amt_tracks_possible
+
+from `dbt_backstop`.`sst_tracks`
+
+group by 1,2
+
+),
+
+next_query as (
+
+select 
+    query.*,
+        (query.amt_tracks / amt_tracks_possible)*100 as val_track_success, 80 as val_track_target,
+    sst_habits.str_habit_name 
+
+from query
+
+left outer join `dbt_backstop`.`sst_habits`
+    on query.id_habit = sst_habits.id_habit and sst_habits.dt_meta_valid_to is null
+
+)
+
+select * from next_query
+where val_track_success < val_track_target
+
+order by val_track_success
+```
 This week, my lights score was <Value data={weekly_tracks.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week)} column=val_track_success/>%.
 
 <BarChart 
@@ -109,5 +141,13 @@ For review, the following categories were in a dimmed state this week:
 {#each dimming_days.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week) as dd}
 
 - **{dd.str_track_dow}** - <Value data={dd} column=val_track_success/>%  
+
+{/each}
+
+*Dimming habits*
+
+{#each dimming_habits.filter(d => d.str_year_iso_week === $page.params.str_year_iso_week) as hab}
+
+- **{hab.str_habit_name}** - <Value data={hab} column=val_track_success/>% 
 
 {/each}
