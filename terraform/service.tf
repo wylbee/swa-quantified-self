@@ -10,7 +10,8 @@ resource "google_project_service" "data_project_services" {
       "iam.googleapis.com",
       "cloudfunctions.googleapis.com",
       "cloudbuild.googleapis.com",
-      "appengine.googleapis.com"
+      "appengine.googleapis.com",
+      "iap.googleapis.com"
     ]
   )
   service                    = each.key

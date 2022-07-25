@@ -31,4 +31,16 @@ resource "google_service_account_key" "cf_sa_key" {
   public_key_type    = "TYPE_X509_PEM_FILE"
 }
 
-# app_engine service account
+# evidence service account
+resource "google_service_account" "evidence_sa" {
+  account_id   = "evidence-runner"
+  project      = var.project_id
+  display_name = "Evidence Service Account"
+  description  = "Evidence service account"
+}
+
+# evidence service account key
+resource "google_service_account_key" "evidence_sa_key" {
+  service_account_id = google_service_account.evidence_sa.name
+  public_key_type    = "TYPE_X509_PEM_FILE"
+}
