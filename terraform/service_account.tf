@@ -1,28 +1,37 @@
 # Bigquery Owner
 resource "google_service_account" "bq_owner" {
-  account_id = "bq-owner"
-  project    = var.project_id
+    account_id = "bq-owner"
+    project    = var.project_id
+    depends_on = [
+        google_project_service.data_project_services
+    ]
 }
 
 # dbt service account
 resource "google_service_account" "dbt_sa" {
-  account_id   = "dbt-runner"
-  project      = var.project_id
-  display_name = "dbt Service Account"
-  description  = "dbt service account"
+    account_id   = "dbt-runner"
+    project      = var.project_id
+    display_name = "dbt Service Account"
+    description  = "dbt service account"
+    depends_on = [
+        google_project_service.data_project_services
+    ]
 }
 # dbt service account key
 resource "google_service_account_key" "dbt_sa_key" {
-  service_account_id = google_service_account.dbt_sa.name
-  public_key_type    = "TYPE_X509_PEM_FILE"
+    service_account_id = google_service_account.dbt_sa.name
+    public_key_type    = "TYPE_X509_PEM_FILE"
 }
 
 # cf service account
 resource "google_service_account" "cf_sa" {
-  account_id   = "cf-runner"
-  project      = var.project_id
-  display_name = "Cloud Function Service Account"
-  description  = "Cloud Function service account"
+    account_id   = "cf-runner"
+    project      = var.project_id
+    display_name = "Cloud Function Service Account"
+    description  = "Cloud Function service account"
+    depends_on = [
+        google_project_service.data_project_services
+    ]
 }
 
 # cf service account key
@@ -33,10 +42,13 @@ resource "google_service_account_key" "cf_sa_key" {
 
 # evidence service account
 resource "google_service_account" "evidence_sa" {
-  account_id   = "evidence-runner"
-  project      = var.project_id
-  display_name = "Evidence Service Account"
-  description  = "Evidence service account"
+    account_id   = "evidence-runner"
+    project      = var.project_id
+    display_name = "Evidence Service Account"
+    description  = "Evidence service account"
+    depends_on = [
+        google_project_service.data_project_services
+    ]
 }
 
 # evidence service account key
