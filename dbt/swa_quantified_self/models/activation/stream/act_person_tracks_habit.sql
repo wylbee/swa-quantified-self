@@ -12,8 +12,9 @@ with
             cast(tracks.dt_track as datetime) as tm_activity,
             'person_tracks_habit' as cat_activity_type,
             {{ nest_activity_context(is_activity_complete="tracks.is_track") }}
-            tracks as nest_tracks,
-            struct(habits_cv as cv, habits_scd as scd) as nest_habits
+            tracks as nest_track,
+            tracks.id_habit,
+            struct(habits_cv as cv, habits_scd as scd) as nest_habit
 
         from tracks
 
@@ -36,7 +37,7 @@ with
             {{
                 dbt_utils.surrogate_key(
                     [
-                        "nest_tracks.key_track",
+                        "nest_track.key_track",
                         "tm_activity",
                         "cat_activity_type",
                     ]
@@ -44,7 +45,7 @@ with
             }} as key_activity,
             *,
             row_number() over (
-                partition by order by tm_activity
+                order by tm_activity
             ) as n_activity_occurrence,
 
             lead(tm_activity) over (order by tm_activity) as tm_next_activity

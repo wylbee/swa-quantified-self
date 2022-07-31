@@ -1,0 +1,20 @@
+version: 2
+
+metrics:
+  - name: metric_n_track_habit_success
+    model: ref('stream')
+    label: Successful Habit Tracks
+    
+    type: sum
+    sql: nest_context.is_activity_complete
+
+    timestamp: tm_activity
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - id_habit
+    
+    filters:
+      - field: cat_activity_type
+        operator: '='
+        value: "'person_tracks_habit'" 
