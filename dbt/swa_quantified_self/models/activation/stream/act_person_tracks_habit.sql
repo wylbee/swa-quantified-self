@@ -13,8 +13,8 @@ with
             'person_tracks_habit' as cat_activity_type,
             {{ nest_activity_context(is_activity_complete="tracks.is_track") }}
             tracks as nest_track,
-            tracks.id_habit,
-            struct(habits_cv as cv, habits_scd as scd) as nest_habit
+            habits_cv as nest_habit_cv,
+            habits_scd as nest_habit_scd
 
         from tracks
 
