@@ -17,7 +17,11 @@ cube(`StreamCv`, {
     },
     metric_is_track: {
       sql: `is_activity_complete`,
-      type: `sum`
+      type: `sum`,
+    },
+    metric_ratio_track_success: {
+      sql: `${metric_is_track} / ${count} * 100.0`,
+      type: `number`,
     }
   },
   
