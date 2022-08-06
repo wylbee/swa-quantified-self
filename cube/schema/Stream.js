@@ -13,7 +13,7 @@ cube(`Stream`, {
   measures: {
     metricCount: {
       type: `count`,
-      drillMembers: [habitId]
+      drillMembers: [idHabit]
     },
     metricIsActivityComplete: {
       sql: `nest_activity_context.is_activity_complete`,
@@ -51,7 +51,7 @@ cube(`Stream`, {
       type: `time`
     },
     
-    habitId: {
+    idHabit: {
       sql: `nest_habit_cv.id_habit`,
       type: `string`
     },
