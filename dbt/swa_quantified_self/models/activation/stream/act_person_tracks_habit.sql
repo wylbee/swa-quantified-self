@@ -9,7 +9,7 @@ with
     activity as (
 
         select
-            cast(tracks.dt_track as datetime) as tm_activity,
+            cast(tracks.dt_track as timestamp) as tm_activity,
             'person_tracks_habit' as cat_activity_type,
             {{ nest_activity_context(is_activity_complete="tracks.is_track") }}
             tracks as nest_track,
