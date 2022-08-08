@@ -11,16 +11,16 @@ cube(`Stream`, {
   },
   
   measures: {
-    metricCount: {
+    metric_count: {
       type: `count`,
-      drillMembers: [idHabit]
+      drillMembers: [id_habit]
     },
-    metricIsActivityComplete: {
+    metric_is_activity_complete: {
       sql: `nest_activity_context.is_activity_complete`,
       type: `sum`
     },
-    metricRatioActivityCompletion: {
-      sql: `${metricIsActivityComplete} / ${metricCount} * 100.0`,
+    metric_ratio_activity_completion: {
+      sql: `${metric_is_activity_complete} / ${metric_count} * 100.0`,
       type: `number`,
     }
   },
@@ -36,7 +36,7 @@ cube(`Stream`, {
       type: `string`
     },
     
-    tmActivity: {
+    tm_activity: {
       sql: `tm_activity`,
       type: `time`
     },
@@ -51,7 +51,7 @@ cube(`Stream`, {
       type: `time`
     },
     
-    idHabit: {
+    id_habit: {
       sql: `nest_habit_cv.id_habit`,
       type: `string`
     },
