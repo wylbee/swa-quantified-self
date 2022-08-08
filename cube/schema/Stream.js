@@ -40,19 +40,24 @@ cube(`Stream`, {
       sql: `tm_activity`,
       type: `time`
     },
+
+    str_year_iso_week: {
+      sql: `cast(extract(year from ${tm_activity}) as string)||'-W' || cast(extract(isoweek from ${tm_activity}) as string) `,
+      type: `string`
+    },
     
     id_habit: {
       sql: `nest_habit_cv.id_habit`,
       type: `string`
     },
 
-    cat_habit_grouping: {
-      sql: `nest_habit_cv.cat_habit_grouping`,
+    str_habit_name: {
+      sql: `nest_habit_cv.str_habit_name`,
       type: `string`
     },
 
-    str_year_iso_week: {
-      sql: `cast(extract(year from ${tm_activity}) as string)||'-W' || cast(extract(isoweek from ${tm_activity}) as string) `,
+    cat_habit_grouping: {
+      sql: `nest_habit_cv.cat_habit_grouping`,
       type: `string`
     },
     
