@@ -26,12 +26,12 @@ cube(`Stream`, {
   },
   
   dimensions: {
-    keyActivity: {
+    key_activity: {
       sql: `key_activity`,
       type: `string`
     },
     
-    catActivityType: {
+    cat_activity_type: {
       sql: `cat_activity_type`,
       type: `string`
     },
@@ -40,25 +40,25 @@ cube(`Stream`, {
       sql: `tm_activity`,
       type: `time`
     },
-    
-    nestTrack: {
-      sql: `nest_track`,
-      type: `time`
-    },
-    
-    nestHabitCv: {
-      sql: `nest_habit_cv`,
-      type: `time`
+
+    str_year_iso_week: {
+      sql: `cast(extract(year from ${tm_activity}) as string)||'-W' || cast(extract(isoweek from ${tm_activity}) as string) `,
+      type: `string`
     },
     
     id_habit: {
       sql: `nest_habit_cv.id_habit`,
       type: `string`
     },
-    
-    nestHabitScd: {
-      sql: `nest_habit_scd`,
-      type: `time`
+
+    str_habit_name: {
+      sql: `nest_habit_cv.str_habit_name`,
+      type: `string`
+    },
+
+    cat_habit_grouping: {
+      sql: `nest_habit_cv.cat_habit_grouping`,
+      type: `string`
     },
     
     tmNextActivity: {
