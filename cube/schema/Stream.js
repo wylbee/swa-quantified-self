@@ -41,8 +41,13 @@ cube(`Stream`, {
       type: `time`
     },
 
-    str_year_iso_week: {
+    str_activity_year_iso_week: {
       sql: `cast(extract(year from ${tm_activity}) as string)||'-W' || cast(extract(isoweek from ${tm_activity}) as string) `,
+      type: `string`
+    },
+
+    str_activity_dow: {
+      sql: `format_date('%A',${tm_activity}) `,
       type: `string`
     },
     
