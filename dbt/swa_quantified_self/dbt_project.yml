@@ -34,6 +34,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   swa_quantified_self:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    concept:
+      life_os:
+        +schema: life_os
+    staging:
+      loop_habits:
+        +schema: stg_loop_habits

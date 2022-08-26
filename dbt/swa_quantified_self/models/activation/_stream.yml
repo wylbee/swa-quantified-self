@@ -1,0 +1,56 @@
+version: 2
+
+metrics:
+  - name: metric_n_track_habit_success
+    model: ref('stream_cv')
+    label: Successful Habit Tracks
+    
+    type: sum
+    sql: is_activity_complete
+
+    timestamp: tm_activity
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - str_habit_name
+      - cat_habit_grouping
+    
+    filters:
+      - field: cat_activity_type
+        operator: '='
+        value: "'person_tracks_habit'" 
+
+  - name: metric_n_track_habit_possible
+    model: ref('stream_cv')
+    label: Possible Habit Tracks
+    
+    type: count
+    sql: is_activity_complete
+
+    timestamp: tm_activity
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - str_habit_name
+      - cat_habit_grouping
+    
+    filters:
+      - field: cat_activity_type
+        operator: '='
+        value: "'person_tracks_habit'" 
+
+  - name: metric_val_track_habit_success_percentage
+    label: Successful Habit Tracks / Possible Habit Tracks
+    type: expression
+    sql: "coalesce(({{ metric('metric_n_track_habit_success') }} / {{ metric('metric_n_track_habit_possible') }}) * 100, 0)"
+    timestamp: tm_activity
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - str_habit_name
+      - cat_habit_grouping
+    
+    filters:
+      - field: cat_activity_type
+        operator: '='
+        value: "'person_tracks_habit'" 

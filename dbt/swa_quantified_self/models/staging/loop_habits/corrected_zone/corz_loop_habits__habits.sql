@@ -5,11 +5,7 @@ with
 
     ),
 
-    mappings as (
-
-        select * from {{ ref('habit_hex_to_category') }}
-
-    ),
+    mappings as (select * from {{ ref("habit_hex_to_category") }}),
 
     parsed as (
 
@@ -76,14 +72,12 @@ with
 
     joined as (
 
-        select 
-            cleaned.*,
-            mappings.cat_habit_grouping
-        
+        select cleaned.*, mappings.cat_habit_grouping
+
         from cleaned
 
-        left outer join mappings
-            on cleaned.str_habit_color_hex = mappings.str_habit_color_hex
+        left outer join
+            mappings on cleaned.str_habit_color_hex = mappings.str_habit_color_hex
 
     ),
 

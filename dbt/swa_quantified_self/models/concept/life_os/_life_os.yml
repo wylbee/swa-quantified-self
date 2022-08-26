@@ -37,7 +37,7 @@ models:
       - name: val_meta_change_sequence
         description: ""
 
-      - name: id_meta_row_check_hash
+      - name: id_meta_habits_row_check_hash
         description: ""
         tests:
           - unique

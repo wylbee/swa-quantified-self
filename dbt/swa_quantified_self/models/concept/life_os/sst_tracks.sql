@@ -28,7 +28,7 @@ with
                         "scores.id_meta_row_check_hash",
                     ]
                 )
-            }} as key_tracks,
+            }} as key_track,
 
             tracks.id_track,
             tracks.id_habit,
