@@ -34,6 +34,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   swa_quantified_self:
+    activation:
+      +schema: stream
     concept:
       life_os:
         +schema: life_os
