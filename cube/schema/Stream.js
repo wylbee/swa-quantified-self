@@ -1,5 +1,5 @@
 cube(`Stream`, {
-  sql: `SELECT * FROM dbt_backstop.stream`,
+  sql: `SELECT * FROM stream.stream`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
