@@ -11,7 +11,8 @@ resource "google_project_service" "data_project_services" {
       "cloudfunctions.googleapis.com",
       "cloudbuild.googleapis.com",
       "appengine.googleapis.com",
-      "iap.googleapis.com"
+      "iap.googleapis.com",
+      "drive.googleapis.com"
     ]
   )
   service                    = each.key
