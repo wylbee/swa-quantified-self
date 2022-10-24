@@ -1,6 +1,6 @@
 
 {%- call statement('max_partition_date_query', True) -%}
-select max(cast(tm_meta_processed_at as date)) as max_partition_date
+select max(tm_meta_processed_at) as high_watermark
 from
     {{ ref("rds_tiller__transactions") }}
     {%- endcall -%}
@@ -10,23 +10,15 @@ from
 
 with
 
-    rds as (
+    last_partition as (
         select *
         from {{ ref("rds_tiller__transactions") }}
         where cast(tm_meta_processed_at as date) = '{{ max_date }}'
 
     ),
 
-    last_processed as (
-
-        select max(tm_meta_processed_at) as tm_meta_last_processed from rds
-    ),
-
     scd1 as (
-
-        select *
-        from rds
-        where tm_meta_processed_at = (select tm_meta_last_processed from last_processed)
+        select * from last_partition where tm_meta_processed_at = '{{ max_timestamp }}'
     )
 
 select *
