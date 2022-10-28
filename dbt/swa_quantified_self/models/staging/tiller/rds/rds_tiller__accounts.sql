@@ -1,9 +1,9 @@
 {{
     rds_from_full_load(
-        primary_business_key="string_field_6",
+        primary_business_key="Account_Id",
         primary_business_key_alias="account_id",
         el_metadata=null,
         source_name="google_drive",
-        source_table="tiller_accounts",
+        source_table="tiller_accounts_full",
     )
 }}

@@ -21,7 +21,7 @@ with
         select
             transaction_id as id_tiller_transaction,
             json_value(json_meta_attributes.`Account_ID`) as id_tiller_account,
-            json_value(json_meta_attributes.`Category`) as id_tiller_category,
+            json_value(json_meta_attributes.`Category`) as id_tiller_budget,
             safe_cast(
                 json_value(json_meta_attributes.`Date`) as timestamp
             ) as tm_transaction,
