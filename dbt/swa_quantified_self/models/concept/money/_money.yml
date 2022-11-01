@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_finaccount
+    description: "Conformed dimension reflecting financial accounts"
+    columns:
+      - name: key_finaccount
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: id_tiller_finaccount
+        description: ""
+
+      - name: str_finaccount_name
+        description: ""
+
+      - name: cat_finaccount_class
+        description: ""
+
+      - name: cat_finaccount_group
+        description: ""
+
+      - name: cat_finaccount_institution
+        description: ""
+
+      - name: cat_finaccount_institution_type
+        description: ""

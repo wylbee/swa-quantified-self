@@ -19,16 +19,18 @@ with
 
     scd1 as (
         select
-            account_id as id_tiller_account,
-            json_value(json_meta_attributes.`Account`) as str_account_name,
-            json_value(json_meta_attributes.`Class_Override`) as cat_account_class,
-            json_value(json_meta_attributes.`Group`) as cat_account_group,
-            json_value(json_meta_attributes.`Instituion`) as cat_account_institution,
-            json_value(json_meta_attributes.`Type`) as cat_account_institution_type
+            account_id as id_tiller_finaccount,
+            json_value(json_meta_attributes.`Account`) as str_finaccount_name,
+            json_value(json_meta_attributes.`Class_Override`) as cat_finaccount_class,
+            json_value(json_meta_attributes.`Group`) as cat_finaccount_group,
+            json_value(
+                json_meta_attributes.`Institution`
+            ) as cat_finaccount_institution,
+            json_value(json_meta_attributes.`Type`) as cat_finaccount_institution_type
 
         from last_partition
 
-        where tm_meta_processed_at = '{{ max_timestamp }}'
+        where tm_meta_processed_at = '{{ max_timestamp }}' and account_id is not null
     )
 
 select *

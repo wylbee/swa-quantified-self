@@ -4,25 +4,25 @@ models:
   - name: base_tiller__accounts
     description: ""
     columns:
-      - name: id_tiller_account
+      - name: id_tiller_finaccount
         description: ""
         tests:
           - unique
           - not_null
 
-      - name: str_account_name
+      - name: str_finaccount_name
         description: ""
 
-      - name: cat_account_class
+      - name: cat_finaccount_class
         description: ""
 
-      - name: cat_account_group
+      - name: cat_finaccount_group
         description: ""
 
-      - name: cat_account_institution
+      - name: cat_finaccount_institution
         description: ""
 
-      - name: cat_account_institution_type
+      - name: cat_finaccount_institution_type
         description: ""
   - name: base_tiller__balance_histories
     description: ""
