@@ -27,11 +27,21 @@ with
                 then 1
                 else 0
             end as is_budget_hidden_from_reporting,
-            json_value(json_meta_attributes.`Aug_2022`) as amt_budget_2022_08,
-            json_value(json_meta_attributes.`Sep_2022`) as amt_budget_2022_09,
-            json_value(json_meta_attributes.`Oct_2022`) as amt_budget_2022_10,
-            json_value(json_meta_attributes.`Nov_2022`) as amt_budget_2022_11,
-            json_value(json_meta_attributes.`Dec_2022`) as amt_budget_2022_12
+            round(
+                safe_cast(json_value(json_meta_attributes.`Aug_2022`) as numeric), 2
+            ) as amt_budget_2022_08,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Sep_2022`) as numeric), 2
+            ) as amt_budget_2022_09,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Oct_2022`) as numeric), 2
+            ) as amt_budget_2022_10,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Nov_2022`) as numeric), 2
+            ) as amt_budget_2022_11,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Dec_2022`) as numeric), 2
+            ) as amt_budget_2022_12
 
         from last_partition
 

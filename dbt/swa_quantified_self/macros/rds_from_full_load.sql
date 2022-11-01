@@ -55,6 +55,7 @@ with
     final as (
         select * except (str_meta_attributes), md5(str_meta_attributes) as hash_meta_row
         from prep
+        where {{ primary_business_key_alias }} is not null
     )
 
 select *

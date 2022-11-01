@@ -80,7 +80,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - transaction_id
+            - category
             - tm_meta_processed_at
     columns:
       - name: category

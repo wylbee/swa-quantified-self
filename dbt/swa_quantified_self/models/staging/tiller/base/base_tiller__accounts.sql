@@ -30,7 +30,7 @@ with
 
         from last_partition
 
-        where tm_meta_processed_at = '{{ max_timestamp }}' and account_id is not null
+        where tm_meta_processed_at = '{{ max_timestamp }}'
     )
 
 select *

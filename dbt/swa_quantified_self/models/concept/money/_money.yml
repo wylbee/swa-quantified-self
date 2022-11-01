@@ -27,3 +27,36 @@ models:
 
       - name: cat_finaccount_institution_type
         description: ""
+
+  - name: dim_budget
+    description: "Conformed dimension reflection a financial budget x fiscal year"
+    columns:
+      - name: key_budget
+        description: "Surrogate Key generated using budget id + FY"
+        tests:
+          - unique
+          - not_null
+          
+      - name: id_tiller_budget
+        description: ""
+
+      - name: cat_budget_group
+        description: ""
+
+      - name: cat_budget_type
+        description: ""
+
+      - name: is_budget_hidden_from_reporting
+        description: ""
+
+      - name: val_budget_fiscal_year
+        description: ""
+
+      - name: is_budget_monthly_line
+        description: ""
+
+      - name: val_budget_monthly
+        description: ""
+
+      - name: val_budget_yearly
+        description: ""
