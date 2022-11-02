@@ -20,7 +20,7 @@ with
     scd1 as (
         select
             transaction_id as id_tiller_transaction,
-            json_value(json_meta_attributes.`Account_ID`) as id_tiller_account,
+            json_value(json_meta_attributes.`Account_ID`) as id_tiller_finaccount,
             json_value(json_meta_attributes.`Category`) as id_tiller_budget,
             safe_cast(
                 json_value(json_meta_attributes.`Date`) as timestamp
@@ -47,7 +47,10 @@ with
 
         from last_partition
 
-        where tm_meta_processed_at = '{{ max_timestamp }}'
+        where
+            tm_meta_processed_at = '{{ max_timestamp }}'
+            and safe_cast(json_value(json_meta_attributes.`Date`) as timestamp)
+            >= '2022-08-01'
     )
 
 select *

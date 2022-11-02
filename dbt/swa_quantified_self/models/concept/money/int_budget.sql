@@ -11,7 +11,7 @@ with
             cat_budget_type,
             is_budget_hidden_from_reporting,
 
-            '2022' as val_budget_fiscal_year,
+            cast(2022 as int64) as val_budget_fiscal_year,
 
             case
                 when cat_budget_group = 'Monthly Expenses' then 1 else 0
