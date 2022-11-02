@@ -32,7 +32,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - transaction_id
+            - account_id
             - tm_meta_processed_at
     columns:
       - name: account_id
@@ -56,7 +56,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - transaction_id
+            - balance_id
             - tm_meta_processed_at
     columns:
       - name: balance_id

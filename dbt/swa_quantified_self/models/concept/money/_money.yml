@@ -93,3 +93,32 @@ models:
 
       - name: tm_next_event
         description: ""
+  - name: de_receives_payment
+    description: "Discrete event reflecting the reception of income."
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: tm_event
+        description: ""
+
+      - name: cat_event
+        description: ""
+
+      - name: json_event_entities
+        description: ""
+
+      - name: json_event_features
+        description: ""
+
+      - name: json_event_source
+        description: ""
+
+      - name: n_event_occurrence
+        description: ""
+
+      - name: tm_next_event
+        description: ""

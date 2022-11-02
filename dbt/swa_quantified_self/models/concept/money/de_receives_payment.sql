@@ -10,18 +10,14 @@ with
 
         select
             transactions.tm_transaction as tm_event,
-            'Person Purchases Investment' as cat_event,
+            'Person Receives Payment' as cat_event,
             to_json(
                 struct(accounts.key_finaccount, budgets.key_budget)
             ) as json_event_entities,
             to_json(
                 struct(
                     transactions.str_transaction_description,
-                    transactions.amt_transaction as amt_invested,
-                    case
-                        when budgets.cat_budget_type = 'Income'
-                        then transactions.amt_transaction
-                    end as amt_income
+                    transactions.amt_transaction as amt_income
                 )
             ) as json_event_features,
             to_json(
@@ -45,7 +41,8 @@ with
             = budgets.val_budget_fiscal_year
 
         where
-            accounts.is_finaccount_savings = 1
+            accounts.is_finaccount_savings = 0
+            and budgets.cat_budget_type = 'Income'
             and budgets.id_tiller_budget != 'Excluded Line'
 
     ),
@@ -69,6 +66,7 @@ with
                 partition by json_value(json_event_entities.key_finaccount)
                 order by tm_event
             ) as tm_next_event
+
         from joined
 
     )
