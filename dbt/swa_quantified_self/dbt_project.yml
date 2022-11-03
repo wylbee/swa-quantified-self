@@ -37,8 +37,15 @@ models:
     activation:
       +schema: stream
     concept:
+      materialization: table
+      schema: core
       life_os:
         +schema: life_os
+      integration:
+        +schema: integration
+      dimension:
+        +schema: core
+        +materialization: table
     staging:
       loop_habits:
         +schema: stg_loop_habits
