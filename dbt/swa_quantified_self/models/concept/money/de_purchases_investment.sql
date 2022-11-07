@@ -46,7 +46,7 @@ with
 
         where
             accounts.is_finaccount_savings = 1
-            and budgets.id_tiller_budget != 'Excluded Line'
+            and budgets.id_tiller_budget not in ('Excluded Line', 'Investment Fees')
 
     ),
 
