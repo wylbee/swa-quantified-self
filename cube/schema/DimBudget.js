@@ -1,5 +1,5 @@
 cube(`DimBudget`, {
-  sql: `SELECT * FROM dbt_backstop.dim_budget`,
+  sql: `SELECT * FROM core.dim_budget`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here

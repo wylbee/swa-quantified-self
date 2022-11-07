@@ -1,5 +1,5 @@
 cube(`EventStream`, {
-  sql: `SELECT * FROM dbt_backstop.event_stream`,
+  sql: `SELECT * FROM core.event_stream`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
