@@ -1,0 +1,119 @@
+version: 2
+
+models:
+  - name: base_tiller__accounts
+    description: ""
+    columns:
+      - name: id_tiller_finaccount
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: str_finaccount_name
+        description: ""
+
+      - name: cat_finaccount_class
+        description: ""
+
+      - name: cat_finaccount_group
+        description: ""
+
+      - name: cat_finaccount_institution
+        description: ""
+
+      - name: cat_finaccount_institution_type
+        description: ""
+  - name: base_tiller__balance_histories
+    description: ""
+    columns:
+      - name: id_tiller_balance
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: id_tiller_account
+        description: ""
+
+      - name: tm_balance
+        description: ""
+
+      - name: amt_balance
+        description: ""
+
+      - name: is_account_active
+        description: ""
+
+      - name: tm_balance_added
+        description: ""
+  - name: base_tiller__categories
+    description: ""
+    columns:
+      - name: id_tiller_budget
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: cat_budget_group
+        description: ""
+
+      - name: cat_budget_type
+        description: ""
+
+      - name: is_budget_hidden_from_reporting
+        description: ""
+
+      - name: amt_budget_2022_08
+        description: ""
+
+      - name: amt_budget_2022_09
+        description: ""
+
+      - name: amt_budget_2022_10
+        description: ""
+
+      - name: amt_budget_2022_11
+        description: ""
+
+      - name: amt_budget_2022_12
+        description: ""
+  - name: base_tiller__transactions
+    description: ""
+    columns:
+      - name: id_tiller_transaction
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: id_tiller_account
+        description: ""
+
+      - name: id_tiller_budget
+        description: ""
+
+      - name: tm_transaction
+        description: ""
+
+      - name: str_transaction_description
+        description: ""
+
+      - name: amt_transaction
+        description: ""
+
+      - name: str_transaction_check_number
+        description: ""
+
+      - name: str_tiller_transaction_description_full
+        description: ""
+
+      - name: tm_transaction_categorized
+        description: ""
+
+      - name: tm_transaction_added
+        description: ""
+
+      - name: tm_meta_processed_at
+        description: ""

@@ -1,0 +1,9 @@
+{{
+    rds_from_full_load(
+        primary_business_key="transaction_id",
+        primary_business_key_alias="transaction_id",
+        el_metadata=null,
+        source_name="google_drive",
+        source_table="tiller_transactions",
+    )
+}}

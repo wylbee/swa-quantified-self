@@ -1,0 +1,9 @@
+{{
+    rds_from_full_load(
+        primary_business_key="category",
+        primary_business_key_alias="category",
+        el_metadata=null,
+        source_name="google_drive",
+        source_table="tiller_categories",
+    )
+}}

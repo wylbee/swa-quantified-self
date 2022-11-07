@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: rds_tiller__transactions
+    description: "Read only data store of financial transaction data synced from Tiller."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - transaction_id
+            - tm_meta_processed_at
+    columns:
+      - name: transaction_id
+        description: "PK denoting a unique transaction."
+        tests:
+          - not_null
+
+      - name: json_meta_attributes
+        description: "json blob holding all non-el meta attributes of the row."
+
+      - name: json_meta_el
+        description: "json blob holding all el meta attributes of the row."
+
+      - name: tm_meta_processed_at
+        description: "timestamp captured when the row was processed/inserted."
+        tests:
+          - not_null
+
+      - name: hash_meta_row
+        description: "hash of json_meta_attributes. Used for detecting changes."
+  - name: rds_tiller__accounts
+    description: "Read only data store of financial account data synced from Tiller."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - account_id
+            - tm_meta_processed_at
+    columns:
+      - name: account_id
+        description: "PK denoting a unique account."
+        tests:
+          - not_null
+
+      - name: json_meta_attributes
+        description: "json blob holding all non-el meta attributes of the row."
+
+      - name: json_meta_el
+        description: "json blob holding all el meta attributes of the row."
+
+      - name: tm_meta_processed_at
+        description: "timestamp captured when the row was processed/inserted."
+
+      - name: hash_meta_row
+        description: "hash of json_meta_attributes. Used for detecting changes."
+  - name: rds_tiller__balance_histories
+    description: "Read only data store of financial balance history data synced from Tiller."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - balance_id
+            - tm_meta_processed_at
+    columns:
+      - name: balance_id
+        description: "PK denoting a unique balance measurement."
+        tests:
+          - not_null
+
+      - name: json_meta_attributes
+        description: "json blob holding all non-el meta attributes of the row."
+
+      - name: json_meta_el
+        description: "json blob holding all el meta attributes of the row."
+
+      - name: tm_meta_processed_at
+        description: "timestamp captured when the row was processed/inserted."
+
+      - name: hash_meta_row
+        description: "hash of json_meta_attributes. Used for detecting changes."
+  - name: rds_tiller__categories
+    description: "Read only data store of financial categorization data synced from Tiller."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - category
+            - tm_meta_processed_at
+    columns:
+      - name: category
+        description: "PK denoting a unique category."
+        tests:
+          - not_null
+
+      - name: json_meta_attributes
+        description: "json blob holding all non-el meta attributes of the row."
+
+      - name: json_meta_el
+        description: "json blob holding all el meta attributes of the row."
+
+      - name: tm_meta_processed_at
+        description: "timestamp captured when the row was processed/inserted."
+
+      - name: hash_meta_row
+        description: "hash of json_meta_attributes. Used for detecting changes."

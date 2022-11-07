@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_tiller__accounts
+    description: ""
+    columns:
+      - name: str_account_name
+        description: ""
+
+      - name: cat_account_class
+        description: ""
+
+      - name: cat_account_group
+        description: ""
+
+      - name: is_account_hidden
+        description: ""
+
+      - name: id_account
+        description: ""
+        tests:
+          - unique
+          - not_null

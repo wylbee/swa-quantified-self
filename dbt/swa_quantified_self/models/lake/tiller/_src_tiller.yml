@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: google_drive
+    tables:
+      - name: tiller_accounts_full
+      - name: tiller_balance_histories
+      - name: tiller_categories
+      - name: tiller_transactions
