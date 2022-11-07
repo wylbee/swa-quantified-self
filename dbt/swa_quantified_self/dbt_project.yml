@@ -46,9 +46,11 @@ models:
       dimension:
         +schema: core
         +materialization: table
-    staging:
+    lake:
       loop_habits:
         +schema: stg_loop_habits
+      tiller:
+        +schema: lk_tiller
 
 vars:
   str_tiller_url: 'https://docs.google.com/spreadsheets/d/1crkZo-o-544gG1O4w0incNrptUxMRG0aZEYfQs5sZNI/edit#gid=1256593101'
