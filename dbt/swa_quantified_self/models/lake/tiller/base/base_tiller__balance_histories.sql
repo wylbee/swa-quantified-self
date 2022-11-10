@@ -19,8 +19,18 @@ with
 
     scd1 as (
         select
-            balance_id as id_tiller_balance,
-            json_value(json_meta_attributes.`Account_ID`) as id_tiller_account,
+            {{
+                dbt_utils.surrogate_key(
+                    [
+                        "balance_id",
+                        "json_value(json_meta_attributes.`Account_ID`)",
+                        "safe_cast(json_value(json_meta_attributes.`Date`) as timestamp)",
+                        "json_value(json_meta_attributes.`Time`)",
+                    ]
+                )
+            }}
+            as id_tiller_balance,
+            json_value(json_meta_attributes.`Account_ID`) as id_tiller_finaccount,
             safe_cast(
                 json_value(json_meta_attributes.`Date`) as timestamp
             ) as tm_balance,
