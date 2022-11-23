@@ -20,9 +20,9 @@ with
     scd1 as (
         select
             account_id as id_tiller_finaccount,
-            json_value(json_meta_attributes.`Account`) as str_finaccount_name,
-            json_value(json_meta_attributes.`Class_Override`) as cat_finaccount_class,
-            json_value(json_meta_attributes.`Group`) as cat_finaccount_group,
+            json_value(json_meta_attributes.`Account_2`) as str_finaccount_name,
+            json_value(json_meta_attributes.`Class`) as cat_finaccount_class,
+            json_value(json_meta_attributes.`Group_2`) as cat_finaccount_group,
             json_value(
                 json_meta_attributes.`Institution`
             ) as cat_finaccount_institution,

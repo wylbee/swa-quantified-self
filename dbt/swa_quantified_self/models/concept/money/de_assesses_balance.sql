@@ -10,7 +10,12 @@ with
             bal.tm_balance as tm_event,
             'System assesses Balance' as cat_event,
             to_json(struct(accounts.key_finaccount)) as json_event_entities,
-            to_json(struct(bal.amt_balance)) as json_event_features,
+            to_json(
+                struct(
+                    bal.amt_balance
+                    * accounts.val_finaccount_class_modifier as amt_balance
+                )
+            ) as json_event_features,
             to_json(
                 struct(
                     bal.id_tiller_balance,
