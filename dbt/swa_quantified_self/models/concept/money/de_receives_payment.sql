@@ -11,21 +11,14 @@ with
         select
             transactions.tm_transaction as tm_event,
             'Person Receives Payment' as cat_event,
+            accounts.key_finaccount,
+            budgets.key_budget,
+            transactions.amt_transaction as amt_income,
+            transactions.id_tiller_transaction as id_source,
+            '{{ var("str_tiller_url") }}' as str_source_url,
             to_json(
-                struct(accounts.key_finaccount, budgets.key_budget)
-            ) as json_event_entities,
-            to_json(
-                struct(
-                    transactions.str_transaction_description,
-                    transactions.amt_transaction as amt_income
-                )
-            ) as json_event_features,
-            to_json(
-                struct(
-                    transactions.id_tiller_transaction,
-                    '{{ var("str_tiller_url") }}' as str_source_url
-                )
-            ) as json_event_source
+                struct(transactions.str_transaction_description)
+            ) as json_event_features
 
         -- contents
         from transactions
@@ -47,29 +40,10 @@ with
 
     ),
 
-    final as (
-        select
-            {{
-                dbt_utils.surrogate_key(
-                    [
-                        "json_value(json_event_source.id_tiller_transaction)",
-                    ]
-                )
-            }} as key_event,
-            *,
-            row_number() over (
-                partition by json_value(json_event_entities.key_finaccount)
-                order by tm_event
-            ) as n_event_occurrence,
-
-            lead(tm_event) over (
-                partition by json_value(json_event_entities.key_finaccount)
-                order by tm_event
-            ) as tm_next_event
-
-        from joined
-
-    )
-
-select *
-from final
+    {{
+        generate_final_event_cte(
+            prev_cte_name="joined",
+            surrogate_key_columns=["id_source"],
+            responsible_subject_column="key_finaccount",
+        )
+    }}

@@ -5,7 +5,7 @@ with
     start_end as (
 
         select
-            json_value(json_event_entities.`key_finaccount`) as key_finaccount,
+            key_finaccount,
             cast(min(tm_event) as date) as dt_balance_min,
             max(current_date()) as dt_balance_max
 
@@ -32,7 +32,7 @@ with
         qualify
             row_number() over (
                 partition by
-                    json_value(json_event_entities.`key_finaccount`),
+                    key_finaccount,
                     extract(year from tm_event),
                     extract(month from tm_event),
                     extract(day from tm_event)
@@ -48,17 +48,14 @@ with
             grain.key_calendar,
             grain.key_finaccount,
             de_latest_daily.key_event,
-            cast(
-                json_value(de_latest_daily.json_event_features.`amt_balance`) as numeric
-            ) as amt_balance
+            de_latest_daily.amt_balance
 
         from grain
 
         left outer join
             de_latest_daily
             on grain.key_calendar = date(de_latest_daily.tm_event)
-            and grain.key_finaccount
-            = json_value(de_latest_daily.json_event_entities.`key_finaccount`)
+            and grain.key_finaccount = de_latest_daily.key_finaccount
 
     ),
 
@@ -87,9 +84,11 @@ with
         select
             cast(windowed.key_calendar as timestamp) as tm_event,
             'System measures EOD Finaccount' as cat_event,
-            de.json_event_entities,
-            to_json(struct(windowed.amt_balance_lv)) as json_event_features,
-            de.json_event_source
+            de.key_finaccount,
+            windowed.amt_balance_lv,
+            de.id_source,
+            de.str_source_url,
+            de.json_event_features
 
         from windowed
 
@@ -97,26 +96,10 @@ with
 
     ),
 
-    final as (
-        select
-            {{
-                dbt_utils.surrogate_key(
-                    ["json_value(json_event_source.id_tiller_balance)", "tm_event"]
-                )
-            }} as key_event,
-            *,
-            row_number() over (
-                partition by json_value(json_event_entities.key_finaccount)
-                order by tm_event
-            ) as n_event_occurrence,
-
-            lead(tm_event) over (
-                partition by json_value(json_event_entities.key_finaccount)
-                order by tm_event
-            ) as tm_next_event
-        from joined
-
-    )
-
-select *
-from final
+    {{
+        generate_final_event_cte(
+            prev_cte_name="joined",
+            surrogate_key_columns=["id_source", "tm_event"],
+            responsible_subject_column="key_finaccount",
+        )
+    }}

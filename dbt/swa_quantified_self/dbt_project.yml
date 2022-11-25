@@ -43,9 +43,12 @@ models:
         +schema: life_os
       integration:
         +schema: integration
+        +materialization: table
       dimension:
         +schema: core
         +materialization: table
+      money:
+        +schema: money
     lake:
       loop_habits:
         +schema: stg_loop_habits
