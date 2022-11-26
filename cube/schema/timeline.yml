@@ -1,0 +1,103 @@
+cubes:
+  - name: timeline
+    sql: "SELECT * FROM core.timeline"
+
+    joins:
+      - name: dim_finaccount
+        sql: "{key_finaccount} = {dim_finaccount.key_finaccount}"
+        relationship: belongsTo
+      - name: dim_budget
+        sql: "{key_budget} = {dim_budget.key_budget}"
+        relationship: belongsTo
+
+    measures:
+      - name: count
+        type: count
+
+      - name: amt_income_base
+        sql: "{CUBE}.amt_income"
+        type: number
+        format: currency
+
+      - name: amt_income_sum
+        sql: "{amt_income_base}"
+        type: sum
+        format: currency
+      
+      - name: amt_income_cumulative
+        sql: "{amt_income_base}"
+        type: running_total
+        format: currency
+      
+      - name: amt_invested_base
+        sql: "{CUBE}.amt_invested"
+        type: number
+        format: currency
+
+      - name: amt_invested_sum
+        sql: "{amt_invested_base}"
+        type: sum
+        format: currency
+
+      - name: amt_invested_cumulative
+        sql: "{amt_invested_base}"
+        type: running_total
+        format: currency
+      
+      - name: amt_balance_lv_base
+        sql: "{CUBE}.amt_balance_lv"
+        type: number
+        format: currency
+      
+      - name: amt_balance_lv_sum
+        sql: "{amt_balance_lv_base}"
+        type: sum
+        format: currency
+      
+      - name: savings_rate
+        sql: "({amt_invested_sum}/{amt_income_sum})*100"
+        type: number
+        format: percent
+
+      - name: savings_rate_cumulative
+        sql: "({amt_invested_cumulative}/{amt_income_cumulative})*100"
+        type: number
+        format: percent
+
+    dimensions: 
+      - name: key_event
+        sql: "{CUBE}.key_event"
+        type: string
+        primary_key: true
+
+      - name: tm_event
+        sql: "{CUBE}.tm_event"
+        type: time
+
+      - name: cat_event
+        sql: "{CUBE}.cat_event"
+        type: string
+
+      - name: n_event
+        sql: "{CUBE}.n_event"
+        type: number
+
+      - name: tm_event_next
+        sql: "{CUBE}.tm_event_next"
+        type: time
+
+      - name: str_source_url
+        sql: "{CUBE}.str_source_url"
+        type: string
+
+      - name: id_source
+        sql: "{CUBE}.id_source"
+        type: string
+
+      - name: key_finaccount
+        sql: "{CUBE}.key_finaccount"
+        type: string
+
+      - name: key_budget
+        sql: "{CUBE}.key_budget"
+        type: string

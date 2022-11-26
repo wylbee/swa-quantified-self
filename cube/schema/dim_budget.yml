@@ -1,0 +1,45 @@
+cubes:
+  - name: dim_budget
+    sql: "select * from core.dim_budget"
+
+    measures:
+      - name: count
+        type: count
+      
+    dimensions:
+      - name: key_budget
+        sql: "{CUBE}.key_budget"
+        type: string
+        primary_key: true
+      
+      - name: id_tiller_budget
+        sql: "{CUBE}.id_tiller_budget"
+        type: string
+
+      - name: cat_budget_group
+        sql: "{CUBE}.cat_budget_group"
+        type: string
+
+      - name: cat_budget_type
+        sql: "{CUBE}.cat_budget_type"
+        type: string
+
+      - name: amt_budget_monthly
+        sql: "{CUBE}.amt_budget_monthly"
+        type: number
+
+      - name: amt_budget_yearly
+        sql: "{CUBE}.amt_budget_yearly"
+        type: number
+
+      - name: val_budget_fiscal_year
+        sql: "{CUBE}.val_budget_fiscal_year"
+        type: number
+
+      - name: is_budget_monthly_line
+        sql: "{CUBE}.is_budget_monthly_line"
+        type: number
+
+      - name: is_budget_hidden_from_reporting
+        sql: "{CUBE}.is_budget_hidden_from_reporting"
+        type: number
