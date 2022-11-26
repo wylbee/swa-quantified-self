@@ -17,8 +17,8 @@ with
                 when cat_budget_group = 'Monthly Expenses' then 1 else 0
             end as is_budget_monthly_line,
 
-            amt_budget_2022_08 as val_budget_monthly,
-            amt_budget_2022_08 * 12 as val_budget_yearly
+            amt_budget_2022_08 as amt_budget_monthly,
+            amt_budget_2022_08 * 12 as amt_budget_yearly
 
         from budgets
 
