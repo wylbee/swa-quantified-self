@@ -53,6 +53,13 @@ cubes:
         sql: "{amt_balance_lv_base}"
         type: sum
         format: currency
+
+      - name: amt_balance_investment_lv_sum
+        sql: "{amt_balance_lv_base}"
+        type: sum
+        format: currency
+        filters:
+          - sql: "{dim_finaccount.is_finaccount_savings} = 1"
       
       - name: savings_rate
         sql: "({amt_invested_sum}/{amt_income_sum})*100"
@@ -63,6 +70,21 @@ cubes:
         sql: "({amt_invested_cumulative}/{amt_income_cumulative})*100"
         type: number
         format: percent
+      
+      - name: annualized_income_swr
+        sql: "{amt_balance_investment_lv_sum} * .04"
+        type: number
+        format: currency
+
+      - name: annualized_income_twr
+        sql: "{amt_balance_investment_lv_sum} * .035"
+        type: number
+        format: currency
+
+      - name: annualized_income_pwr
+        sql: "{amt_balance_investment_lv_sum} * .0325"
+        type: number
+        format: currency
 
     dimensions: 
       - name: key_event
