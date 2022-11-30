@@ -18,7 +18,6 @@ with
                     cat_finaccount_group in (
                         'LT Savings',
                         'SMT Savings',
-                        'Emergency Fund',
                         'Retirement Savings',
                         'Health Savings'
                     )

@@ -14,7 +14,7 @@ with
             cast(2022 as int64) as val_budget_fiscal_year,
 
             case
-                when cat_budget_group = 'Monthly Expenses' then 1 else 0
+                when cat_budget_group like '%Monthly%' then 1 else 0
             end as is_budget_monthly_line,
 
             amt_budget_2022_08 as amt_budget_monthly,
