@@ -1,0 +1,41 @@
+cubes:
+  - name: dim_finaccount
+    sql: "select * from core.dim_finaccount"
+
+    measures:
+      - name: count
+        type: count
+      
+    dimensions:
+      - name: key_finaccount
+        sql: "{CUBE}.key_finaccount"
+        type: string
+        primary_key: true
+
+      - name: id_tiller_finaccount
+        sql: "{CUBE}.id_tiller_finaccount"
+        type: string
+
+      - name: str_finaccount_name
+        sql: "{CUBE}.str_finaccount_name"
+        type: string
+
+      - name: cat_finaccount_class
+        sql: "{CUBE}.cat_finaccount_class"
+        type: string
+
+      - name: cat_finaccount_group
+        sql: "{CUBE}.cat_finaccount_group"
+        type: string
+
+      - name: cat_finaccount_institution
+        sql: "{CUBE}.cat_finaccount_instituion"
+        type: string
+
+      - name: cat_finaccount_institution_type
+        sql: "{CUBE}.cat_finaccount_institution_type"
+        type: string
+
+      - name: is_finaccount_savings
+        sql: "{CUBE}.is_finaccount_savings"
+        type: number
