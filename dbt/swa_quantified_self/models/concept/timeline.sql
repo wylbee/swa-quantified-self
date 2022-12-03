@@ -7,6 +7,7 @@ with
                     ref("de_purchases_investment"),
                     ref("de_assesses_balance"),
                     ref("re_measures_eod_finaccount"),
+                    ref("de_sets_budget"),
                 ]
             )
         }}
