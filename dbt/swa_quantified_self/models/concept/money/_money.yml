@@ -89,3 +89,21 @@ models:
 
       - name: tm_next_event
         description: ""
+
+  - name: de_measures_eod_finaccount
+    description: "Recurring event reflecting the latest avaliable assessment of an account balance by day."
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+  - name: de_sets_budget
+    description: "Discrete event reflecting the establishment of a  budget for a month."
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null

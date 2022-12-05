@@ -34,10 +34,7 @@ with
             on transactions.id_tiller_finaccount = accounts.id_tiller_finaccount
 
         left outer join
-            budgets
-            on transactions.id_tiller_budget = budgets.id_tiller_budget
-            and extract(year from transactions.tm_transaction)
-            = budgets.val_budget_fiscal_year
+            budgets on transactions.id_tiller_budget = budgets.id_tiller_budget
 
         where
             accounts.is_finaccount_savings = 1
