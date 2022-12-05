@@ -1,66 +1,84 @@
 with
 
-    budgets as (select * from {{ ref("int_budget") }}),
+    budgets as (select * from {{ ref("base_tiller__categories") }}),
 
-    calendar as (select * from {{ ref("int_calendar") }}),
+    int_budgets as (select * from {{ ref("int_budget") }}),
 
-    start_end as (
+    unpivoted as (
+
+        select *
+        from
+            budgets unpivot (
+                amt_budget for cat_budget_month_year in (
+                    amt_budget_2022_08,
+                    amt_budget_2022_09,
+                    amt_budget_2022_10,
+                    amt_budget_2022_11,
+                    amt_budget_2022_12,
+                    amt_budget_2023_01,
+                    amt_budget_2023_02,
+                    amt_budget_2023_03,
+                    amt_budget_2023_04,
+                    amt_budget_2023_05,
+                    amt_budget_2023_06,
+                    amt_budget_2023_07,
+                    amt_budget_2023_08,
+                    amt_budget_2023_09,
+                    amt_budget_2023_10,
+                    amt_budget_2023_11,
+                    amt_budget_2023_12
+                )
+            )
+    ),
+
+    renamed as (
 
         select
-            key_budget,
-            min(date(val_budget_fiscal_year, 1, 1)) as dt_min,
-            max(date(val_budget_fiscal_year, 12, 31)) as dt_max
-        from budgets
-        group by 1
-    ),
+            cast(
+                left(right(cat_budget_month_year, 7), 4) as integer
+            ) as val_budget_year,
+            cast(right(cat_budget_month_year, 2) as integer) as val_budget_month,
+            id_tiller_budget,
+            amt_budget
 
-    grain as (
-
-        select calendar.key_calendar, start_end.key_budget
-
-        from calendar
-
-        inner join
-            start_end
-            on calendar.key_calendar >= start_end.dt_min
-            and calendar.key_calendar <= start_end.dt_max
-
-        where calendar.val_calendar_day = 1
-    ),
-
-    at_grain as (
-
-        select grain.key_calendar, grain.key_budget, budgets.* except (key_budget)
-
-        from grain
-
-        left outer join
-            budgets
-            on extract(year from grain.key_calendar) = budgets.val_budget_fiscal_year
-            and grain.key_budget = budgets.key_budget
+        from unpivoted
 
     ),
 
     joined as (
 
         select
+            int_budgets.*,
+            renamed.* except (id_tiller_budget),
+            date(val_budget_year, val_budget_month, 1) as key_calendar
+
+        from renamed
+
+        left outer join
+            int_budgets on renamed.id_tiller_budget = int_budgets.id_tiller_budget
+
+    ),
+
+    prepped as (
+
+        select
             cast(key_calendar as timestamp) as tm_event,
             'Person Sets Budget' as cat_event,
             key_budget,
             key_calendar,
-            amt_budget_monthly as amt_budget,
+            amt_budget,
             id_tiller_budget as id_source,
             '{{ var("str_tiller_url") }}' as str_source_url,
             to_json(struct()) as json_event_features
 
-        from at_grain
+        from joined
 
     ),
 
     {{
         generate_final_event_cte(
-            prev_cte_name="joined",
-            surrogate_key_columns=["id_source", "tm_event"],
+            prev_cte_name="prepped",
+            surrogate_key_columns=["key_budget", "key_calendar"],
             responsible_subject_column="key_budget",
         )
     }}

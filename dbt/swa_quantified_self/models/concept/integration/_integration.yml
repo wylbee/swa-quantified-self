@@ -52,14 +52,5 @@ models:
       - name: is_budget_hidden_from_reporting
         description: ""
 
-      - name: val_budget_fiscal_year
-        description: ""
-
       - name: is_budget_monthly_line
-        description: ""
-
-      - name: val_budget_monthly
-        description: ""
-
-      - name: val_budget_yearly
         description: ""
