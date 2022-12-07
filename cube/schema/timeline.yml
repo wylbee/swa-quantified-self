@@ -61,6 +61,21 @@ cubes:
         filters:
           - sql: "{dim_finaccount.is_finaccount_savings} = 1"
       
+      - name: amt_budget
+        sql: "{CUBE}.amt_budget"
+        type: number
+        format: currency
+      
+      - name: amt_budget_sum
+        sql: "{amt_budget}"
+        type: sum
+        format: currency
+      
+      - name: amt_budget_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+      
       - name: savings_rate
         sql: "({amt_invested_sum}/{amt_income_sum})*100"
         type: number
