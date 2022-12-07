@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: timeline
+    description: "Union of events."
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null

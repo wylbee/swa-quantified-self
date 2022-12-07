@@ -10,12 +10,14 @@ with
 
         select
             transactions.tm_transaction as tm_event,
-            'Person Receives Payment' as cat_event,
+            'Person Purchases Goods and Services' as cat_event,
             accounts.key_finaccount,
             budgets.key_budget,
-            transactions.amt_transaction as amt_income,
+            transactions.amt_transaction as amt_expense,
+
             transactions.id_tiller_transaction as id_source,
             '{{ var("str_tiller_url") }}' as str_source_url,
+
             to_json(
                 struct(transactions.str_transaction_description)
             ) as json_event_features
@@ -30,9 +32,7 @@ with
             budgets on transactions.id_tiller_budget = budgets.id_tiller_budget
 
         where
-            accounts.is_finaccount_savings = 0
-            and budgets.cat_budget_type = 'Income'
-            and budgets.id_tiller_budget != 'Excluded Line'
+            accounts.is_finaccount_savings != 1 and budgets.cat_budget_type = 'Expense'
 
     ),
 
