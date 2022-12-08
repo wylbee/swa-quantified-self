@@ -13,7 +13,11 @@ with
             'Person Purchases Goods and Services' as cat_event,
             accounts.key_finaccount,
             budgets.key_budget,
-            transactions.amt_transaction as amt_expense,
+            case
+                when budgets.id_tiller_budget = '529 Plan'
+                then -1 * transactions.amt_transaction
+                else transactions.amt_transaction
+            end as amt_expense,
 
             transactions.id_tiller_transaction as id_source,
             '{{ var("str_tiller_url") }}' as str_source_url,
@@ -32,7 +36,11 @@ with
             budgets on transactions.id_tiller_budget = budgets.id_tiller_budget
 
         where
-            accounts.is_finaccount_savings != 1 and budgets.cat_budget_type = 'Expense'
+            accounts.is_finaccount_savings != 1
+            and (
+                budgets.cat_budget_type = 'Expense'
+                or budgets.id_tiller_budget = '529 Plan'
+            )
 
     ),
 
