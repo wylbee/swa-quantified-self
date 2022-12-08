@@ -107,3 +107,12 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: de_purchases_goods_services
+    description: "Discrete event reflecting expenses."
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null

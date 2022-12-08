@@ -26,7 +26,6 @@ with
                 struct(transactions.str_transaction_description)
             ) as json_event_features
 
-        -- contents
         from transactions
 
         left outer join
