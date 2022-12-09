@@ -124,7 +124,7 @@ cubes:
         format: currency
 # Add cumulative versions
       - name: performance_to_plan_income
-        sql: "{amt_income_sum}/{amt_budget_income_sum}"
+        sql: "safe_divide({amt_income_sum}, {amt_budget_income_sum})"
         type: number
         format: percent
 
