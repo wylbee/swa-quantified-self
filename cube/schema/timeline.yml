@@ -124,7 +124,7 @@ cubes:
          - sql: "{dim_budget.cat_budget_type} like '%Income%'"
 
       - name: performance_to_plan_save
-        sql: "{amt_investment_sum}/{amt_budget_sum}"
+        sql: "{amt_invested_sum}/{amt_budget_sum}"
         type: number
         format: currency
         filters:
