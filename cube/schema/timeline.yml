@@ -76,6 +76,21 @@ cubes:
         type: running_total
         format: currency
       
+      - name: amt_expense
+        sql: "{CUBE}.amt_expense"
+        type: number
+        format: currency
+      
+      - name: amt_expense_sum
+        sql: "{amt_expense}"
+        type: sum
+        format: currency
+      
+      - name: amt_expense_cumulative
+        sql: "{amt_expense}"
+        type: running_total
+        format: currency
+      
       - name: savings_rate
         sql: "({amt_invested_sum}/{amt_income_sum})*100"
         type: number
@@ -100,6 +115,27 @@ cubes:
         sql: "{amt_balance_investment_lv_sum} * .0325"
         type: number
         format: currency
+
+      - name: performance_to_plan_income
+        sql: "{amt_income_sum}/{amt_budget_sum}"
+        type: number
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_type} like '%Income%'"
+
+      - name: performance_to_plan_save
+        sql: "{amt_investment_sum}/{amt_budget_sum}"
+        type: number
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Save%'"
+
+      - name: performance_to_plan_expense
+        sql: "{amt_expense_sum}/{amt_budget_sum}"
+        type: number
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
 
     dimensions: 
       - name: key_event
