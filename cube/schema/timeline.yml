@@ -122,21 +122,21 @@ cubes:
         sql: "{amt_balance_investment_lv_sum} * .0325"
         type: number
         format: currency
-
+# Add cumulative versions
       - name: performance_to_plan_income
         sql: "{amt_income_sum}/{amt_budget_income_sum}"
         type: number
-        format: currency
+        format: percent
 
       - name: performance_to_plan_save
-        sql: "{amt_invested_sum}/{amt_budget_sum}"
+        sql: "{amt_invested_sum}/{amt_budget_sum}" # change calc to filter in predicate measure
         type: number
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_group} like '%Save%'"
 
       - name: performance_to_plan_expense
-        sql: "{amt_expense_sum}/{amt_budget_sum}"
+        sql: "{amt_expense_sum}/{amt_budget_sum}" # change calc to filter in predicate measure
         type: number
         format: currency
         filters:
