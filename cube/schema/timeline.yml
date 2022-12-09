@@ -70,7 +70,14 @@ cubes:
         sql: "{amt_budget}"
         type: sum
         format: currency
-      
+
+      - name: amt_budget_income_sum
+        sql: "{amt_budget}"
+        type: sum
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_type} like '%Income%'"
+
       - name: amt_budget_cumulative
         sql: "{amt_budget}"
         type: running_total
@@ -117,7 +124,7 @@ cubes:
         format: currency
 
       - name: performance_to_plan_income
-        sql: "{amt_income_sum}/{amt_budget_sum}"
+        sql: "{amt_income_sum}/{amt_budget_income_sum}"
         type: number
         format: currency
         filters:
