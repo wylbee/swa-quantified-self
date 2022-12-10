@@ -173,6 +173,21 @@ cubes:
         type: number
         format: percent
 
+      - name: performance_to_plan_income_cumulative
+        sql: "safe_divide({amt_income_cumulative}, {amt_budget_income_cumulative}) * 100"
+        type: number
+        format: percent
+
+      - name: performance_to_plan_save_cumulative
+        sql: "safe_divide({amt_invested_cumulative}, {amt_budget_save_cumulative}) * 100" # change calc to filter in predicate measure
+        type: number
+        format: percent
+
+      - name: performance_to_plan_expense_cumulative
+        sql: "abs(safe_divide({amt_expense_cumulative}, {amt_budget_spend_cumulative})) * 100" # change calc to filter in predicate measure
+        type: number
+        format: percent
+
     dimensions: 
       - name: key_event
         sql: "{CUBE}.key_event"
