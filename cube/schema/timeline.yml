@@ -143,12 +143,12 @@ cubes:
         format: percent
 
       - name: performance_to_plan_save
-        sql: "{amt_invested_sum}/{amt_budget_save_sum}" # change calc to filter in predicate measure
+        sql: "safe_divide({amt_invested_sum}, {amt_budget_save_sum})" # change calc to filter in predicate measure
         type: number
         format: percent
 
       - name: performance_to_plan_expense
-        sql: "abs({amt_expense_sum}/{amt_budget_spend_sum})" # change calc to filter in predicate measure
+        sql: "abs(safe_divide({amt_expense_sum}, {amt_budget_spend_sum}))" # change calc to filter in predicate measure
         type: number
         format: currency
 
