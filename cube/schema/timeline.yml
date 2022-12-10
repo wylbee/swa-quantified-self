@@ -61,6 +61,78 @@ cubes:
         filters:
           - sql: "{dim_finaccount.is_finaccount_savings} = 1"
       
+      - name: amt_budget
+        sql: "{CUBE}.amt_budget"
+        type: number
+        format: currency
+      
+      - name: amt_budget_sum
+        sql: "{amt_budget}"
+        type: sum
+        format: currency
+
+      - name: amt_budget_income_sum
+        sql: "{amt_budget}"
+        type: sum
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_type} like '%Income%'"
+
+      - name: amt_budget_save_sum
+        sql: "{amt_budget}"
+        type: sum
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Save%'"
+
+      - name: amt_budget_spend_sum
+        sql: "{amt_budget}"
+        type: sum
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
+
+      - name: amt_budget_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+
+      - name: amt_budget_income_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_type} like '%Income%'"
+
+      - name: amt_budget_save_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Save%'"
+
+      - name: amt_budget_spend_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
+
+      - name: amt_expense
+        sql: "{CUBE}.amt_expense"
+        type: number
+        format: currency
+      
+      - name: amt_expense_sum
+        sql: "{amt_expense}"
+        type: sum
+        format: currency
+      
+      - name: amt_expense_cumulative
+        sql: "{amt_expense}"
+        type: running_total
+        format: currency
+      
       - name: savings_rate
         sql: "({amt_invested_sum}/{amt_income_sum})*100"
         type: number
@@ -85,6 +157,36 @@ cubes:
         sql: "{amt_balance_investment_lv_sum} * .0325"
         type: number
         format: currency
+
+      - name: performance_to_plan_income
+        sql: "safe_divide({amt_income_sum}, {amt_budget_income_sum}) * 100"
+        type: number
+        format: percent
+
+      - name: performance_to_plan_save
+        sql: "safe_divide({amt_invested_sum}, {amt_budget_save_sum}) * 100"
+        type: number
+        format: percent
+
+      - name: performance_to_plan_expense
+        sql: "abs(safe_divide({amt_expense_sum}, {amt_budget_spend_sum})) * 100"
+        type: number
+        format: percent
+
+      - name: performance_to_plan_income_cumulative
+        sql: "safe_divide({amt_income_cumulative}, {amt_budget_income_cumulative}) * 100"
+        type: number
+        format: percent
+
+      - name: performance_to_plan_save_cumulative
+        sql: "safe_divide({amt_invested_cumulative}, {amt_budget_save_cumulative}) * 100"
+        type: number
+        format: percent
+
+      - name: performance_to_plan_expense_cumulative
+        sql: "abs(safe_divide({amt_expense_cumulative}, {amt_budget_spend_cumulative})) * 100"
+        type: number
+        format: percent
 
     dimensions: 
       - name: key_event
