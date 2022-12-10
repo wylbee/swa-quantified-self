@@ -96,7 +96,28 @@ cubes:
         sql: "{amt_budget}"
         type: running_total
         format: currency
-      
+
+      - name: amt_budget_income_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_type} like '%Income%'"
+
+      - name: amt_budget_save_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Save%'"
+
+      - name: amt_budget_spend_cumulative
+        sql: "{amt_budget}"
+        type: running_total
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
+
       - name: amt_expense
         sql: "{CUBE}.amt_expense"
         type: number
