@@ -83,7 +83,7 @@ cubes:
         type: sum
         format: currency
         filters:
-         - sql: "{dim_budget.cat_budget_type} like '%Save%'"
+         - sql: "{dim_budget.cat_budget_group} like '%Save%'"
 
       - name: amt_budget_spend_sum
         sql: "{amt_budget}"
@@ -148,7 +148,7 @@ cubes:
         format: percent
 
       - name: performance_to_plan_expense
-        sql: "{amt_expense_sum}/{amt_budget_spend_sum}" # change calc to filter in predicate measure
+        sql: "abs({amt_expense_sum}/{amt_budget_spend_sum})" # change calc to filter in predicate measure
         type: number
         format: currency
 
