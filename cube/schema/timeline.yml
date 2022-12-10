@@ -157,19 +157,19 @@ cubes:
         sql: "{amt_balance_investment_lv_sum} * .0325"
         type: number
         format: currency
-# Add cumulative versions
+
       - name: performance_to_plan_income
         sql: "safe_divide({amt_income_sum}, {amt_budget_income_sum}) * 100"
         type: number
         format: percent
 
       - name: performance_to_plan_save
-        sql: "safe_divide({amt_invested_sum}, {amt_budget_save_sum}) * 100" # change calc to filter in predicate measure
+        sql: "safe_divide({amt_invested_sum}, {amt_budget_save_sum}) * 100"
         type: number
         format: percent
 
       - name: performance_to_plan_expense
-        sql: "abs(safe_divide({amt_expense_sum}, {amt_budget_spend_sum})) * 100" # change calc to filter in predicate measure
+        sql: "abs(safe_divide({amt_expense_sum}, {amt_budget_spend_sum})) * 100"
         type: number
         format: percent
 
@@ -179,12 +179,12 @@ cubes:
         format: percent
 
       - name: performance_to_plan_save_cumulative
-        sql: "safe_divide({amt_invested_cumulative}, {amt_budget_save_cumulative}) * 100" # change calc to filter in predicate measure
+        sql: "safe_divide({amt_invested_cumulative}, {amt_budget_save_cumulative}) * 100"
         type: number
         format: percent
 
       - name: performance_to_plan_expense_cumulative
-        sql: "abs(safe_divide({amt_expense_cumulative}, {amt_budget_spend_cumulative})) * 100" # change calc to filter in predicate measure
+        sql: "abs(safe_divide({amt_expense_cumulative}, {amt_budget_spend_cumulative})) * 100"
         type: number
         format: percent
 
