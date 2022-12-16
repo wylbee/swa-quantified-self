@@ -1,0 +1,56 @@
+views:
+  - name: v_timeline_full
+    includes:
+      # measures
+      - timeline.amt_income_sum
+      - timeline.amt_income_cumulative
+      - timeline.amt_invested_sum
+      - timeline.amt_invested_cumulative
+      - timeline.amt_balance_lv_sum
+      - timeline.amt_balance_investment_lv_sum
+      - timeline.amt_budget_sum
+      - timeline.amt_budget_income_sum
+      - timeline.amt_budget_save_sum
+      - timeline.amt_budget_spend_sum
+      - timeline.amt_budget_cumulative
+      - timeline.amt_budget_income_cumulative
+      - timeline.amt_budget_save_cumulative
+      - timeline.amt_budget_spend_cumulative
+      - timeline.amt_expense_sum
+      - timeline.amt_expense_cumulative
+      - timeline.savings_rate
+      - timeline.savings_rate_cumulative
+      - timeline.annualized_income_swr
+      - timeline.annualized_income_twr
+      - timeline.annualized_income_pwr
+      - timeline.performance_to_plan_income
+      - timeline.performance_to_plan_save
+      - timeline.performance_to_plan_expense
+      - timeline.performance_to_plan_income_cumulative
+      - timeline.performance_to_plan_save_cumulative
+      - timeline.performance_to_plan_expense_cumulative
+
+      # dimensions
+      - timeline.key_event
+      - timeline.tm_event
+      - timeline.cat_event
+      - timeline.n_event
+      - timeline.tm_event_next
+      - timeline.str_source_url
+      - timeline.id_source
+      - timeline.key_finaccount
+      - timeline.key_budget
+
+      - dim_budget.id_tiller_budget
+      - dim_budget.cat_budget_group
+      - dim_budget.cat_budget_type
+      - dim_budget.is_budget_monthly_line
+      - dim_budget.is_budget_hidden_from_reporting
+
+      - dim_finaccount.id_tiller_finaccount
+      - dim_finaccount.str_finaccount_name
+      - dim_finaccount.cat_finaccount_class
+      - dim_finaccount.cat_finaccount_group
+      - dim_finaccount.cat_finaccount_institution
+      - dim_finaccount.cat_finaccount_institution_type
+      - dim_finaccount.is_finaccount_savings

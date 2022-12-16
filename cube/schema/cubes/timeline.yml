@@ -61,75 +61,75 @@ cubes:
         filters:
           - sql: "{dim_finaccount.is_finaccount_savings} = 1"
       
-      - name: amt_budget
+      - name: amt_budget_base
         sql: "{CUBE}.amt_budget"
         type: number
         format: currency
       
       - name: amt_budget_sum
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: sum
         format: currency
 
       - name: amt_budget_income_sum
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: sum
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_type} like '%Income%'"
 
       - name: amt_budget_save_sum
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: sum
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_group} like '%Save%'"
 
       - name: amt_budget_spend_sum
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: sum
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
 
       - name: amt_budget_cumulative
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: running_total
         format: currency
 
       - name: amt_budget_income_cumulative
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: running_total
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_type} like '%Income%'"
 
       - name: amt_budget_save_cumulative
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: running_total
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_group} like '%Save%'"
 
       - name: amt_budget_spend_cumulative
-        sql: "{amt_budget}"
+        sql: "{amt_budget_base}"
         type: running_total
         format: currency
         filters:
          - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
 
-      - name: amt_expense
+      - name: amt_expense_base
         sql: "{CUBE}.amt_expense"
         type: number
         format: currency
       
       - name: amt_expense_sum
-        sql: "{amt_expense}"
+        sql: "{amt_expense_base}"
         type: sum
         format: currency
       
       - name: amt_expense_cumulative
-        sql: "{amt_expense}"
+        sql: "{amt_expense_base}"
         type: running_total
         format: currency
       
