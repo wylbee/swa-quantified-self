@@ -29,7 +29,7 @@ cubes:
         type: string
 
       - name: cat_finaccount_institution
-        sql: "{CUBE}.cat_finaccount_instituion"
+        sql: "{CUBE}.cat_finaccount_institution"
         type: string
 
       - name: cat_finaccount_institution_type
