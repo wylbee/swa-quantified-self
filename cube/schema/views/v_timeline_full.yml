@@ -29,6 +29,7 @@ views:
       - timeline.performance_to_plan_income_cumulative
       - timeline.performance_to_plan_save_cumulative
       - timeline.performance_to_plan_expense_cumulative
+      - timeline.amt_budget_retirement_expected_spend_give_tax_annual
 
       # dimensions
       - timeline.key_event
