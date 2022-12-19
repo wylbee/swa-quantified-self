@@ -92,6 +92,35 @@ cubes:
         filters:
          - sql: "{dim_budget.cat_budget_group} like '%Live%' or {dim_budget.cat_budget_group} like '%Give%'"
 
+      - name: amt_budget_core_sum
+        sql: "{amt_budget_base}"
+        type: sum
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Core%'"
+
+      - name: amt_budget_retirement_expected_spend_annual
+        sql: "{amt_budget_base}*12"
+        type: number
+        format: currency
+        filters:
+         - sql: "{dim_budget.cat_budget_group} like '%Core%'"
+
+      - name: amt_budget_retirement_expected_spend_give_annual
+        sql: "({amt_budget_retirement_expected_spend_annual})/.9"
+        type: number
+        format: currency
+
+      - name: val_budget_retirement_expected_tax_rate
+        sql: "case when extract(year from tm_event) = 2022 then .215 when extract (year from tm_event)=2023 then .21 end"
+        type: number
+        format: percent
+
+      - name: amt_budget_retirement_expected_spend_give_tax_annual
+        sql: "{amt_budget_retirement_expected_spend_give_annual}/(1-{val_budget_retirement_expected_tax_rate})"
+        type: sum
+        format: currency
+
       - name: amt_budget_cumulative
         sql: "{amt_budget_base}"
         type: running_total
