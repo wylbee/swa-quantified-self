@@ -120,6 +120,41 @@ cubes:
         sql: "{amt_budget_retirement_expected_spend_give_annual}/(1-{val_budget_retirement_expected_tax_rate})"
         type: sum
         format: currency
+      
+      - name: amt_budget_coast_67
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(67-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
+
+      - name: amt_budget_coast_65
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(65-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
+
+      - name: amt_budget_coast_60
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(60-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
+
+      - name: amt_budget_coast_55
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(55-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
+
+      - name: amt_budget_coast_54
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(54-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
+
+      - name: amt_budget_coast_53
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(53-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
+
+      - name: amt_budget_coast_50
+        sql: "{amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.07),(50-date_diff(current_date(), '1990-08-18', year))))"
+        type: number
+        format: currency
 
       - name: amt_budget_cumulative
         sql: "{amt_budget_base}"
@@ -217,6 +252,12 @@ cubes:
         type: number
         format: percent
 
+      - name: progress_to_coast_milestone
+        sql: "safe_divide({amt_balance_investment_lv_sum},{amt_budget_coast_53}) * 100"
+        type: number
+        format: percent
+
+
     dimensions: 
       - name: key_event
         sql: "{CUBE}.key_event"
@@ -254,3 +295,7 @@ cubes:
       - name: key_budget
         sql: "{CUBE}.key_budget"
         type: string
+      
+      - name: is_calendar_month_first_day
+        sql: "case when extract(day from {tm_event}) = 1 then 1 else 0 end"
+        type: number

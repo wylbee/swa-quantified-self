@@ -30,6 +30,7 @@ views:
       - timeline.performance_to_plan_save_cumulative
       - timeline.performance_to_plan_expense_cumulative
       - timeline.amt_budget_retirement_expected_spend_give_tax_annual
+      - timeline.progress_to_coast_milestone
 
       # dimensions
       - timeline.key_event
@@ -41,6 +42,7 @@ views:
       - timeline.id_source
       - timeline.key_finaccount
       - timeline.key_budget
+      - timeline.is_calendar_month_first_day
 
       - dim_budget.id_tiller_budget
       - dim_budget.cat_budget_group
