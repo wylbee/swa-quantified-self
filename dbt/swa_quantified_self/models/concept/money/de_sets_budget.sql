@@ -65,7 +65,6 @@ with
             cast(key_calendar as timestamp) as tm_event,
             'Person Sets Budget' as cat_event,
             key_budget,
-            key_calendar,
             amt_budget,
             id_tiller_budget as id_source,
             '{{ var("str_tiller_url") }}' as str_source_url,
@@ -78,7 +77,7 @@ with
     {{
         generate_final_event_cte(
             prev_cte_name="prepped",
-            surrogate_key_columns=["key_budget", "key_calendar"],
+            surrogate_key_columns=["key_budget", "tm_event"],
             responsible_subject_column="key_budget",
         )
     }}

@@ -20,6 +20,7 @@ final as (
         str_source_url,
         id_source,
         json_event_features,
+        cast(tm_event as date) as key_calendar,
 
         * except (tm_event, cat_event, str_source_url, id_source, json_event_features)
 
