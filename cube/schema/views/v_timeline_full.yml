@@ -42,7 +42,6 @@ views:
       - timeline.id_source
       - timeline.key_finaccount
       - timeline.key_budget
-      - timeline.is_calendar_month_first_day
 
       - dim_budget.id_tiller_budget
       - dim_budget.cat_budget_group
@@ -57,3 +56,5 @@ views:
       - dim_finaccount.cat_finaccount_institution
       - dim_finaccount.cat_finaccount_institution_type
       - dim_finaccount.is_finaccount_savings
+
+      - dim_calendar.is_calendar_month_first_day

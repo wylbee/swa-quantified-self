@@ -6,8 +6,13 @@ cubes:
       - name: dim_finaccount
         sql: "{key_finaccount} = {dim_finaccount.key_finaccount}"
         relationship: belongsTo
+      
       - name: dim_budget
         sql: "{key_budget} = {dim_budget.key_budget}"
+        relationship: belongsTo
+      
+      - name: dim_calendar
+        sql: "{key_calendar} = {dim_calendar.key_calendar}"
         relationship: belongsTo
 
     measures:
@@ -296,6 +301,6 @@ cubes:
         sql: "{CUBE}.key_budget"
         type: string
       
-      - name: is_calendar_month_first_day
-        sql: "case when extract(day from {tm_event}) = 1 then 1 else 0 end"
-        type: number
+      - name: key_calendar
+        sql: "{CUBE}.key_calendar"
+        type: time

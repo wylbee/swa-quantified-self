@@ -1,0 +1,17 @@
+cubes:
+  - name: dim_calendar
+    sql: "select * from core.dim_calendar"
+
+    measures:
+      - name: count
+        type: count
+      
+    dimensions:
+      - name: key_calendar
+        sql: "{CUBE}.key_calendar"
+        type: time
+        primary_key: true
+      
+      - name: is_calendar_month_first_day
+        sql: "{CUBE}.is_calendar_month_first_day"
+        type: number
