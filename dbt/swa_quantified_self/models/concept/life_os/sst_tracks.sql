@@ -3,7 +3,7 @@ with
     tracks as (
 
         select *
-        from {{ ref("scd2_loop_habits__checkmarks") }}
+        from {{ ref("base_loop_habits__checkmarks") }}
 
         where dt_meta_valid_to is null
 
@@ -12,7 +12,7 @@ with
     scores as (
 
         select *
-        from {{ ref("scd2_loop_habits__scores") }}
+        from {{ ref("base_loop_habits__scores") }}
 
         where dt_meta_valid_to is null
 

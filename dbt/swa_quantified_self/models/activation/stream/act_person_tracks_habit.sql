@@ -1,10 +1,10 @@
 with
 
-    tracks as (select * from {{ ref("sst_tracks") }}),
+    tracks as (select * from "sst_tracks"),
 
-    habits_cv as (select * from {{ ref("sst_habits") }}),
+    habits_cv as (select * from "sst_habits"),
 
-    habits_scd as (select * from {{ ref("sst_habits") }}),
+    habits_scd as (select * from "sst_habits"),
 
     activity as (
 
@@ -44,9 +44,7 @@ with
                 )
             }} as key_activity,
             *,
-            row_number() over (
-                order by tm_activity
-            ) as n_activity_occurrence,
+            row_number() over (order by tm_activity) as n_activity_occurrence,
 
             lead(tm_activity) over (order by tm_activity) as tm_next_activity
 
