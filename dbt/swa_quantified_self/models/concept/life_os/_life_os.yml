@@ -1,42 +1,53 @@
 version: 2
 
 models:
-
-  - name: sst_tracks
+  - name: de_person_tracks_habit
     description: ""
     columns:
-      - name: key_tracks
-        description: ""
-
-      - name: id_track
+      - name: key_event
         description: ""
         tests:
           - unique
           - not_null
 
-      - name: id_habit
-        description: "{{ doc('id_habit') }} + test"
-
-      - name: dt_track
+      - name: tm_event
         description: ""
 
-      - name: val_track
+      - name: cat_event
+        description: ""
+
+      - name: n_event
+        description: ""
+
+      - name: tm_event_next
+        description: ""
+
+      - name: str_source_url
+        description: ""
+
+      - name: id_source
+        description: ""
+
+      - name: json_event_features
+        description: ""
+
+      - name: key_calendar
+        description: ""
+
+      - name: key_habit
+        description: ""
+
+      - name: is_habit_impact
+        description: ""
+
+      - name: is_habit_planned_rest
+        description: ""
+
+      - name: is_habit_complete
+        description: ""
+
+      - name: is_habit_skipped
         description: ""
 
       - name: val_track_score
-        description: ""
-
-      - name: is_track_completed
-        description: ""
-
-      - name: is_track_planned_rest
-        description: ""
-
-      - name: id_meta_tracks_row_check_hash
-        description: ""
-
-      - name: id_meta_scores_row_check_hash
-        description: ""
-
-      - name: is_track
         description: ""
