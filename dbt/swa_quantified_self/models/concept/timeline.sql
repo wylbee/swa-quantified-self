@@ -9,6 +9,7 @@ with
                     ref("re_measures_eod_finaccount"),
                     ref("de_sets_budget"),
                     ref("de_purchases_goods_services"),
+                    ref("de_person_tracks_habit"),
                 ]
             )
         }}

@@ -1,3 +1,14 @@
+
+{%- call statement('max_partition_date_query', True) -%}
+select max(dt_processed) as high_watermark
+from
+    {{ source("gcs_raw", "scores") }}
+    {%- endcall -%}
+
+    {%- set max_timestamp = load_result("max_partition_date_query")["data"][0][0] -%}
+    {%- set max_date = max_timestamp.strftime("%Y-%m-%d") -%}
+
+
 with
     source as (
 
@@ -25,7 +36,7 @@ with
 
     ),
 
-    cleaned as (
+    final as (
 
         select
             {{
@@ -62,73 +73,8 @@ with
 
         from parsed
 
-    ),
+        where dt_processed = '{{ max_timestamp }}'
 
-    change_event as (
-
-        select
-            *,
-            case
-                when
-                    coalesce(
-                        lag(id_meta_row_check_hash) over (
-                            partition by id_track order by dt_meta_exported
-                        ),
-                        'new_row'
-                    ) != id_meta_row_check_hash
-                then dt_meta_exported
-            end as dt_meta_change_event
-
-        from cleaned
-
-    ),
-
-    last_change as (
-
-        select
-            *,
-            min(dt_meta_change_event) over (
-                partition by id_meta_row_check_hash
-            ) as dt_meta_last_change_event
-        from change_event
-
-    ),
-
-    change_reversion as (
-
-        select
-            *,
-            dense_rank() over (
-                partition by id_track
-                order by coalesce(dt_meta_change_event, dt_meta_last_change_event)
-            ) as val_meta_change_sequence
-
-        from last_change
-    ),
-
-    change_id as (
-        select *
-        except
-            (id_meta_row_check_hash),
-            {{
-                dbt_utils.surrogate_key(
-                    ["id_meta_row_check_hash", "val_meta_change_sequence"]
-                )
-            }} as id_meta_row_check_hash
-        from change_reversion
-
-
-    ),
-
-    final as (
-
-        select *
-        except
-            (dt_meta_last_change_event, dt_meta_change_event),
-            min(dt_meta_change_event) over (
-                partition by id_meta_row_check_hash
-            ) as dt_meta_last_change_event
-        from change_id
     )
 
 select *
