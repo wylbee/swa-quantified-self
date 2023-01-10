@@ -37,16 +37,16 @@ models:
     activation:
       +schema: stream
     concept:
-      materialization: table
+      materialized: table
       schema: core
       life_os:
         +schema: life_os
       integration:
         +schema: integration
-        +materialization: table
+        +materialized: table
       dimension:
         +schema: core
-        +materialization: table
+        +materialized: table
       money:
         +schema: money
     lake:
