@@ -35,7 +35,7 @@ with
 
         left outer join habits on tracks.id_habit = habits.id_habit
 
-        where tracks.dt_track < current_date()
+        where tracks.dt_track < tracks.dt_meta_exported
 
     ),
 
