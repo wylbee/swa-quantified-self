@@ -1,0 +1,25 @@
+cubes:
+  - name: dim_habit
+    sql: "select * from core.dim_habit"
+
+    measures:
+      - name: count
+        type: count
+      
+    dimensions:
+      - name: key_habit
+        sql: "{CUBE}.key_habit"
+        type: string
+        primary_key: true
+      
+      - name: id_habit
+        sql: "{CUBE}.id_habit"
+        type: string
+      
+      - name: str_habit_name
+        sql: "{CUBE}.str_habit_name"
+        type: string
+
+      - name: cat_habit_group
+        sql: "{CUBE}.cat_habit_group"
+        type: string

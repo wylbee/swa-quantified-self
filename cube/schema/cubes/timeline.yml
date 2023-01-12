@@ -15,6 +15,10 @@ cubes:
         sql: "{key_calendar} = {dim_calendar.key_calendar}"
         relationship: belongsTo
 
+      - name: dim_habit
+        sql: "{key_habit} = {dim_habit.key_habit}"
+        relationship: belongsTo
+
     measures:
       - name: count
         type: count
@@ -262,6 +266,33 @@ cubes:
         type: number
         format: percent
 
+      - name: n_habit_expected
+        type: count
+        filters:
+         - sql: "{cat_event}='Person tracks Habit'"
+
+      - name: is_habit_impact_base
+        sql: "{CUBE}.is_habit_impact"
+        type: number
+
+      - name: val_track_score_base
+        sql: "{CUBE}.val_track_score * 100"
+        type: number
+        format: percent
+
+      - name: is_habit_impact_sum
+        sql: "{is_habit_impact_base}"
+        type: sum
+
+      - name: performance_to_expectation_habit
+        sql: "safe_divide({is_habit_impact_sum},{n_habit_expected})*100"
+        type: number
+        format: percent
+      
+      - name: avg_track_score
+        sql: "{val_track_score_base}"
+        type: avg
+        format: percent
 
     dimensions: 
       - name: key_event
@@ -304,3 +335,7 @@ cubes:
       - name: key_calendar
         sql: "{CUBE}.key_calendar"
         type: time
+
+      - name: key_habit
+        sql: "{CUBE}.key_habit"
+        type: string
