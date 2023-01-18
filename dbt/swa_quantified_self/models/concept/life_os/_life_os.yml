@@ -51,3 +51,55 @@ models:
 
       - name: val_track_score
         description: ""
+
+models:
+  - name: de_person_tracks_say_to_do
+    description: ""
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: tm_event
+        description: ""
+
+      - name: cat_event
+        description: ""
+
+      - name: n_event
+        description: ""
+
+      - name: tm_event_next
+        description: ""
+
+      - name: str_source_url
+        description: ""
+
+      - name: id_source
+        description: ""
+
+      - name: json_event_features
+        description: ""
+
+      - name: key_calendar
+        description: ""
+
+      - name: n_say_wc
+        description: ""
+
+      - name: n_do_wc
+        description: ""
+
+      - name: n_say_nwc
+        description: ""
+
+      - name: n_do_nwc
+        description: ""
+
+      - name: n_say
+        description: ""
+
+      - name: n_do
+        description: ""

@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: base_gsheet__say_to_do_weekly
+    description: ""
+    columns:
+      - name: id_std
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: val_calendar_year
+        description: ""
+
+      - name: val_calendar_week
+        description: ""
+
+      - name: cat_area_group
+        description: ""
+
+      - name: n_say_wc
+        description: ""
+
+      - name: n_do_wc
+        description: ""
+
+      - name: n_say_nwc
+        description: ""
+
+      - name: n_do_nwc
+        description: ""
+
+      - name: n_say
+        description: ""
+
+      - name: n_do
+        description: ""
+
+      - name: wtd_say_to_do_wc
+        description: ""
+
+      - name: wtd_say_to_do
+        description: ""

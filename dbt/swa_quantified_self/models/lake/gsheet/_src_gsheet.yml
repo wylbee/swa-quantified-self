@@ -1,0 +1,6 @@
+version: 2
+
+sources:
+  - name: google_drive
+    tables:
+      - name: say_to_do_weekly
