@@ -294,6 +294,48 @@ cubes:
         type: avg
         format: percent
 
+      - name: n_say_wc_base
+        sql: "{CUBE}.n_say_wc"
+        type: number
+
+      - name: n_do_wc_base
+        sql: "{CUBE}.n_do_wc"
+        type: number
+
+      - name: n_say_base
+        sql: "{CUBE}.n_say"
+        type: number
+
+      - name: n_do_base
+        sql: "{CUBE}.n_do"
+        type: number
+
+      - name: n_say_wc_sum
+        sql: "{n_say_wc_base}"
+        type: sum
+
+      - name: n_do_wc_sum
+        sql: "{n_do_wc_base}"
+        type: sum
+
+      - name: n_say_sum
+        sql: "{n_say_base}"
+        type: sum
+
+      - name: n_do_sum
+        sql: "{n_do_base}"
+        type: sum
+
+      - name: say_to_do_wc
+        sql: "safe_divide({n_do_wc_sum},{n_say_wc_sum}) * 100"
+        type: number
+        format: percent
+
+      - name: say_to_do
+        sql: "safe_divide({n_do_sum},{n_say_sum}) * 100"
+        type: number
+        format: percent
+
     dimensions: 
       - name: key_event
         sql: "{CUBE}.key_event"
@@ -339,3 +381,8 @@ cubes:
       - name: key_habit
         sql: "{CUBE}.key_habit"
         type: string
+
+      - name: is_say_to_do_professional
+        sql: "case when {cat_event} = 'Person tracks Professional Say-to-Do' then 1 when {cat_event} = 'Person tracks Personal Say-to-Do' then 0 end"
+        type: number
+

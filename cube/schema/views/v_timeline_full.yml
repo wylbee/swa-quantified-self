@@ -31,6 +31,12 @@ views:
       - timeline.performance_to_plan_expense_cumulative
       - timeline.amt_budget_retirement_expected_spend_give_tax_annual
       - timeline.progress_to_coast_milestone
+      - timeline.n_say_wc_sum
+      - timeline.n_do_wc_sum
+      - timeline.n_say_sum
+      - timeline.n_do_sum
+      - timeline.say_to_do_wc
+      - timeline.say_to_do
 
       # dimensions
       - timeline.key_event
@@ -42,6 +48,7 @@ views:
       - timeline.id_source
       - timeline.key_finaccount
       - timeline.key_budget
+      - timeline.is_say_to_do_professional
 
       - dim_budget.id_tiller_budget
       - dim_budget.cat_budget_group
