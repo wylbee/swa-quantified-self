@@ -11,7 +11,7 @@ models:
         - join: dim_finaccount
           sql_on: ${timeline.key_finaccount} = ${dim_finaccount.key_finaccount}
         - join: dim_habit
-          sql_on: ${timeline.key_habit} = ${dim_habit.key_habit}        
+          sql_on: ${timeline.key_habit} = ${dim_habit.key_habit}
     columns:
       - name: key_event
         description: ""
@@ -98,7 +98,9 @@ models:
             amt_balance_lv_sum:
               type: sum
               round: 2
-              format: "usd"
+              format: usd
+          dimension:
+            type: number
       - name: amt_budget
         description: ""
         meta:
