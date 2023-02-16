@@ -1,0 +1,69 @@
+version: 2
+models:
+  - name: dim_habit
+    columns:
+      - name: key_habit
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_habit
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: val_habit_position
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_habit_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: str_habit_prompt
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: str_habit_description
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: val_habit_target
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_habit_interval
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_habit_color_hex
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: dt_meta_exported
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: str_meta_file_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_habit_grouping
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_meta_habits_row_check_hash
+        description: ""
+        meta:
+          dimension:
+            type: string

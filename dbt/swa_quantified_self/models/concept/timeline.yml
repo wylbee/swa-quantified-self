@@ -1,0 +1,171 @@
+version: 2
+models:
+  - name: timeline
+    description: Union of events.
+    meta:
+      joins:
+        - join: dim_budget
+          sql_on: ${timeline.key_budget} = ${dim_budget.key_budget}
+        - join: dim_calendar
+          sql_on: ${timeline.key_calendar} = ${dim_calendar.key_calendar}
+        - join: dim_finaccount
+          sql_on: ${timeline.key_finaccount} = ${dim_finaccount.key_finaccount}
+        - join: dim_habit
+          sql_on: ${timeline.key_habit} = ${dim_habit.key_habit}        
+    columns:
+      - name: key_event
+        description: ""
+        tests:
+          - unique
+          - not_null
+        meta:
+          dimension:
+            type: string
+      - name: _dbt_source_relation
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: tm_event
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: cat_event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: n_event
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: json_event_features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_income
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_invested
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_balance
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_balance_lv
+        description: ""
+        meta:
+          metrics:
+            amt_balance_lv_sum:
+              type: sum
+              round: 2
+              format: "usd"
+      - name: amt_budget
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_expense
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: key_habit
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_habit_impact
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_habit_planned_rest
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_habit_complete
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_habit_skipped
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_track_score
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_say_wc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_do_wc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_say_nwc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_do_nwc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_say
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_do
+        description: ""
+        meta:
+          dimension:
+            type: number
