@@ -47,6 +47,7 @@ models:
       dimension:
         +schema: core
         +materialized: table
+        +tags: "serve"
       money:
         +schema: money
     lake:

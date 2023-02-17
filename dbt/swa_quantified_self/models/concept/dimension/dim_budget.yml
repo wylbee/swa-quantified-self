@@ -1,0 +1,34 @@
+version: 2
+models:
+  - name: dim_budget
+    columns:
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_tiller_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_budget_group
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_budget_type
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_budget_hidden_from_reporting
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_budget_monthly_line
+        description: ""
+        meta:
+          dimension:
+            type: number

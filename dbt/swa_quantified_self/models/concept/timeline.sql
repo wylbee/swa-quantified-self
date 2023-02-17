@@ -1,3 +1,5 @@
+{{ config(tags=["serve"]) }}
+
 with
     unioned as (
         {{
