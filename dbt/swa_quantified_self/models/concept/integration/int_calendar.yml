@@ -1,0 +1,44 @@
+version: 2
+models:
+  - name: int_calendar
+    columns:
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: val_calendar_year
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_calendar_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_calendar_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_calendar_week
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_calendar_isoweek
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_calendar_dow
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_month_first_day
+        description: ""
+        meta:
+          dimension:
+            type: number

@@ -1,0 +1,29 @@
+version: 2
+models:
+  - name: dbt_metrics_default_calendar
+    columns:
+      - name: date_day
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: date_week
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: date_month
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: date_quarter
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: date_year
+        description: ""
+        meta:
+          dimension:
+            type: date

@@ -1,118 +1,392 @@
 version: 2
-
 models:
   - name: de_purchases_investment
-    description: "Discrete event reflecting the purchase of an investment."
+    description: Discrete event reflecting the purchase of an investment.
     columns:
       - name: key_event
         description: ""
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: tm_event
         description: ""
-
+        meta:
+          dimension:
+            type: timestamp
       - name: cat_event
         description: ""
-
-      - name: json_event_entities
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: json_event_features
         description: ""
-
-      - name: json_event_source
+        meta:
+          dimension:
+            type: string
+      - name: n_event
         description: ""
-
-      - name: n_event_occurrence
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
         description: ""
-
-      - name: tm_next_event
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
         description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_invested
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_income
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: de_receives_payment
-    description: "Discrete event reflecting the reception of income."
+    description: Discrete event reflecting the reception of income.
     columns:
       - name: key_event
         description: ""
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: tm_event
         description: ""
-
+        meta:
+          dimension:
+            type: timestamp
       - name: cat_event
         description: ""
-
-      - name: json_event_entities
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: json_event_features
         description: ""
-
-      - name: json_event_source
+        meta:
+          dimension:
+            type: string
+      - name: n_event
         description: ""
-
-      - name: n_event_occurrence
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
         description: ""
-
-      - name: tm_next_event
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
         description: ""
-
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_income
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: de_assesses_balance
-    description: "Discrete event reflecting the point in time assessment of an account balance."
+    description: >-
+      Discrete event reflecting the point in time assessment of an account
+      balance.
     columns:
       - name: key_event
         description: ""
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: tm_event
         description: ""
-
+        meta:
+          dimension:
+            type: timestamp
       - name: cat_event
         description: ""
-
-      - name: json_event_entities
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: json_event_features
         description: ""
-
-      - name: json_event_source
+        meta:
+          dimension:
+            type: string
+      - name: n_event
         description: ""
-
-      - name: n_event_occurrence
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
         description: ""
-
-      - name: tm_next_event
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
         description: ""
-
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_balance
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: re_measures_eod_finaccount
-    description: "Recurring event reflecting the latest avaliable assessment of an account balance by day."
+    description: >-
+      Recurring event reflecting the latest avaliable assessment of an account
+      balance by day.
     columns:
       - name: key_event
         description: ""
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
+      - name: tm_event
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: cat_event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: n_event
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: json_event_features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_balance_lv
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: de_sets_budget
-    description: "Discrete event reflecting the establishment of a  budget for a month."
+    description: Discrete event reflecting the establishment of a  budget for a month.
     columns:
       - name: key_event
         description: ""
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
+      - name: tm_event
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: cat_event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: n_event
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: json_event_features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_budget
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: de_purchases_goods_services
-    description: "Discrete event reflecting expenses."
+    description: Discrete event reflecting expenses.
     columns:
       - name: key_event
         description: ""
         tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: string
+      - name: tm_event
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: cat_event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: n_event
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: json_event_features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_expense
+        description: ""
+        meta:
+          dimension:
+            type: number

@@ -1,8 +1,7 @@
 version: 2
-
 models:
   - name: rds_tiller__transactions
-    description: "Read only data store of financial transaction data synced from Tiller."
+    description: Read only data store of financial transaction data synced from Tiller.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -10,25 +9,36 @@ models:
             - tm_meta_processed_at
     columns:
       - name: transaction_id
-        description: "PK denoting a unique transaction."
+        description: PK denoting a unique transaction.
         tests:
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: json_meta_attributes
-        description: "json blob holding all non-el meta attributes of the row."
-
+        description: json blob holding all non-el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: json_meta_el
-        description: "json blob holding all el meta attributes of the row."
-
+        description: json blob holding all el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: tm_meta_processed_at
-        description: "timestamp captured when the row was processed/inserted."
+        description: timestamp captured when the row was processed/inserted.
         tests:
           - not_null
-
+        meta:
+          dimension:
+            type: timestamp
       - name: hash_meta_row
-        description: "hash of json_meta_attributes. Used for detecting changes."
+        description: hash of json_meta_attributes. Used for detecting changes.
+        meta:
+          dimension:
+            type: number
   - name: rds_tiller__accounts
-    description: "Read only data store of financial account data synced from Tiller."
+    description: Read only data store of financial account data synced from Tiller.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -36,23 +46,34 @@ models:
             - tm_meta_processed_at
     columns:
       - name: account_id
-        description: "PK denoting a unique account."
+        description: PK denoting a unique account.
         tests:
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: json_meta_attributes
-        description: "json blob holding all non-el meta attributes of the row."
-
+        description: json blob holding all non-el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: json_meta_el
-        description: "json blob holding all el meta attributes of the row."
-
+        description: json blob holding all el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: tm_meta_processed_at
-        description: "timestamp captured when the row was processed/inserted."
-
+        description: timestamp captured when the row was processed/inserted.
+        meta:
+          dimension:
+            type: timestamp
       - name: hash_meta_row
-        description: "hash of json_meta_attributes. Used for detecting changes."
+        description: hash of json_meta_attributes. Used for detecting changes.
+        meta:
+          dimension:
+            type: number
   - name: rds_tiller__balance_histories
-    description: "Read only data store of financial balance history data synced from Tiller."
+    description: Read only data store of financial balance history data synced from Tiller.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -60,23 +81,34 @@ models:
             - tm_meta_processed_at
     columns:
       - name: balance_id
-        description: "PK denoting a unique balance measurement."
+        description: PK denoting a unique balance measurement.
         tests:
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: json_meta_attributes
-        description: "json blob holding all non-el meta attributes of the row."
-
+        description: json blob holding all non-el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: json_meta_el
-        description: "json blob holding all el meta attributes of the row."
-
+        description: json blob holding all el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: tm_meta_processed_at
-        description: "timestamp captured when the row was processed/inserted."
-
+        description: timestamp captured when the row was processed/inserted.
+        meta:
+          dimension:
+            type: timestamp
       - name: hash_meta_row
-        description: "hash of json_meta_attributes. Used for detecting changes."
+        description: hash of json_meta_attributes. Used for detecting changes.
+        meta:
+          dimension:
+            type: number
   - name: rds_tiller__categories
-    description: "Read only data store of financial categorization data synced from Tiller."
+    description: Read only data store of financial categorization data synced from Tiller.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -84,18 +116,29 @@ models:
             - tm_meta_processed_at
     columns:
       - name: category
-        description: "PK denoting a unique category."
+        description: PK denoting a unique category.
         tests:
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: json_meta_attributes
-        description: "json blob holding all non-el meta attributes of the row."
-
+        description: json blob holding all non-el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: json_meta_el
-        description: "json blob holding all el meta attributes of the row."
-
+        description: json blob holding all el meta attributes of the row.
+        meta:
+          dimension:
+            type: string
       - name: tm_meta_processed_at
-        description: "timestamp captured when the row was processed/inserted."
-
+        description: timestamp captured when the row was processed/inserted.
+        meta:
+          dimension:
+            type: timestamp
       - name: hash_meta_row
-        description: "hash of json_meta_attributes. Used for detecting changes."
+        description: hash of json_meta_attributes. Used for detecting changes.
+        meta:
+          dimension:
+            type: number

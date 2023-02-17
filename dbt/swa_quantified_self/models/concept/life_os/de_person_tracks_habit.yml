@@ -1,67 +1,78 @@
 version: 2
 models:
-  - name: base_gsheet__say_to_do_weekly
-    description: ""
+  - name: de_person_tracks_habit
     columns:
-      - name: id_std
-        description: ""
-        tests:
-          - unique
-          - not_null
-        meta:
-          dimension:
-            type: string
-      - name: val_calendar_year
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: val_calendar_week
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: cat_area_group
+      - name: key_event
         description: ""
         meta:
           dimension:
             type: string
-      - name: n_say_wc
+      - name: tm_event
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: cat_event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: n_event
         description: ""
         meta:
           dimension:
             type: number
-      - name: n_do_wc
+      - name: tm_event_next
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
         description: ""
         meta:
           dimension:
             type: number
-      - name: n_say_nwc
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: json_event_features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: key_habit
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_habit_impact
         description: ""
         meta:
           dimension:
             type: number
-      - name: n_do_nwc
+      - name: is_habit_planned_rest
         description: ""
         meta:
           dimension:
             type: number
-      - name: n_say
+      - name: is_habit_complete
         description: ""
         meta:
           dimension:
             type: number
-      - name: n_do
+      - name: is_habit_skipped
         description: ""
         meta:
           dimension:
             type: number
-      - name: wtd_say_to_do_wc
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: wtd_say_to_do
+      - name: val_track_score
         description: ""
         meta:
           dimension:

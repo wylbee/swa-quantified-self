@@ -1,60 +1,92 @@
 version: 2
-
 models:
   - name: int_finaccount
-    description: "Conformed dimension reflecting financial accounts"
+    description: Conformed dimension reflecting financial accounts
     columns:
       - name: key_finaccount
         description: ""
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: id_tiller_finaccount
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: str_finaccount_name
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_class
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_group
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_institution
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_institution_type
         description: ""
-      
+        meta:
+          dimension:
+            type: string
       - name: is_finaccount_savings
         description: ""
-
+        meta:
+          dimension:
+            type: number
+      - name: val_finaccount_class_modifier
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: int_budget
-    description: "Conformed dimension reflection a financial budget x fiscal year"
+    description: Conformed dimension reflection a financial budget x fiscal year
     columns:
       - name: key_budget
-        description: "Surrogate Key generated using budget id + FY"
+        description: Surrogate Key generated using budget id + FY
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: id_tiller_budget
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_budget_group
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_budget_type
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: is_budget_hidden_from_reporting
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: is_budget_monthly_line
         description: ""
-
+        meta:
+          dimension:
+            type: number
   - name: int_habit
     description: ""
     columns:
@@ -62,39 +94,67 @@ models:
         tests:
           - unique
           - not_null
-        
+        description: ""
+        meta:
+          dimension:
+            type: string
       - name: id_habit
         description: "{{ doc('id_habit') }}"
-
+        meta:
+          dimension:
+            type: string
       - name: val_habit_position
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: str_habit_name
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: str_habit_prompt
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: str_habit_description
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: val_habit_target
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: val_habit_interval
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: str_habit_color_hex
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: dt_meta_exported
         description: ""
-
+        meta:
+          dimension:
+            type: date
       - name: str_meta_file_name
         description: ""
-
-      - name: val_meta_change_sequence
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: id_meta_habits_row_check_hash
         description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_habit_grouping
+        description: ""
+        meta:
+          dimension:
+            type: string

@@ -1,5 +1,4 @@
 version: 2
-
 models:
   - name: base_tiller__accounts
     description: ""
@@ -9,21 +8,34 @@ models:
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: str_finaccount_name
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_class
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_group
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_institution
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_finaccount_institution_type
         description: ""
+        meta:
+          dimension:
+            type: string
   - name: base_tiller__balance_histories
     description: ""
     columns:
@@ -32,21 +44,34 @@ models:
         tests:
           - unique
           - not_null
-
-      - name: id_tiller_account
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: tm_balance
         description: ""
-
+        meta:
+          dimension:
+            type: timestamp
       - name: amt_balance
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: is_account_active
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: tm_balance_added
         description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: id_tiller_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
   - name: base_tiller__categories
     description: ""
     columns:
@@ -55,30 +80,109 @@ models:
         tests:
           - unique
           - not_null
-
+        meta:
+          dimension:
+            type: string
       - name: cat_budget_group
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: cat_budget_type
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: is_budget_hidden_from_reporting
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: amt_budget_2022_08
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: amt_budget_2022_09
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: amt_budget_2022_10
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: amt_budget_2022_11
         description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: amt_budget_2022_12
         description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_01
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_02
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_03
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_04
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_05
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_06
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_07
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_08
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_09
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_10
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_11
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_12
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: base_tiller__transactions
     description: ""
     columns:
@@ -87,33 +191,51 @@ models:
         tests:
           - unique
           - not_null
-
-      - name: id_tiller_account
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: id_tiller_budget
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: tm_transaction
         description: ""
-
+        meta:
+          dimension:
+            type: timestamp
       - name: str_transaction_description
         description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: amt_transaction
         description: ""
-
-      - name: str_transaction_check_number
-        description: ""
-
+        meta:
+          dimension:
+            type: number
       - name: str_tiller_transaction_description_full
         description: ""
-
-      - name: tm_transaction_categorized
-        description: ""
-
+        meta:
+          dimension:
+            type: string
       - name: tm_transaction_added
         description: ""
-
+        meta:
+          dimension:
+            type: timestamp
       - name: tm_meta_processed_at
         description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: id_tiller_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: tm_transaction_autocategorized
+        description: ""
+        meta:
+          dimension:
+            type: timestamp

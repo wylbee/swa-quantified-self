@@ -1,31 +1,52 @@
 version: 2
 models:
-  - name: base_gsheet__say_to_do_weekly
-    description: ""
+  - name: de_person_tracks_say_to_do
     columns:
-      - name: id_std
-        description: ""
-        tests:
-          - unique
-          - not_null
-        meta:
-          dimension:
-            type: string
-      - name: val_calendar_year
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: val_calendar_week
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: cat_area_group
+      - name: key_event
         description: ""
         meta:
           dimension:
             type: string
+      - name: tm_event
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: cat_event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: n_event
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: tm_event_next
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_source_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: json_event_features
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
       - name: n_say_wc
         description: ""
         meta:
@@ -52,16 +73,6 @@ models:
           dimension:
             type: number
       - name: n_do
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: wtd_say_to_do_wc
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: wtd_say_to_do
         description: ""
         meta:
           dimension:
