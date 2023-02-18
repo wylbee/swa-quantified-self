@@ -2,6 +2,8 @@
 name: close-preview
 
 on:
+  push:
+    branches: [ "main", "master" ]
   pull_request:
     types: [closed, merged]
 
@@ -30,5 +32,5 @@ jobs:
           LIGHTDASH_PROJECT: ${{ secrets.LIGHTDASH_PROJECT }}          
           LIGHTDASH_URL: ${{ secrets.LIGHTDASH_URL }}          
 
-        run:  lightdash stop-preview --name ${GITHUB_REF##*/}
+        run:  lightdash stop-preview --name ${GITHUB_HEAD_REF}
 
