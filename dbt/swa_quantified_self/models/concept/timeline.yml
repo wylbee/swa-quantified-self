@@ -81,6 +81,11 @@ models:
         meta:
           dimension:
             type: number
+          metrics:
+            amt_income_sum:
+              type: sum
+              round: 2
+              format: usd
       - name: amt_invested
         description: ""
         meta:
