@@ -86,6 +86,11 @@ models:
         meta:
           dimension:
             type: number
+          metrics:
+            amt_invested_sum:
+              type: sum
+              round: 2
+              format: usd            
       - name: amt_balance
         description: ""
         meta:
