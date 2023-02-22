@@ -83,7 +83,18 @@ with
         from last_partition
 
         where tm_meta_processed_at = '{{ max_timestamp }}'
+    ),
+
+    additional_attributes as (
+
+        select
+            *,
+            case
+                when cat_budget_group like '%Monthly%' then 1 else 0
+            end as is_budget_monthly_line
+
+        from scd1
     )
 
 select *
-from scd1
+from additional_attributes
