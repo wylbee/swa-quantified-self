@@ -1,5 +1,9 @@
 {{
     dbt_utils.union_relations(
-        relations=[ref("makes_investment"), ref("makes_purchase")]
+        relations=[
+            ref("makes_investment"),
+            ref("makes_purchase"),
+            ref("recieves_payment"),
+        ]
     )
 }}
