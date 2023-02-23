@@ -22,11 +22,6 @@ with
                 )
             ) as anonymous_customer_id,
 
-            case
-                when budgets.cat_budget_type = 'Income'
-                then transactions.amt_transaction
-            end as revenue_impact,
-
 
             '{{ var("str_tiller_url") }}' as link,
 
@@ -51,7 +46,9 @@ with
             accounts.is_finaccount_savings = 1
             and budgets.id_tiller_budget not in ('Excluded Line', 'Investment Fees')
 
-    )
+    ),
+
+    derived as (select *, amt_income as revenue_impact from joined)
 
 select *
-from {{ activity_schema.make_activity("joined") }}
+from {{ activity_schema.make_activity("derived") }}
