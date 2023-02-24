@@ -5,6 +5,7 @@
             ref("makes_purchase"),
             ref("recieves_payment"),
             ref("sets_budget"),
+            ref("updates_balance"),
         ]
     )
 }}
