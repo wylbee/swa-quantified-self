@@ -6,6 +6,7 @@
             ref("recieves_payment"),
             ref("sets_budget"),
             ref("updates_balance"),
+            ref("updates_eod_balance"),
         ]
     )
 }}
