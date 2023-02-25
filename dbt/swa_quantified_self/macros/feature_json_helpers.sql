@@ -18,6 +18,6 @@ safe_cast(
 
 {% macro fj_str(column_name, table_alias) -%}
 safe_cast(
-    json_value({{ table_alias }}feature_json, '$.{{column_name}}') as str
+    json_value({{ table_alias }}feature_json, '$.{{column_name}}') as string
 ) as {{ column_name }}
 {%- endmacro %}
