@@ -95,7 +95,7 @@ models:
             amt_invested_sum:
               type: sum
               round: 2
-              format: usd            
+              format: usd
       - name: amt_balance
         description: ""
         meta:
@@ -105,7 +105,7 @@ models:
             amt_balance_sum:
               type: sum
               round: 2
-              format: usd                   
+              format: usd
       - name: amt_balance_lv
         description: ""
         meta:
@@ -135,7 +135,7 @@ models:
             amt_expense_sum:
               type: sum
               round: 2
-              format: usd              
+              format: usd
       - name: key_habit
         description: ""
         meta:

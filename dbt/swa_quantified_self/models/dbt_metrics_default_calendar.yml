@@ -1,29 +1,29 @@
 version: 2
 models:
-  - name: dim_budget
+  - name: dbt_metrics_default_calendar
     columns:
-      - name: key_budget
+      - name: date_day
         description: ""
         meta:
           dimension:
-            type: string
-      - name: id_tiller_budget
+            type: date
+      - name: date_week
         description: ""
         meta:
           dimension:
-            type: string
-      - name: cat_budget_group
+            type: date
+      - name: date_month
         description: ""
         meta:
           dimension:
-            type: string
-      - name: cat_budget_type
+            type: date
+      - name: date_quarter
         description: ""
         meta:
           dimension:
-            type: string
-      - name: is_budget_hidden_from_reporting
+            type: date
+      - name: date_year
         description: ""
         meta:
           dimension:
-            type: number
+            type: date

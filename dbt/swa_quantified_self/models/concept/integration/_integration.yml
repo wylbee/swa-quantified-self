@@ -82,11 +82,6 @@ models:
         meta:
           dimension:
             type: number
-      - name: is_budget_monthly_line
-        description: ""
-        meta:
-          dimension:
-            type: number
   - name: int_habit
     description: ""
     columns:

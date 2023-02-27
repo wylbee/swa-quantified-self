@@ -1,0 +1,119 @@
+version: 2
+models:
+  - name: ent_budget
+    columns:
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_tiller_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_budget_group
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_budget_type
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_budget_hidden_from_reporting
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2022_08
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2022_09
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2022_10
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2022_11
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2022_12
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_01
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_02
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_03
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_04
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_05
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_06
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_07
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_08
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_09
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_10
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_11
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget_2023_12
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_budget_monthly_line
+        description: ""
+        meta:
+          dimension:
+            type: number

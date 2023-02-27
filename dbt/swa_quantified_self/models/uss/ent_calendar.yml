@@ -1,0 +1,9 @@
+version: 2
+models:
+  - name: ent_calendar
+    columns:
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
