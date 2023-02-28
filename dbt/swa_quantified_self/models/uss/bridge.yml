@@ -11,6 +11,12 @@ models:
           sql_on: ${bridge.key_calendar} = ${ent_calendar.key_calendar}
         - join: ent_finaccount
           sql_on: ${bridge.key_finaccount} = ${ent_finaccount.key_finaccount}
+      metrics:
+        savings_rate:
+          type: number
+          sql: (${amt_invested_sum}/${amt_income_sum})
+          format: 'percent'
+          round: 2
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -68,6 +74,11 @@ models:
         meta:
           dimension:
             type: number
+          metrics:
+            amt_invested_sum:
+              type: sum
+              round: 2
+              format: usd     
       - name: amt_expense
         description: ""
         meta:
@@ -88,3 +99,8 @@ models:
         meta:
           dimension:
             type: number
+          metrics:
+            amt_balance_lv_dly:
+              type: sum
+              round: 2
+              format: usd
