@@ -5,14 +5,7 @@ with
     final as (
 
         select
-            {{
-                dbt_utils.surrogate_key(
-                    [
-                        "id_tiller_finaccount",
-                    ]
-                )
-            }} as key_finaccount,
-            *,
+            /*,
             case
                 when
                     cat_finaccount_group in (
@@ -30,7 +23,14 @@ with
                 then -1
                 when cat_finaccount_class = 'Asset'
                 then 1
-            end as val_finaccount_class_modifier
+            end as val_finaccount_class_modifier */
+            {{
+                dbt_utils.surrogate_key(
+                    [
+                        "id_tiller_finaccount",
+                    ]
+                )
+            }} as key_finaccount, *
 
         from accounts
     )

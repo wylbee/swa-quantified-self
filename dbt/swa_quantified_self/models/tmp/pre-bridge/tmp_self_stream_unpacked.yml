@@ -1,0 +1,69 @@
+version: 2
+models:
+  - name: tmp_self_stream_unpacked
+    columns:
+      - name: key_activity
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_self
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_budget
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: key_calendar
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: cat_source
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_activity_cash_flow_impact
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_income
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_invested
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_expense
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_budget
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_balance
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: amt_balance_lv
+        description: ""
+        meta:
+          dimension:
+            type: number

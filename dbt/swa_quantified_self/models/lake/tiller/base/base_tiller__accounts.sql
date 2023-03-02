@@ -31,7 +31,34 @@ with
         from last_partition
 
         where tm_meta_processed_at = '{{ max_timestamp }}'
+    ),
+
+    additional_attributes as (
+
+        select
+            *,
+            case
+                when
+                    cat_finaccount_group in (
+                        'LT Savings',
+                        'SMT Savings',
+                        'Retirement Savings',
+                        'Health Savings'
+                    )
+                then 1
+                else 0
+            end as is_finaccount_savings,
+
+            case
+                when cat_finaccount_class = 'Liability'
+                then -1
+                when cat_finaccount_class = 'Asset'
+                then 1
+            end as val_finaccount_class_modifier
+
+        from scd1
+
     )
 
 select *
-from scd1
+from additional_attributes

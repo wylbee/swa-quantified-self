@@ -1,29 +1,34 @@
 version: 2
 models:
-  - name: dim_budget
+  - name: ent_activity
     columns:
-      - name: key_budget
+      - name: key_activity
         description: ""
         meta:
           dimension:
             type: string
-      - name: id_tiller_budget
+      - name: tm_activity
         description: ""
         meta:
           dimension:
-            type: string
-      - name: cat_budget_group
-        description: ""
-        meta:
-          dimension:
-            type: string
-      - name: cat_budget_type
-        description: ""
-        meta:
-          dimension:
-            type: string
-      - name: is_budget_hidden_from_reporting
+            type: timestamp
+      - name: n_activity
         description: ""
         meta:
           dimension:
             type: number
+      - name: tm_activity_repeated
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: str_activity_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: str_transaction_description
+        description: ""
+        meta:
+          dimension:
+            type: string

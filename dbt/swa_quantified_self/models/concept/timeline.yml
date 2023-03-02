@@ -2,16 +2,6 @@ version: 2
 models:
   - name: timeline
     description: Union of events.
-    meta:
-      joins:
-        - join: dim_budget
-          sql_on: ${timeline.key_budget} = ${dim_budget.key_budget}
-        - join: dim_calendar
-          sql_on: ${timeline.key_calendar} = ${dim_calendar.key_calendar}
-        - join: dim_finaccount
-          sql_on: ${timeline.key_finaccount} = ${dim_finaccount.key_finaccount}
-        - join: dim_habit
-          sql_on: ${timeline.key_habit} = ${dim_habit.key_habit}
     columns:
       - name: key_event
         description: ""
@@ -95,7 +85,7 @@ models:
             amt_invested_sum:
               type: sum
               round: 2
-              format: usd            
+              format: usd
       - name: amt_balance
         description: ""
         meta:
@@ -105,7 +95,7 @@ models:
             amt_balance_sum:
               type: sum
               round: 2
-              format: usd                   
+              format: usd
       - name: amt_balance_lv
         description: ""
         meta:
@@ -135,7 +125,7 @@ models:
             amt_expense_sum:
               type: sum
               round: 2
-              format: usd              
+              format: usd
       - name: key_habit
         description: ""
         meta:

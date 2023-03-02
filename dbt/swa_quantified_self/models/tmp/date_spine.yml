@@ -1,0 +1,9 @@
+version: 2
+models:
+  - name: date_spine
+    columns:
+      - name: date_day
+        description: ""
+        meta:
+          dimension:
+            type: timestamp

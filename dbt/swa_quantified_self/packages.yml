@@ -9,3 +9,5 @@ packages:
     version: 0.3.0
   - package: Datavault-UK/dbtvault
     version: 0.9.0
+  - package: narratorai/activity_schema
+    version: 0.1.0

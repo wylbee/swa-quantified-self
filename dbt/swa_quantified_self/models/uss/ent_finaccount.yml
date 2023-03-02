@@ -1,0 +1,49 @@
+version: 2
+models:
+  - name: ent_finaccount
+    columns:
+      - name: key_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id_tiller_finaccount
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: str_finaccount_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_finaccount_class
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_finaccount_group
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_finaccount_institution
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: cat_finaccount_institution_type
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_finaccount_savings
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_finaccount_class_modifier
+        description: ""
+        meta:
+          dimension:
+            type: number

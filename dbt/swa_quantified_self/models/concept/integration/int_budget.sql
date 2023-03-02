@@ -9,11 +9,12 @@ with
             id_tiller_budget,
             cat_budget_group,
             cat_budget_type,
-            is_budget_hidden_from_reporting,
+            /*,
 
             case
                 when cat_budget_group like '%Monthly%' then 1 else 0
-            end as is_budget_monthly_line
+            end as is_budget_monthly_line */
+            is_budget_hidden_from_reporting
 
         from budgets
 

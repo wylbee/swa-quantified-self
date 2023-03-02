@@ -36,6 +36,16 @@ models:
         meta:
           dimension:
             type: string
+      - name: is_finaccount_savings
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: val_finaccount_class_modifier
+        description: ""
+        meta:
+          dimension:
+            type: number
   - name: base_tiller__balance_histories
     description: ""
     columns:
@@ -179,6 +189,11 @@ models:
           dimension:
             type: number
       - name: amt_budget_2023_12
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_budget_monthly_line
         description: ""
         meta:
           dimension:
