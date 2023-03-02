@@ -2,16 +2,6 @@ version: 2
 models:
   - name: timeline
     description: Union of events.
-    meta:
-      joins:
-        - join: dim_budget
-          sql_on: ${timeline.key_budget} = ${dim_budget.key_budget}
-        - join: dim_calendar
-          sql_on: ${timeline.key_calendar} = ${dim_calendar.key_calendar}
-        - join: dim_finaccount
-          sql_on: ${timeline.key_finaccount} = ${dim_finaccount.key_finaccount}
-        - join: dim_habit
-          sql_on: ${timeline.key_habit} = ${dim_habit.key_habit}
     columns:
       - name: key_event
         description: ""
