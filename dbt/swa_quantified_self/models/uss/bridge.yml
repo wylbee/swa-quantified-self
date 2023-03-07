@@ -15,8 +15,24 @@ models:
         savings_rate:
           type: number
           sql: (${amt_invested_sum}/${amt_income_sum})
-          format: 'percent'
+          format: percent
           round: 2
+        performance_to_plan_income:
+          type: number
+          sql: (${amt_income_sum}/${amt_budget_income_sum})
+          format: percent
+          round: 2
+        performance_to_plan_save:
+          type: number
+          sql: (${amt_invested_sum}/${amt_budget_save_sum})
+          format: percent
+          round: 2
+        performance_to_plan_spend:
+          type: number
+          sql: (${amt_expense_sum}/${amt_budget_spend_sum})
+          format: percent
+          round: 2
+
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -78,17 +94,46 @@ models:
             amt_invested_sum:
               type: sum
               round: 2
-              format: usd     
+              format: usd
       - name: amt_expense
         description: ""
         meta:
           dimension:
             type: number
+          metrics:
+            amt_expense_sum:
+              type: sum
+              round: 2
+              format: usd
+              sql: ${amt_expense}*-1
       - name: amt_budget
         description: ""
         meta:
           dimension:
             type: number
+          metrics:
+            amt_budget_sum:
+              type: sum
+              round: 2
+              format: usd
+            amt_budget_income_sum:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_income: 1
+            amt_budget_save_sum:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_save: 1
+            amt_budget_spend_sum:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_spend: 1
       - name: amt_balance
         description: ""
         meta:
