@@ -100,6 +100,11 @@ models:
         meta:
           dimension:
             type: number
+          metrics:
+            amt_expense_sum:
+              type: sum
+              round: 2
+              format: usd
       - name: amt_budget
         description: ""
         meta:
