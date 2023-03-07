@@ -27,92 +27,22 @@ models:
         meta:
           dimension:
             type: number
-      - name: amt_budget_2022_08
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2022_09
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2022_10
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2022_11
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2022_12
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_01
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_02
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_03
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_04
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_05
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_06
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_07
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_08
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_09
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_10
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_11
-        description: ""
-        meta:
-          dimension:
-            type: number
-      - name: amt_budget_2023_12
-        description: ""
-        meta:
-          dimension:
-            type: number
       - name: is_budget_monthly_line
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_budget_income
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_budget_save
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_budget_spend
         description: ""
         meta:
           dimension:
