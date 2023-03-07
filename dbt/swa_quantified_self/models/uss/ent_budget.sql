@@ -20,9 +20,9 @@ with
             end as is_budget_save,
 
             case
-                when cat_budget_group like '%Live%'
+                when cat_budget_group like '%Live%' and cat_budget_type != 'Income'
                 then 1
-                when cat_budget_group like '%Give%'
+                when cat_budget_group like '%Give%' and cat_budget_type != 'Income'
                 then 1
                 else 0
             end as is_budget_spend

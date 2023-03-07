@@ -22,7 +22,7 @@ models:
           sql: (${amt_income_sum}/${amt_budget_income_sum})
           format: percent
           round: 2
-        performance_to_plan_income:
+        performance_to_plan_save:
           type: number
           sql: (${amt_invested_sum}/${amt_budget_save_sum})
           format: percent
@@ -105,6 +105,7 @@ models:
               type: sum
               round: 2
               format: usd
+              sql: ${amt_expense}*-1
       - name: amt_budget
         description: ""
         meta:
