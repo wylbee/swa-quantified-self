@@ -14,22 +14,22 @@ models:
       metrics:
         savings_rate:
           type: number
-          sql: (${amt_invested_sum}/${amt_income_sum})
+          sql: safe_divide(${amt_invested_sum},${amt_income_sum})
           format: percent
           round: 2
         performance_to_plan_income:
           type: number
-          sql: (${amt_income_sum}/${amt_budget_income_sum})
+          sql: safe_divide(${amt_income_sum},${amt_budget_income_sum})
           format: percent
           round: 2
         performance_to_plan_save:
           type: number
-          sql: (${amt_invested_sum}/${amt_budget_save_sum})
+          sql: safe_divide(${amt_invested_sum},${amt_budget_save_sum})
           format: percent
           round: 2
         performance_to_plan_spend:
           type: number
-          sql: (${amt_expense_sum}/${amt_budget_spend_sum})
+          sql: safe_divide(${amt_expense_sum},${amt_budget_spend_sum})
           format: percent
           round: 2
 
