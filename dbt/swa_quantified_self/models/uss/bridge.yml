@@ -32,7 +32,24 @@ models:
           sql: (${amt_expense_sum}/${amt_budget_spend_sum})
           format: percent
           round: 2
-
+        annualized_income_swr:
+          type: number
+          sql: ${amt_balance_investment_lv_dly} * .04
+          format: usd
+          round: 2
+          group_label: fi
+        annualized_income_twr:
+          type: number
+          sql: ${amt_balance_investment_lv_dly} * .035
+          format: usd
+          round: 2
+          group_label: fi
+        annualized_income_pwr:
+          type: number
+          sql: ${amt_balance_investment_lv_dly} * .0325
+          format: usd
+          round: 2
+          group_label: fi
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -149,3 +166,9 @@ models:
               type: sum
               round: 2
               format: usd
+            amt_balance_investment_lv_dly:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_finaccount.is_finaccount_savings: 1
