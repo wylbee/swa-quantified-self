@@ -50,6 +50,24 @@ models:
           format: usd
           round: 2
           group_label: fi
+        amt_budget_retirement_expected_spend_give_annual:
+          type: number
+          format: usd
+          group_label: fi
+          sql: (${amt_budget_retirement_expected_spend_annual})/.9
+        val_budget_retirement_expected_tax_rate:
+          type: max
+          format: percent
+          group_label: fi
+          sql: >-
+            case when extract(year from ${key_calendar}) = 2022 then .215 when
+            extract (year from ${key_calendar})=2023 then .21 end
+        amt_budget_retirement_expected_spend_give_tax_annual:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_annual}/(1-${val_budget_retirement_expected_tax_rate})
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -151,6 +169,19 @@ models:
               format: usd
               filters:
                 - ent_budget.is_budget_spend: 1
+            amt_budget_core_sum:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_core: 1
+            amt_budget_retirement_expected_spend_annual:
+              type: sum
+              sql: ${amt_budget}*12
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_core: 1
       - name: amt_balance
         description: ""
         meta:
