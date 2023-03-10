@@ -68,6 +68,73 @@ models:
           group_label: fi
           sql: >-
             ${amt_budget_retirement_expected_spend_give_annual}/(1-${val_budget_retirement_expected_tax_rate})
+        progress_to_twr:
+          type: number
+          format: percent
+          group_label: fi
+          sql: >-
+            ${annualized_income_twr}/${amt_budget_retirement_expected_spend_give_tax_annual}
+        amt_budget_coast_65:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(65-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_60:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(60-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_55:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(55-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_54:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(54-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_53:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(53-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_52:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(52-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_51:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(51-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_50:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(50-date_diff(current_date(),
+            '1990-08-18', year))))
+        progress_to_coast_milestone:
+          type: number
+          format: percent
+          group_label: fi
+          sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_54})
     columns:
       - name: _dbt_source_relation
         description: ""
