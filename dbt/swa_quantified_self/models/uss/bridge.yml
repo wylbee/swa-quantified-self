@@ -71,6 +71,7 @@ models:
         progress_to_twr:
           type: number
           format: percent
+          round: 2
           group_label: fi
           sql: >-
             ${annualized_income_twr}/${amt_budget_retirement_expected_spend_give_tax_annual}
@@ -134,7 +135,8 @@ models:
           type: number
           format: percent
           group_label: fi
-          sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_54})
+          round: 2
+          sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_53})
     columns:
       - name: _dbt_source_relation
         description: ""
