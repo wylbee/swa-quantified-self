@@ -47,3 +47,8 @@ models:
         meta:
           dimension:
             type: number
+      - name: is_budget_core
+        description: ""
+        meta:
+          dimension:
+            type: number

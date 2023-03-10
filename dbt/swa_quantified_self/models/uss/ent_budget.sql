@@ -25,7 +25,9 @@ with
                 when cat_budget_group like '%Give%' and cat_budget_type != 'Income'
                 then 1
                 else 0
-            end as is_budget_spend
+            end as is_budget_spend,
+
+            case when cat_budget_group like '%Core%' then 1 else 0 end as is_budget_core
 
         from base
     )

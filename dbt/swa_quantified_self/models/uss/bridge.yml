@@ -32,7 +32,109 @@ models:
           sql: safe_divide(${amt_expense_sum},${amt_budget_spend_sum})
           format: percent
           round: 2
-
+        annualized_income_swr:
+          type: number
+          sql: ${amt_balance_investment_lv_dly} * .04
+          format: usd
+          round: 2
+          group_label: fi
+        annualized_income_twr:
+          type: number
+          sql: ${amt_balance_investment_lv_dly} * .035
+          format: usd
+          round: 2
+          group_label: fi
+        annualized_income_pwr:
+          type: number
+          sql: ${amt_balance_investment_lv_dly} * .0325
+          format: usd
+          round: 2
+          group_label: fi
+        amt_budget_retirement_expected_spend_give_annual:
+          type: number
+          format: usd
+          group_label: fi
+          sql: (${amt_budget_retirement_expected_spend_annual})/.9
+        val_budget_retirement_expected_tax_rate:
+          type: max
+          format: percent
+          group_label: fi
+          sql: >-
+            case when extract(year from ${key_calendar}) = 2022 then .215 when
+            extract (year from ${key_calendar})=2023 then .21 end
+        amt_budget_retirement_expected_spend_give_tax_annual:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_annual}/(1-${val_budget_retirement_expected_tax_rate})
+        progress_to_twr:
+          type: number
+          format: percent
+          group_label: fi
+          sql: >-
+            ${annualized_income_twr}/${amt_budget_retirement_expected_spend_give_tax_annual}
+        amt_budget_coast_65:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(65-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_60:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(60-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_55:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(55-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_54:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(54-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_53:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(53-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_52:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(52-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_51:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(51-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_50:
+          type: number
+          format: usd
+          group_label: fi
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(50-date_diff(current_date(),
+            '1990-08-18', year))))
+        progress_to_coast_milestone:
+          type: number
+          format: percent
+          group_label: fi
+          sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_54})
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -134,6 +236,19 @@ models:
               format: usd
               filters:
                 - ent_budget.is_budget_spend: 1
+            amt_budget_core_sum:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_core: 1
+            amt_budget_retirement_expected_spend_annual:
+              type: sum
+              sql: ${amt_budget}*12
+              round: 2
+              format: usd
+              filters:
+                - ent_budget.is_budget_core: 1
       - name: amt_balance
         description: ""
         meta:
@@ -149,3 +264,9 @@ models:
               type: sum
               round: 2
               format: usd
+            amt_balance_investment_lv_dly:
+              type: sum
+              round: 2
+              format: usd
+              filters:
+                - ent_finaccount.is_finaccount_savings: 1
