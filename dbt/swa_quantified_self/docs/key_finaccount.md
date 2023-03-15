@@ -1,0 +1,1 @@
+{% docs key_finaccount %} Primary key denoting a unique Financial Account. Reflects the business key of the most applicable source or a surrogate key. {% enddocs %}
