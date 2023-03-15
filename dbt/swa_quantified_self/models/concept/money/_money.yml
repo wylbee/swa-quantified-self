@@ -47,27 +47,27 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: key_budget
-        description: ""
+        description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string
       - name: amt_invested
-        description: ""
+        description: "{{doc('amt_invested')}}"
         meta:
           dimension:
             type: number
       - name: amt_income
-        description: ""
+        description: "{{doc('amt_income')}}"
         meta:
           dimension:
             type: number
@@ -118,22 +118,22 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: key_budget
-        description: ""
+        description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string
       - name: amt_income
-        description: ""
+        description: "{{doc('amt_income')}}"
         meta:
           dimension:
             type: number
@@ -186,17 +186,17 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: amt_balance
-        description: ""
+        description: "{{doc('amt_balance')}}"
         meta:
           dimension:
             type: number
@@ -249,17 +249,17 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: amt_balance_lv
-        description: ""
+        description: "{{doc('amt_balance_lv')}}"
         meta:
           dimension:
             type: number
@@ -310,17 +310,17 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: key_budget
-        description: ""
+        description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string
       - name: amt_budget
-        description: ""
+        description: "{{doc('amt_budget')}}"
         meta:
           dimension:
             type: number
@@ -371,22 +371,22 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: key_budget
-        description: ""
+        description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string
       - name: amt_expense
-        description: ""
+        description: "{{doc('amt_expense')}}"
         meta:
           dimension:
             type: number

@@ -1,0 +1,1 @@
+{% docs amt_balance %} Amount in $ that reflects a snapshot of an account balance. Semi-additive with like pulls- though in practice this is difficult (~+). {% enddocs %}

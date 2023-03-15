@@ -3,7 +3,7 @@ models:
   - name: ent_budget
     columns:
       - name: key_budget
-        description: ""
+        description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string

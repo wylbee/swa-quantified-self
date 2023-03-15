@@ -63,7 +63,7 @@ models:
           dimension:
             type: timestamp
       - name: amt_balance
-        description: ""
+        description: "{{doc('amt_balance')}}"
         meta:
           dimension:
             type: number

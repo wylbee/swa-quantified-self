@@ -4,7 +4,7 @@ models:
     description: Conformed dimension reflecting financial accounts
     columns:
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         tests:
           - unique
           - not_null
@@ -55,7 +55,7 @@ models:
     description: Conformed dimension reflection a financial budget x fiscal year
     columns:
       - name: key_budget
-        description: Surrogate Key generated using budget id + FY
+        description: "{{doc('key_budget')}}"
         tests:
           - unique
           - not_null

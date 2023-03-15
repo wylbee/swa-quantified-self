@@ -3,7 +3,7 @@ models:
   - name: ent_finaccount
     columns:
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string

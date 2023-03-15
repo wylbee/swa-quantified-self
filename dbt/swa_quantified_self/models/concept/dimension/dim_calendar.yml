@@ -3,7 +3,7 @@ models:
   - name: dim_calendar
     columns:
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date

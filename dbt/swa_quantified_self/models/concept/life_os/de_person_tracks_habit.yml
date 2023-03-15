@@ -43,7 +43,7 @@ models:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
