@@ -14,127 +14,168 @@ models:
       metrics:
         savings_rate:
           type: number
+          label: Savings Rate
+          group_label: Finance (-)
+          description: "Percentage of income left after paying taxes and spending $. Calculated as (Amount Saved)/(Amount Income). Non-addative (-)."
           sql: safe_divide(${amt_invested_sum},${amt_income_sum})
           format: percent
           round: 2
         performance_to_plan_income:
           type: number
+          label: Performance to Plan (Income)
+          group_label: Finance (-)
+          description: "Percentage reflecting the difference between actual and budgeted income. 100% = perfect match between actuals and budget. Calculated as (Amount Income)/(Amount Budgeted Income). Non-addative (-)."
           sql: safe_divide(${amt_income_sum},${amt_budget_income_sum})
           format: percent
           round: 2
         performance_to_plan_save:
           type: number
+          label: Performance to Plan (Save)
+          group_label: Finance (-)
+          description: "Percentage reflecting the difference between actual and budgeted savings. 100% = perfect match between actuals and budget. Calculated as (Amount Invested)/(Amount Budgeted Savings). Non-addative (-)."
           sql: safe_divide(${amt_invested_sum},${amt_budget_save_sum})
           format: percent
           round: 2
         performance_to_plan_spend:
           type: number
           sql: safe_divide(${amt_expense_sum},${amt_budget_spend_sum})
+          label: Performance to Plan (Spend)
+          group_label: Finance (-)
+          description: "Percentage reflecting the difference between actual and budgeted spending. 100% = perfect match between actuals and budget. Calculated as (Amount Spent)/(Amount Budgeted Spending). Non-addative (-)."
           format: percent
           round: 2
         annualized_income_swr:
           type: number
+          label: Annualized Income at SWR
+          group_label: Finance (~+)
+          description: "Translates investment balances into an annualized income at a 4% Safe Withdrawl Rate. Calculated as (Daily Amount Investment Balance) * .04. Semi-addative at the day grain (~+)."
           sql: ${amt_balance_investment_lv_dly} * .04
           format: usd
           round: 2
-          group_label: fi
         annualized_income_twr:
           type: number
+          label: Annualized Income at TWR
+          group_label: Finance (~+)
+          description: "Translates investment balances into an annualized income at a 3.5% Target Withdrawl Rate. Calculated as (Daily Amount Investment Balance) * .035. Semi-addative at the day grain (~+)."
           sql: ${amt_balance_investment_lv_dly} * .035
           format: usd
           round: 2
-          group_label: fi
         annualized_income_pwr:
           type: number
+          label: Annualized Income at PWR
+          group_label: Finance (~+)
+          description: "Translates investment balances into an annualized income at a 3.25% Perpetual Withdrawl Rate. Calculated as (Daily Amount Investment Balance) * .0325. Semi-addative at the day grain (~+)."
           sql: ${amt_balance_investment_lv_dly} * .0325
           format: usd
           round: 2
-          group_label: fi
         amt_budget_retirement_expected_spend_give_annual:
           type: number
           format: usd
-          group_label: fi
           sql: (${amt_budget_retirement_expected_spend_annual})/.9
+          hidden: true
         val_budget_retirement_expected_tax_rate:
           type: max
           format: percent
-          group_label: fi
           sql: >-
             case when extract(year from ${key_calendar}) = 2022 then .215 when
             extract (year from ${key_calendar})=2023 then .21 end
+          hidden: true
         amt_budget_retirement_expected_spend_give_tax_annual:
           type: number
+          label: Annualized Expected Retirement Budget
+          group_label: Finance (~+)
+          description: "Refects expected retirement budget based on annualized core expenses + 10% giving + expected taxes. Semi-addative at the first day of the month grain (~+)."
           format: usd
-          group_label: fi
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_annual}/(1-${val_budget_retirement_expected_tax_rate})
         progress_to_twr:
           type: number
+          label: Progress to TWR
+          description: "% reflecting progress towards having TWR spending cover the expected retirement budget. Non-addative (-)."
           format: percent
           round: 2
-          group_label: fi
+          group_label: Finance (-)
           sql: >-
             ${annualized_income_twr}/${amt_budget_retirement_expected_spend_give_tax_annual}
         amt_budget_coast_65:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 65
+          description: "Annualized $ amount invested needed to retire at 65 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)."
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(65-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_60:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 60
+          description: "Annualized $ amount invested needed to retire at 60 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)."
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(60-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_55:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 55
+          description: "Annualized $ amount invested needed to retire at 55 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)."
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(55-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_54:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 54
+          description: "Annualized $ amount invested needed to retire at 54 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)"
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(54-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_53:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 53
+          description: "Annualized $ amount invested needed to retire at 53 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)"
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(53-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_52:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 52
+          description: "Annualized $ amount invested needed to retire at 52 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)"
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(52-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_51:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 51
+          description: "Annualized $ amount invested needed to retire at 51 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)"
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(51-date_diff(current_date(),
             '1990-08-18', year))))
         amt_budget_coast_50:
           type: number
           format: usd
-          group_label: fi
+          label: Annualized Coast Target- 50
+          description: "Annualized $ amount invested needed to retire at 50 if no addtional $s were invested/saved. Semi-addative at the first day of the month grain (~+)"
+          group_label: Finance (~+)
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(50-date_diff(current_date(),
             '1990-08-18', year))))
         progress_to_coast_milestone:
           type: number
           format: percent
-          group_label: fi
+          label: Progress to Next Coast Milestone
+          description: "% reflecting progress towards moving our Coast year up by 1. Current target is 53. Non-addative (-)."
+          group_label: Finance (-)
           round: 2
           sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_53})
     columns:
@@ -145,7 +186,7 @@ models:
             type: string
             hidden: true
       - name: key_activity
-        description: ""
+        description: "{{doc('key_activity')}}"
         meta:
           dimension:
             type: string
@@ -179,11 +220,13 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
       - name: amt_income
         description: ""
         meta:
           dimension:
             type: number
+            hidden: true
           metrics:
             amt_income_sum:
               type: sum
@@ -194,6 +237,7 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
           metrics:
             amt_invested_sum:
               type: sum
@@ -204,6 +248,7 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
           metrics:
             amt_expense_sum:
               type: sum
@@ -215,6 +260,7 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
           metrics:
             amt_budget_sum:
               type: sum
@@ -256,11 +302,13 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
       - name: amt_balance_lv
         description: ""
         meta:
           dimension:
             type: number
+            hidden: true
           metrics:
             amt_balance_lv_dly:
               type: sum

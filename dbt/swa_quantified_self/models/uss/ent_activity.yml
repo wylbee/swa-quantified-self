@@ -3,7 +3,7 @@ models:
   - name: ent_activity
     columns:
       - name: key_activity
-        description: ""
+        description: "{{doc('key_activity')}}"
         meta:
           dimension:
             type: string

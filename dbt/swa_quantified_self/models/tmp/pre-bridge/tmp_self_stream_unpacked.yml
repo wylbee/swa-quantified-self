@@ -3,7 +3,7 @@ models:
   - name: tmp_self_stream_unpacked
     columns:
       - name: key_activity
-        description: ""
+        description: "{{doc('key_activity')}}"
         meta:
           dimension:
             type: string
