@@ -8,17 +8,17 @@ models:
           dimension:
             type: string
       - name: id_tiller_budget
-        description: ""
+        description: "{{doc('id_tiller_budget')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_group
-        description: ""
+        description: "{{doc('cat_budget_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_type
-        description: ""
+        description: "{{doc('cat_budget_type')}}"
         meta:
           dimension:
             type: string
@@ -29,27 +29,27 @@ models:
             type: number
             hidden: true
       - name: is_budget_monthly_line
-        description: ""
+        description: "{{doc('is_budget_monthly_line')}}"
         meta:
           dimension:
             type: number
       - name: is_budget_income
-        description: ""
+        description: "{{doc('is_budget_income')}}"
         meta:
           dimension:
             type: number
       - name: is_budget_save
-        description: ""
+        description: "{{doc('is_budget_save')}}"
         meta:
           dimension:
             type: number
       - name: is_budget_spend
-        description: ""
+        description: "{{doc('is_budget_spend')}}"
         meta:
           dimension:
             type: number
       - name: is_budget_core
-        description: ""
+        description: "{{doc('is_budget_core')}}"
         meta:
           dimension:
             type: number

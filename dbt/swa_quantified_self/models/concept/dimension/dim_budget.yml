@@ -8,17 +8,17 @@ models:
           dimension:
             type: string
       - name: id_tiller_budget
-        description: ""
+        description: "{{doc('id_tiller_budget')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_group
-        description: ""
+        description: "{{doc('cat_budget_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_type
-        description: ""
+        description: "{{doc('cat_budget_type')}}"
         meta:
           dimension:
             type: string

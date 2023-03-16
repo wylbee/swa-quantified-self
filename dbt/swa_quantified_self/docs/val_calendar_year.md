@@ -1,0 +1,1 @@
+{% docs val_calendar_year %} Value reflecting the calendar year (e.g. 2023). {% enddocs %}
