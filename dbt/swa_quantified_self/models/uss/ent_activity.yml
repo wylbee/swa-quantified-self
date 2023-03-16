@@ -8,27 +8,27 @@ models:
           dimension:
             type: string
       - name: tm_activity
-        description: ""
+        description: "{{doc('tm_activity')}}"
         meta:
           dimension:
             type: timestamp
       - name: n_activity
-        description: ""
+        description: "{{doc('n_activity')}}"
         meta:
           dimension:
             type: number
       - name: tm_activity_repeated
-        description: ""
+        description: "{{doc('tm_activity_repeated')}}"
         meta:
           dimension:
             type: timestamp
       - name: str_activity_url
-        description: ""
+        description: "{{doc('str_activity_url')}}"
         meta:
           dimension:
             type: string
       - name: str_transaction_description
-        description: ""
+        description: "{{doc('str_transaction_description')}}"
         meta:
           dimension:
             type: string

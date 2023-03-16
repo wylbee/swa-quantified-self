@@ -220,7 +220,7 @@ models:
           dimension:
             type: timestamp
       - name: str_transaction_description
-        description: ""
+        description: "{{doc('str_transaction_description')}}"
         meta:
           dimension:
             type: string

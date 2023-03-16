@@ -1,0 +1,1 @@
+{% docs tm_activity_repeated %} Timestamp when this activity was repeated by the subject/customer. NULL captures the latest record by the subject/customer. {% enddocs %}

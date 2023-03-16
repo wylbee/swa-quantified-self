@@ -1,0 +1,1 @@
+{% docs str_transaction_description %} String reflecting the financial transaction description as retured by Tiller. {% enddocs %}
