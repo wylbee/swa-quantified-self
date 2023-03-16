@@ -1,0 +1,1 @@
+{% docs is_budget_spend %} 1/0 Boolean reflecting whether a given budget line is included in the Spend bucket. {% enddocs %}

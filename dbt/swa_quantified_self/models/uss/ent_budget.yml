@@ -27,6 +27,7 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
       - name: is_budget_monthly_line
         description: ""
         meta:

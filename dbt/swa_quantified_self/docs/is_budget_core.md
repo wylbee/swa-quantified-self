@@ -1,0 +1,1 @@
+{% docs is_budget_core %} 1/0 Boolean reflecting whether a given budget line reflects core (vs. transient) spending. {% enddocs %}

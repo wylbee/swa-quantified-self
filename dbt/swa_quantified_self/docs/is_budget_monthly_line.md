@@ -1,0 +1,1 @@
+{% docs is_budget_monthly_line %} 1/0 Boolean reflecting whether a given budget line reflects a Monthly expenditure. {% enddocs %}

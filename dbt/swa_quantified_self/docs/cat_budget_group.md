@@ -1,0 +1,1 @@
+{% docs cat_budget_group %} Categorical string capturing the group of the budget. Examples are "Live | Monthly | Core" and "Primary Income". {% enddocs %}
