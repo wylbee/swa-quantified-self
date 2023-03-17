@@ -1,0 +1,1 @@
+{% docs val_calendar_month %} Value reflecting the calendar month (e.g. 1 for January). {% enddocs %}

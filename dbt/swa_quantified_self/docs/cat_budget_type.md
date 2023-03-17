@@ -1,0 +1,1 @@
+{% docs cat_budget_type %} Categorical string capturing whether the budget is Expense, Income, or Transfer. {% enddocs %}

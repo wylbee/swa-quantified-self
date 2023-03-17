@@ -1,0 +1,1 @@
+{% docs val_finaccount_class_modifier %} Value used to assess the correct sign on a Financial account balance (e.g. making credit debit negative). {% enddocs %}

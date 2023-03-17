@@ -1,0 +1,1 @@
+{% docs amt_budget %} Amount in $ budgeted. Budgets are defined at the yearly level, then divided out linearly by month. A budget for the month accrues on the first day of the month. Semi-additive at the first day of the month grain (~+). {% enddocs %}

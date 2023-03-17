@@ -1,0 +1,1 @@
+{% docs amt_invested %} Amount in $ of invested. Fully additive. {% enddocs %}

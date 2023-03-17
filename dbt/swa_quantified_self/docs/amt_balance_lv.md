@@ -1,0 +1,1 @@
+{% docs amt_balance_lv %} Amount in $ that reflects the last daily value of a snapshot of an account balance. Each account will have one value per day. Semi-additive by day (~+). {% enddocs %}

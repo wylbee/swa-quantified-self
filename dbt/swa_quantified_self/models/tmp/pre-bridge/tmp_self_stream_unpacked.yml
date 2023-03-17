@@ -3,32 +3,32 @@ models:
   - name: tmp_self_stream_unpacked
     columns:
       - name: key_activity
-        description: ""
+        description: "{{doc('key_activity')}}"
         meta:
           dimension:
             type: string
       - name: key_self
-        description: ""
+        description: "{{doc('key_self')}}"
         meta:
           dimension:
             type: string
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: key_budget
-        description: ""
+        description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: cat_source
-        description: ""
+        description: "{{doc('cat_source')}}"
         meta:
           dimension:
             type: string
@@ -38,32 +38,32 @@ models:
           dimension:
             type: number
       - name: amt_income
-        description: ""
+        description: "{{doc('amt_income')}}"
         meta:
           dimension:
             type: number
       - name: amt_invested
-        description: ""
+        description: "{{doc('amt_invested')}}"
         meta:
           dimension:
             type: number
       - name: amt_expense
-        description: ""
+        description: "{{doc('amt_expense')}}"
         meta:
           dimension:
             type: number
       - name: amt_budget
-        description: ""
+        description: "{{doc('amt_budget')}}"
         meta:
           dimension:
             type: number
       - name: amt_balance
-        description: ""
+        description: "{{doc('amt_balance')}}"
         meta:
           dimension:
             type: number
       - name: amt_balance_lv
-        description: ""
+        description: "{{doc('amt_balance_lv')}}"
         meta:
           dimension:
             type: number

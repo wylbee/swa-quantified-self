@@ -1,0 +1,1 @@
+{% docs val_calendar_dow %} Value reflecting the calendar day of week. {% enddocs %}

@@ -95,7 +95,9 @@ with
     joined as (
 
         select
-            concat('lv | ', windowed.key_event) as activity_id,
+            concat(
+                'lv | ', windowed.key_event, ' | ', windowed.key_calendar
+            ) as activity_id,
             cast(windowed.key_calendar as timestamp) as ts,
             'self' as customer,
             'updates_eod_balance' as activity,

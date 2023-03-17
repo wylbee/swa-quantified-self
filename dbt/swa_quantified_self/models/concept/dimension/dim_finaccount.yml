@@ -3,32 +3,32 @@ models:
   - name: dim_finaccount
     columns:
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: id_tiller_finaccount
-        description: ""
+        description: "{{doc('id_tiller_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: str_finaccount_name
-        description: ""
+        description: "{{doc('str_finaccount_name')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_class
-        description: ""
+        description: "{{doc('cat_finaccount_class')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_group
-        description: ""
+        description: "{{doc('cat_finaccount_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_institution
-        description: ""
+        description: "{{doc('cat_finaccount_institution')}}"
         meta:
           dimension:
             type: string
@@ -38,12 +38,12 @@ models:
           dimension:
             type: string
       - name: is_finaccount_savings
-        description: ""
+        description: "{{doc('is_finaccount_savings')}}"
         meta:
           dimension:
             type: number
       - name: val_finaccount_class_modifier
-        description: ""
+        description: "{{doc('val_finaccount_class_modifier')}}"
         meta:
           dimension:
             type: number

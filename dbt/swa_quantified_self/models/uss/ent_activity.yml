@@ -3,32 +3,47 @@ models:
   - name: ent_activity
     columns:
       - name: key_activity
-        description: ""
+        description: "{{doc('key_activity')}}"
+        tests:
+          - unique
+          - not_null
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Activity Key
       - name: tm_activity
-        description: ""
+        description: "{{doc('tm_activity')}}"
         meta:
           dimension:
             type: timestamp
+            group_label: Date & Time
+            label: Activity At
       - name: n_activity
-        description: ""
+        description: "{{doc('n_activity')}}"
         meta:
           dimension:
             type: number
+            group_label: Count
+            label: Activity Occurrence
       - name: tm_activity_repeated
-        description: ""
+        description: "{{doc('tm_activity_repeated')}}"
         meta:
           dimension:
             type: timestamp
+            group_label: Date & Time
+            label: Activity Repeated At            
       - name: str_activity_url
-        description: ""
+        description: "{{doc('str_activity_url')}}"
         meta:
           dimension:
             type: string
+            group_label: String
+            label: URL
       - name: str_transaction_description
-        description: ""
+        description: "{{doc('str_transaction_description')}}"
         meta:
           dimension:
             type: string
+            group_label: String
+            label: Transaction Description

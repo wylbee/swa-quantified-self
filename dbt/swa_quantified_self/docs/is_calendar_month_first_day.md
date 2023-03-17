@@ -1,0 +1,1 @@
+{% docs is_calendar_month_first_day %} 1/0 Boolean reflecting whether a given date is the first day of the month. {% enddocs %}

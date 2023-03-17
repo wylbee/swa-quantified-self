@@ -1,0 +1,1 @@
+{% docs key_self %} Primary key denoting a unique me. Replaces the concept of a customer in an activity schema. Reflects a surrogate key. {% enddocs %}

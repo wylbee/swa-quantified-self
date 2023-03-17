@@ -1,0 +1,1 @@
+{% docs val_calendar_quarter %} Value reflecting the calendar quarter (e.g. 1 for Q1). {% enddocs %}

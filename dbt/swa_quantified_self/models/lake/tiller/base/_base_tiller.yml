@@ -4,7 +4,7 @@ models:
     description: ""
     columns:
       - name: id_tiller_finaccount
-        description: ""
+        description: "{{doc('id_tiller_finaccount')}}"
         tests:
           - unique
           - not_null
@@ -12,22 +12,22 @@ models:
           dimension:
             type: string
       - name: str_finaccount_name
-        description: ""
+        description: "{{doc('str_finaccount_name')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_class
-        description: ""
+        description: "{{doc('cat_finaccount_class')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_group
-        description: ""
+        description: "{{doc('cat_finaccount_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_institution
-        description: ""
+        description: "{{doc('cat_finaccount_institution')}}"
         meta:
           dimension:
             type: string
@@ -37,12 +37,12 @@ models:
           dimension:
             type: string
       - name: is_finaccount_savings
-        description: ""
+        description: "{{doc('is_finaccount_savings')}}"
         meta:
           dimension:
             type: number
       - name: val_finaccount_class_modifier
-        description: ""
+        description: "{{doc('val_finaccount_class_modifier')}}"
         meta:
           dimension:
             type: number
@@ -63,7 +63,7 @@ models:
           dimension:
             type: timestamp
       - name: amt_balance
-        description: ""
+        description: "{{doc('amt_balance')}}"
         meta:
           dimension:
             type: number
@@ -78,7 +78,7 @@ models:
           dimension:
             type: timestamp
       - name: id_tiller_finaccount
-        description: ""
+        description: "{{doc('id_tiller_finaccount')}}"
         meta:
           dimension:
             type: string
@@ -86,7 +86,7 @@ models:
     description: ""
     columns:
       - name: id_tiller_budget
-        description: ""
+        description: "{{doc('id_tiller_budget')}}"
         tests:
           - unique
           - not_null
@@ -94,12 +94,12 @@ models:
           dimension:
             type: string
       - name: cat_budget_group
-        description: ""
+        description: "{{doc('cat_budget_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_type
-        description: ""
+        description: "{{doc('cat_budget_type')}}"
         meta:
           dimension:
             type: string
@@ -194,7 +194,7 @@ models:
           dimension:
             type: number
       - name: is_budget_monthly_line
-        description: ""
+        description: "{{doc('is_budget_monthly_line')}}"
         meta:
           dimension:
             type: number
@@ -210,7 +210,7 @@ models:
           dimension:
             type: string
       - name: id_tiller_budget
-        description: ""
+        description: "{{doc('id_tiller_budget')}}"
         meta:
           dimension:
             type: string
@@ -220,7 +220,7 @@ models:
           dimension:
             type: timestamp
       - name: str_transaction_description
-        description: ""
+        description: "{{doc('str_transaction_description')}}"
         meta:
           dimension:
             type: string
@@ -245,7 +245,7 @@ models:
           dimension:
             type: timestamp
       - name: id_tiller_finaccount
-        description: ""
+        description: "{{doc('id_tiller_finaccount')}}"
         meta:
           dimension:
             type: string

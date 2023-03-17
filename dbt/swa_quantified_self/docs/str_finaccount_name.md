@@ -1,0 +1,1 @@
+{% docs str_finaccount_name %} Name of the Financial account. {% enddocs %}

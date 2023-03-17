@@ -4,7 +4,7 @@ models:
     description: Conformed dimension reflecting financial accounts
     columns:
       - name: key_finaccount
-        description: ""
+        description: "{{doc('key_finaccount')}}"
         tests:
           - unique
           - not_null
@@ -12,27 +12,27 @@ models:
           dimension:
             type: string
       - name: id_tiller_finaccount
-        description: ""
+        description: "{{doc('id_tiller_finaccount')}}"
         meta:
           dimension:
             type: string
       - name: str_finaccount_name
-        description: ""
+        description: "{{doc('str_finaccount_name')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_class
-        description: ""
+        description: "{{doc('cat_finaccount_class')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_group
-        description: ""
+        description: "{{doc('cat_finaccount_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_finaccount_institution
-        description: ""
+        description: "{{doc('cat_finaccount_institution')}}"
         meta:
           dimension:
             type: string
@@ -42,12 +42,12 @@ models:
           dimension:
             type: string
       - name: is_finaccount_savings
-        description: ""
+        description: "{{doc('is_finaccount_savings')}}"
         meta:
           dimension:
             type: number
       - name: val_finaccount_class_modifier
-        description: ""
+        description: "{{doc('val_finaccount_class_modifier')}}"
         meta:
           dimension:
             type: number
@@ -55,7 +55,7 @@ models:
     description: Conformed dimension reflection a financial budget x fiscal year
     columns:
       - name: key_budget
-        description: Surrogate Key generated using budget id + FY
+        description: "{{doc('key_budget')}}"
         tests:
           - unique
           - not_null
@@ -63,17 +63,17 @@ models:
           dimension:
             type: string
       - name: id_tiller_budget
-        description: ""
+        description: "{{doc('id_tiller_budget')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_group
-        description: ""
+        description: "{{doc('cat_budget_group')}}"
         meta:
           dimension:
             type: string
       - name: cat_budget_type
-        description: ""
+        description: "{{doc('cat_budget_type')}}"
         meta:
           dimension:
             type: string

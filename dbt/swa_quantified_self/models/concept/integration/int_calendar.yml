@@ -3,42 +3,42 @@ models:
   - name: int_calendar
     columns:
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
       - name: val_calendar_year
-        description: ""
+        description: "{{doc('val_calendar_year')}}"
         meta:
           dimension:
             type: number
       - name: val_calendar_quarter
-        description: ""
+        description: "{{doc('val_calendar_quarter')}}"
         meta:
           dimension:
             type: number
       - name: val_calendar_month
-        description: ""
+        description: "{{doc('val_calendar_month')}}"
         meta:
           dimension:
             type: number
       - name: val_calendar_week
-        description: ""
+        description: "{{doc('val_calendar_week')}}"
         meta:
           dimension:
             type: number
       - name: val_calendar_isoweek
-        description: ""
+        description: "{{doc('val_calendar_isoweek')}}"
         meta:
           dimension:
             type: number
       - name: val_calendar_dow
-        description: ""
+        description: "{{doc('val_calendar_dow')}}"
         meta:
           dimension:
             type: number
       - name: is_calendar_month_first_day
-        description: ""
+        description: "{{doc('is_calendar_month_first_day')}}"
         meta:
           dimension:
             type: number

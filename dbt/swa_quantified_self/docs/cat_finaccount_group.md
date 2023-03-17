@@ -1,0 +1,1 @@
+{% docs cat_finaccount_group %} Categorical string representing the group of the Financial account. Examples of values include "Retirement Savings", "Credit Card", or "Cash/Living Expenses". {% enddocs %}

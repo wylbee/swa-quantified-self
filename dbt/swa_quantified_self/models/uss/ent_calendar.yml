@@ -3,42 +3,61 @@ models:
   - name: ent_calendar
     columns:
       - name: key_calendar
-        description: ""
+        description: "{{doc('key_calendar')}}"
+        tests:
+          - unique
+          - not_null
         meta:
           dimension:
             type: timestamp
+            group_label: Date & Time
+            label: Calendar Date
       - name: val_calendar_year
-        description: ""
+        description: "{{doc('val_calendar_year')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: Year Number
       - name: val_calendar_quarter
-        description: ""
+        description: "{{doc('val_calendar_quarter')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: Quarter Number
       - name: val_calendar_month
-        description: ""
+        description: "{{doc('val_calendar_month')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: Month Number
       - name: val_calendar_week
-        description: ""
+        description: "{{doc('val_calendar_week')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: Week Number
       - name: val_calendar_isoweek
-        description: ""
+        description: "{{doc('val_calendar_isoweek')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: ISO Week Number
       - name: val_calendar_dow
-        description: ""
+        description: "{{doc('val_calendar_dow')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: Day of Week Number
       - name: is_calendar_month_first_day
-        description: ""
+        description: "{{doc('is_calendar_month_first_day')}}"
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is First Day of Month

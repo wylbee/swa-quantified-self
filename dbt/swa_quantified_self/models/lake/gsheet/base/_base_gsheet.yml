@@ -12,12 +12,12 @@ models:
           dimension:
             type: string
       - name: val_calendar_year
-        description: ""
+        description: "{{doc('val_calendar_year')}}"
         meta:
           dimension:
             type: number
       - name: val_calendar_week
-        description: ""
+        description: "{{doc('val_calendar_week')}}"
         meta:
           dimension:
             type: number
