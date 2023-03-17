@@ -1,0 +1,1 @@
+{% docs cat_finaccount_class %} Categorical string representing the Financial account's class. Options are Asset or Liability. {% enddocs %}

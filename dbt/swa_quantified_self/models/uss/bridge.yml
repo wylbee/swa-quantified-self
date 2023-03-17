@@ -1,6 +1,14 @@
 version: 2
 models:
   - name: bridge
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - key_activity
+            - key_calendar
+            - key_budget
+            - key_finaccount
+            - key_self
     meta:
       joins:
         - join: ent_activity
@@ -241,32 +249,43 @@ models:
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Activity Key
       - name: key_self
         description: "{{doc('key_self')}}"
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Self Key
       - name: key_finaccount
         description: "{{doc('key_finaccount')}}"
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Financial Account Key
       - name: key_budget
         description: "{{doc('key_budget')}}"
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Budget Key
       - name: key_calendar
         description: "{{doc('key_calendar')}}"
         meta:
           dimension:
             type: date
             label: Calendar Date
+            group_label: Date & Time
       - name: cat_source
         description: "{{doc('cat_source')}}"
         meta:
           dimension:
             type: string
+            group_label: Categorical
+            label: Source Concept
       - name: amt_activity_cash_flow_impact
         description: ""
         meta:
@@ -406,6 +425,7 @@ models:
         meta:
           dimension:
             type: number
+            hidden: true
           metrics:
             amt_balance_lv_dly:
               description: >-

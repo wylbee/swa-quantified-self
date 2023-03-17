@@ -4,24 +4,35 @@ models:
     columns:
       - name: key_budget
         description: "{{doc('key_budget')}}"
+        tests:
+          - unique
+          - not_null
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Budget Key
       - name: id_tiller_budget
         description: "{{doc('id_tiller_budget')}}"
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Budget ID
       - name: cat_budget_group
         description: "{{doc('cat_budget_group')}}"
         meta:
           dimension:
             type: string
+            group_label: Categorical
+            label: Budget Group
       - name: cat_budget_type
         description: "{{doc('cat_budget_type')}}"
         meta:
           dimension:
             type: string
+            group_label: Categorical
+            label: Budget Type
       - name: is_budget_hidden_from_reporting
         description: ""
         meta:
@@ -33,23 +44,33 @@ models:
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is Monthly Line
       - name: is_budget_income
         description: "{{doc('is_budget_income')}}"
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is Income
       - name: is_budget_save
         description: "{{doc('is_budget_save')}}"
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is Savings
       - name: is_budget_spend
         description: "{{doc('is_budget_spend')}}"
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is Spending
       - name: is_budget_core
         description: "{{doc('is_budget_core')}}"
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is Core

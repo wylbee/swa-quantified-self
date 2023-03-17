@@ -1,0 +1,1 @@
+{% docs is_finaccount_savings %} 1/0 Boolean reflecting whether a given Financial account is used for savings. {% enddocs %}

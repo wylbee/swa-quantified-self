@@ -4,46 +4,66 @@ models:
     columns:
       - name: key_finaccount
         description: "{{doc('key_finaccount')}}"
+        tests:
+          - unique
+          - not_null
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Financial Account Key
       - name: id_tiller_finaccount
-        description: ""
+        description: "{{doc('id_tiller_finaccount')}}"
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Financial Account ID
       - name: str_finaccount_name
-        description: ""
+        description: "{{doc('str_finaccount_name')}}"
         meta:
           dimension:
             type: string
+            group_label: String
+            label: Financial Account Name
       - name: cat_finaccount_class
-        description: ""
+        description: "{{doc('cat_finaccount_class')}}"
         meta:
           dimension:
             type: string
+            group_label: Categorical
+            label: Financial Account Class
       - name: cat_finaccount_group
-        description: ""
+        description: "{{doc('cat_finaccount_group')}}"
         meta:
           dimension:
             type: string
+            group_label: Categorical
+            label: Financial Account Group
       - name: cat_finaccount_institution
-        description: ""
+        description: "{{doc('cat_finaccount_institution')}}"
         meta:
           dimension:
             type: string
+            group_label: Categorical
+            label: Financial Account Institution
       - name: cat_finaccount_institution_type
         description: ""
         meta:
           dimension:
             type: string
+            hidden: true
       - name: is_finaccount_savings
-        description: ""
+        description: "{{doc('is_finaccount_savings')}}"
         meta:
           dimension:
             type: number
+            group_label: True/False
+            label: Is Savings
       - name: val_finaccount_class_modifier
-        description: ""
+        description: "{{doc('val_finaccount_class_modifier')}}"
         meta:
           dimension:
             type: number
+            group_label: Value
+            label: Sign Modifier

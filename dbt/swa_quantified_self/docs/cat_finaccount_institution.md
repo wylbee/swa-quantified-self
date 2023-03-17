@@ -1,0 +1,1 @@
+{% docs cat_finaccount_institution %} Categorical string representing the Institution that the Financial account is with. Institutions can have many accounts. {% enddocs %}
