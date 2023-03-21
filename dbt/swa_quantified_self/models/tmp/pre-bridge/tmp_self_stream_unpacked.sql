@@ -9,6 +9,7 @@ with
             customer as key_self,
             {{ acid_str("key_finaccount") }},
             {{ acid_str("key_budget") }},
+            {{ acid_str("key_habit") }},
             cast(ts as date) as key_calendar,
             activity as cat_source,
 

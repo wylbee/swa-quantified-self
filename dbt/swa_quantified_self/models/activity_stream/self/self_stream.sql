@@ -7,6 +7,7 @@
             ref("sets_budget"),
             ref("updates_balance"),
             ref("updates_eod_balance"),
+            ref("tracks_habit"),
         ]
     )
 }}
