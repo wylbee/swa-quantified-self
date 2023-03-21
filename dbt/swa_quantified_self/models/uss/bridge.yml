@@ -449,3 +449,8 @@ models:
               format: usd
               filters:
                 - ent_finaccount.is_finaccount_savings: 1
+      - name: key_habit
+        description: ""
+        meta:
+          dimension:
+            type: string

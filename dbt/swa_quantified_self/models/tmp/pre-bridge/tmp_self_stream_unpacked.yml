@@ -67,3 +67,8 @@ models:
         meta:
           dimension:
             type: number
+      - name: key_habit
+        description: ""
+        meta:
+          dimension:
+            type: string
