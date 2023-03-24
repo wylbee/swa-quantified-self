@@ -8,7 +8,7 @@ models:
           dimension:
             type: string
       - name: id_habit
-        description: ""
+        description: "{{doc('id_habit')}}"
         meta:
           dimension:
             type: string
@@ -67,3 +67,8 @@ models:
         meta:
           dimension:
             type: string
+      - name: is_habit_pentathalon
+        description: ""
+        meta:
+          dimension:
+            type: number

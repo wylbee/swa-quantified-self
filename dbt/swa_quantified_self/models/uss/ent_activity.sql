@@ -15,7 +15,8 @@ with
             {{ fj_n("is_habit_planned_rest") }},
             {{ fj_n("is_habit_complete") }},
             {{ fj_n("is_habit_skipped") }},
-            {{ fj_amt("val_habit_score") }}
+            {{ fj_amt("val_habit_score") }},
+            {{ fj_amt("val_habit_score_group_weight") }}
 
         from stream
 

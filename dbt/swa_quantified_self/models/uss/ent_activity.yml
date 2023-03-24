@@ -72,3 +72,8 @@ models:
         meta:
           dimension:
             type: number
+      - name: val_habit_score_group_weight
+        description: ""
+        meta:
+          dimension:
+            type: number

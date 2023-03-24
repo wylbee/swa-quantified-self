@@ -9,6 +9,7 @@ models:
             - key_budget
             - key_finaccount
             - key_self
+            - key_habit
     meta:
       joins:
         - join: ent_activity
@@ -19,7 +20,10 @@ models:
           sql_on: ${bridge.key_calendar} = ${ent_calendar.key_calendar}
         - join: ent_finaccount
           sql_on: ${bridge.key_finaccount} = ${ent_finaccount.key_finaccount}
+        - join: ent_habit
+          sql_on: ${bridge.key_habit} = ${ent_habit.key_habit}
       metrics:
+# Finance
         savings_rate:
           type: number
           label: Savings Rate
@@ -237,6 +241,51 @@ models:
           group_label: Finance (-)
           round: 2
           sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_53})
+# Habits
+        val_habit_score_avg:
+          type: average
+          format: percent
+          label: Average Habit Score
+          description: >-
+            Average of the Habit score as calculated by the source system.
+            Non-additive (-).
+          group_label: LifeOS (-)
+          round: 2
+          sql: ${ent_activity.val_habit_score}
+        val_habit_score_group_weighted_sum:
+          type: sum
+          format: percent
+          label: Total Habit Score Group Weighted
+          description: >-
+            Sum of the Habit score * its group weight as calculated by the
+            source system. Non-additive (-).
+          group_label: LifeOS (-)
+          round: 2
+          sql: >-
+            ${ent_activity.val_habit_score} *
+            ${ent_activity.val_habit_score_group_weight}
+        n_habit_unique:
+          type: count_distinct
+          label: Unique Num Habits
+          group_label: LifeOS (+)
+          description: Unique count of Habits. Fully Addative (+).
+          sql: ${bridge.key_habit}
+        n_habit_group_unique:
+          type: count_distinct
+          label: Unique Num Habit Groups
+          group_label: LifeOS (+)
+          description: Unique count of Habit Groups. Fully Addative (+).
+          sql: ${ent_habit.cat_habit_grouping}
+        val_habit_score_group_weighted_avg:
+          type: number
+          label: Average Habit Score Group Weighted
+          format: percent
+          round: 2
+          description: >-
+            Average of the Habit score as calculated by the source system
+            weighted by the number of habits within a group. Non-additive (-).
+          group_label: LifeOS (-)
+          sql: safe_divide(${val_habit_score_group_weighted_sum},${n_habit_group_unique})
     columns:
       - name: _dbt_source_relation
         description: ""

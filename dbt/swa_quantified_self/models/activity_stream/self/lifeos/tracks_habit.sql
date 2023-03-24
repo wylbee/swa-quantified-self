@@ -6,6 +6,7 @@
             "is_habit_complete",
             "is_habit_skipped",
             "val_habit_score",
+            "val_habit_score_group_weight",
         ]
     )
 }}
@@ -40,7 +41,11 @@ with
 
             case when tracks.val_track = 3 then 1 else 0 end as is_habit_skipped,
 
-            scores.val_track_score as val_habit_score
+            scores.val_track_score as val_habit_score,
+
+            1 / count(tracks.id_habit) over (
+                partition by tracks.dt_track, habits.cat_habit_grouping
+            ) as val_habit_score_group_weight
 
 
         from tracks
