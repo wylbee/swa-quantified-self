@@ -48,12 +48,12 @@ models:
           dimension:
             type: date
       - name: key_habit
-        description: ""
+        description: "{{doc('key_habit')}}"
         meta:
           dimension:
             type: string
       - name: is_habit_impact
-        description: ""
+        description: "{{doc('is_habit_impact')}}"
         meta:
           dimension:
             type: number

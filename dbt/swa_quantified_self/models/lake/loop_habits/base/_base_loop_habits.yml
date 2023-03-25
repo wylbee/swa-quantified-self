@@ -63,7 +63,7 @@ models:
           dimension:
             type: number
       - name: str_habit_name
-        description: ""
+        description: "{{doc('str_habit_name')}}"
         meta:
           dimension:
             type: string
@@ -103,7 +103,7 @@ models:
           dimension:
             type: string
       - name: cat_habit_grouping
-        description: ""
+        description: "{{doc('cat_habit_grouping')}}"
         meta:
           dimension:
             type: string

@@ -11,10 +11,6 @@ with
             link as str_activity_url,
 
             {{ fj_str("str_transaction_description") }},
-            {{ fj_n("is_habit_impact") }},
-            {{ fj_n("is_habit_planned_rest") }},
-            {{ fj_n("is_habit_complete") }},
-            {{ fj_n("is_habit_skipped") }},
             {{ fj_amt("val_habit_score") }},
             {{ fj_amt("val_habit_score_group_weight") }}
 

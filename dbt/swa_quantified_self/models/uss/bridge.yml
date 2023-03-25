@@ -23,7 +23,6 @@ models:
         - join: ent_habit
           sql_on: ${bridge.key_habit} = ${ent_habit.key_habit}
       metrics:
-# Finance
         savings_rate:
           type: number
           label: Savings Rate
@@ -241,7 +240,6 @@ models:
           group_label: Finance (-)
           round: 2
           sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_53})
-# Habits
         val_habit_score_avg:
           type: average
           format: percent
@@ -285,7 +283,18 @@ models:
             Average of the Habit score as calculated by the source system
             weighted by the number of habits within a group. Non-additive (-).
           group_label: LifeOS (-)
-          sql: safe_divide(${val_habit_score_group_weighted_sum},${n_habit_group_unique})
+          sql: >-
+            safe_divide(${val_habit_score_group_weighted_sum},${n_habit_group_unique})
+        val_habit_completion_rate:
+          type: number
+          label: Habit Completion Rate
+          format: percent
+          round: 2
+          description: >-
+            Rate at which habits were checked vs. expectations. Non-additive
+            (-).
+          group_label: LifeOS (-)
+          sql: safe_divide(${n_habit_checked},${n_habit_expected})
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -335,6 +344,17 @@ models:
             type: string
             group_label: Categorical
             label: Source Concept
+          metrics:
+            n_habit_expected:
+              type: count
+              label: Num Habits Checked Expected
+              group_label: LifeOS (+)
+              description: >-
+                Sum of the number of Habits expected to be resolved (completed,
+                planned break, or skipped). Fully additive (+).
+              sql: >-
+                case when ${bridge.cat_source}='tracks_habit' then
+                ${bridge.key_activity} end
       - name: amt_activity_cash_flow_impact
         description: ""
         meta:
@@ -499,7 +519,23 @@ models:
               filters:
                 - ent_finaccount.is_finaccount_savings: 1
       - name: key_habit
-        description: ""
+        description: "{{doc('key_habit')}}"
         meta:
           dimension:
             type: string
+            label: Habit Key
+            group_label: Key & ID
+      - name: is_habit_impact
+        description: "{{doc('is_habit_impact')}}"
+        meta:
+          dimension:
+            type: number
+            hidden: true
+          metrics:
+            n_habit_checked:
+              type: sum
+              label: Num Habits Checked
+              description: >-
+                Sum of the number of Habits  successfully resolved (completed,
+                planned break, or  skipped). Fully additive (+).
+              group_label: LifeOS (+)

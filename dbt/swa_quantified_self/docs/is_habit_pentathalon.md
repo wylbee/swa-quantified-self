@@ -1,0 +1,1 @@
+{% docs is_habit_pentathalon %} Boolean reflecting whether Habit is classified as a Pentathalon component. {% enddocs %}

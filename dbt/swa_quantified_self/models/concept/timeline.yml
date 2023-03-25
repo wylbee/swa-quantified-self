@@ -127,12 +127,12 @@ models:
               round: 2
               format: usd
       - name: key_habit
-        description: ""
+        description: "{{doc('key_habit')}}"
         meta:
           dimension:
             type: string
       - name: is_habit_impact
-        description: ""
+        description: "{{doc('is_habit_impact')}}"
         meta:
           dimension:
             type: number

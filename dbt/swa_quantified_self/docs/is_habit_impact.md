@@ -1,0 +1,1 @@
+{% docs is_habit_impact %} Boolean reflecting was resolved on a given day. Resolution includes completion, skipping, or expected breaks. {% enddocs %}
