@@ -1,0 +1,1 @@
+{% docs val_habit_score %} Value reflecting the habit score as calculated by the source app. Considerd to be a good holistic rollup of progress vs. expectations over time. Calculated daily. {% enddocs %}

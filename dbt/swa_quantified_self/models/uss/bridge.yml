@@ -9,6 +9,7 @@ models:
             - key_budget
             - key_finaccount
             - key_self
+            - key_habit
     meta:
       joins:
         - join: ent_activity
@@ -19,6 +20,8 @@ models:
           sql_on: ${bridge.key_calendar} = ${ent_calendar.key_calendar}
         - join: ent_finaccount
           sql_on: ${bridge.key_finaccount} = ${ent_finaccount.key_finaccount}
+        - join: ent_habit
+          sql_on: ${bridge.key_habit} = ${ent_habit.key_habit}
       metrics:
         savings_rate:
           type: number
@@ -237,6 +240,61 @@ models:
           group_label: Finance (-)
           round: 2
           sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_53})
+        val_habit_score_avg:
+          type: average
+          format: percent
+          label: Average Habit Score
+          description: >-
+            Average of the Habit score as calculated by the source system.
+            Non-additive (-).
+          group_label: LifeOS (-)
+          round: 2
+          sql: ${ent_activity.val_habit_score}
+        val_habit_score_group_weighted_sum:
+          type: sum
+          format: percent
+          label: Total Habit Score Group Weighted
+          description: >-
+            Sum of the Habit score * its group weight as calculated by the
+            source system. Non-additive (-).
+          group_label: LifeOS (-)
+          round: 2
+          sql: >-
+            ${ent_activity.val_habit_score} *
+            ${ent_activity.val_habit_score_group_weight}
+        n_habit_unique:
+          type: count_distinct
+          label: Unique Num Habits
+          group_label: LifeOS (+)
+          description: Unique count of Habits. Fully Addative (+).
+          sql: ${bridge.key_habit}
+        n_habit_group_unique:
+          type: count_distinct
+          label: Unique Num Habit Groups
+          group_label: LifeOS (+)
+          description: Unique count of Habit Groups. Fully Addative (+).
+          sql: ${ent_habit.cat_habit_grouping}
+        val_habit_score_group_weighted_avg:
+          type: number
+          label: Average Habit Score Group Weighted
+          format: percent
+          round: 2
+          description: >-
+            Average of the Habit score as calculated by the source system
+            weighted by the number of habits within a group. Non-additive (-).
+          group_label: LifeOS (-)
+          sql: >-
+            safe_divide(${val_habit_score_group_weighted_sum},${n_habit_group_unique})
+        val_habit_completion_rate:
+          type: number
+          label: Habit Completion Rate
+          format: percent
+          round: 2
+          description: >-
+            Rate at which habits were checked vs. expectations. Non-additive
+            (-).
+          group_label: LifeOS (-)
+          sql: safe_divide(${n_habit_checked},${n_habit_expected})
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -286,6 +344,17 @@ models:
             type: string
             group_label: Categorical
             label: Source Concept
+          metrics:
+            n_habit_expected:
+              type: count
+              label: Num Habits Checked Expected
+              group_label: LifeOS (+)
+              description: >-
+                Sum of the number of Habits expected to be resolved (completed,
+                planned break, or skipped). Fully additive (+).
+              sql: >-
+                case when ${bridge.cat_source}='tracks_habit' then
+                ${bridge.key_activity} end
       - name: amt_activity_cash_flow_impact
         description: ""
         meta:
@@ -449,3 +518,24 @@ models:
               format: usd
               filters:
                 - ent_finaccount.is_finaccount_savings: 1
+      - name: key_habit
+        description: "{{doc('key_habit')}}"
+        meta:
+          dimension:
+            type: string
+            label: Habit Key
+            group_label: Key & ID
+      - name: is_habit_impact
+        description: "{{doc('is_habit_impact')}}"
+        meta:
+          dimension:
+            type: number
+            hidden: true
+          metrics:
+            n_habit_checked:
+              type: sum
+              label: Num Habits Checked
+              description: >-
+                Sum of the number of Habits  successfully resolved (completed,
+                planned break, or  skipped). Fully additive (+).
+              group_label: LifeOS (+)

@@ -9,6 +9,7 @@ with
             customer as key_self,
             {{ acid_str("key_finaccount") }},
             {{ acid_str("key_budget") }},
+            {{ acid_str("key_habit") }},
             cast(ts as date) as key_calendar,
             activity as cat_source,
 
@@ -18,7 +19,8 @@ with
             {{ fj_amt("amt_expense") }},
             {{ fj_amt("amt_budget") }},
             {{ fj_amt("amt_balance") }},
-            {{ fj_amt("amt_balance_lv") }}
+            {{ fj_amt("amt_balance_lv") }},
+            {{ fj_n("is_habit_impact") }}
 
         from self_stream
 

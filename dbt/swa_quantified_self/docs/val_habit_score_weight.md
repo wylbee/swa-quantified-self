@@ -1,0 +1,1 @@
+{% docs val_habit_score_group_weight %} Value reflecting the weight needed to aggregate habit scores at the grouping level. Used for weighted averages. {% enddocs %}

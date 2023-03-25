@@ -32,7 +32,7 @@ models:
           dimension:
             type: timestamp
             group_label: Date & Time
-            label: Activity Repeated At            
+            label: Activity Repeated At
       - name: str_activity_url
         description: "{{doc('str_activity_url')}}"
         meta:
@@ -47,3 +47,17 @@ models:
             type: string
             group_label: String
             label: Transaction Description
+      - name: val_habit_score
+        description: "{{doc('val_habit_score')}}"
+        meta:
+          dimension:
+            type: number
+            label: Habit Score
+            group_label: Value
+      - name: val_habit_score_group_weight
+        description: "{{doc('val_habit_score_group_weight')}}"
+        meta:
+          dimension:
+            type: number
+            label: Habit Score Group Weight
+            group_label: Value

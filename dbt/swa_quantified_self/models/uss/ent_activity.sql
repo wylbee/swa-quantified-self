@@ -10,7 +10,9 @@ with
             activity_repeated_at as tm_activity_repeated,
             link as str_activity_url,
 
-            {{ fj_str("str_transaction_description") }}
+            {{ fj_str("str_transaction_description") }},
+            {{ fj_amt("val_habit_score") }},
+            {{ fj_amt("val_habit_score_group_weight") }}
 
         from stream
 

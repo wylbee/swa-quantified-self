@@ -1,69 +1,88 @@
 version: 2
 models:
-  - name: dim_habit
+  - name: ent_habit
     columns:
       - name: key_habit
         description: "{{doc('key_habit')}}"
         meta:
           dimension:
             type: string
+            label: Habit Key
       - name: id_habit
         description: "{{doc('id_habit')}}"
         meta:
           dimension:
             type: string
+            label: Habit ID
+      - name: id_meta_row_check_hash
+        description: ""
+        meta:
+          dimension:
+            type: string
+            hidden: true
       - name: val_habit_position
         description: ""
         meta:
           dimension:
             type: number
+            hidden: true
       - name: str_habit_name
         description: "{{doc('str_habit_name')}}"
         meta:
           dimension:
             type: string
+            label: Habit Name
       - name: str_habit_prompt
         description: ""
         meta:
           dimension:
             type: string
+            hidden: true
       - name: str_habit_description
         description: ""
         meta:
           dimension:
             type: string
+            hidden: true
       - name: val_habit_target
         description: ""
         meta:
           dimension:
             type: number
+            hidden: true
       - name: val_habit_interval
         description: ""
         meta:
           dimension:
             type: number
+            hidden: true
       - name: str_habit_color_hex
         description: ""
         meta:
           dimension:
             type: string
+            hidden: true
       - name: dt_meta_exported
         description: ""
         meta:
           dimension:
             type: date
+            hidden: true
       - name: str_meta_file_name
         description: ""
         meta:
           dimension:
             type: string
+            hidden: true
       - name: cat_habit_grouping
         description: "{{doc('cat_habit_grouping')}}"
         meta:
           dimension:
             type: string
-      - name: id_meta_habits_row_check_hash
-        description: ""
+            label: Habit Group
+      - name: is_habit_pentathalon
+        description: "{{doc('is_habit_pentathalon')}}"
         meta:
           dimension:
-            type: string
+            type: number
+            label: Is Pentathalon
