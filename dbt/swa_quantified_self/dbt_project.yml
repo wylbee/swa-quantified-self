@@ -64,3 +64,6 @@ models:
 vars:
   str_tiller_url: 'https://docs.google.com/spreadsheets/d/1crkZo-o-544gG1O4w0incNrptUxMRG0aZEYfQs5sZNI/edit#gid=1256593101'
   str_say_to_do_url: 'https://docs.google.com/spreadsheets/d/1kEStMpxgBLYbYzO2H6FSsV0KV2OkRlvqYEjsZ4BgnQA/edit#gid=947292290'
+  data_diff:
+    prod_database: qs-prod-352513
+    custom_schemas: True
