@@ -61,3 +61,10 @@ models:
             type: number
             label: Habit Score Group Weight
             group_label: Value
+      - name: cat_area_group
+        description: "{{doc('cat_area_group')}}"
+        meta:
+          dimension:
+            type: string
+            label: Say-to-Do Group
+            group_label: Categorical

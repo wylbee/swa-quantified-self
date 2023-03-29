@@ -77,3 +77,33 @@ models:
         meta:
           dimension:
             type: number
+      - name: n_say_wc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_do_wc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_say_nwc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_do_nwc
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_say
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: n_do
+        description: ""
+        meta:
+          dimension:
+            type: number

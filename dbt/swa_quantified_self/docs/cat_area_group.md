@@ -1,0 +1,1 @@
+{% docs cat_area_group %} Categorical string representing the relevant Say-to-Do group. Options are Personal or Professional. {% enddocs %}

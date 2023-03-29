@@ -8,6 +8,7 @@
             ref("updates_balance"),
             ref("updates_eod_balance"),
             ref("tracks_habit"),
+            ref("tracks_say_to_do"),
         ]
     )
 }}

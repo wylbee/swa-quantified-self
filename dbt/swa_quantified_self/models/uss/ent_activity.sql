@@ -12,7 +12,8 @@ with
 
             {{ fj_str("str_transaction_description") }},
             {{ fj_amt("val_habit_score") }},
-            {{ fj_amt("val_habit_score_group_weight") }}
+            {{ fj_amt("val_habit_score_group_weight") }},
+            {{ fj_str("cat_area_group") }}
 
         from stream
 
