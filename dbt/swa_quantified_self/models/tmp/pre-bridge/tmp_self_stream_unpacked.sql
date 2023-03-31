@@ -21,12 +21,12 @@ with
             {{ fj_amt("amt_balance") }},
             {{ fj_amt("amt_balance_lv") }},
             {{ fj_n("is_habit_impact") }},
-            {{ fj_n("n_say_wc") }},
-            {{ fj_n("n_do_wc") }},
-            {{ fj_n("n_say_nwc") }},
-            {{ fj_n("n_do_nwc") }},
-            {{ fj_n("n_say") }},
-            {{ fj_n("n_do") }}
+            {{ fj_amt("n_say_wc") }},
+            {{ fj_amt("n_do_wc") }},
+            {{ fj_amt("n_say_nwc") }},
+            {{ fj_amt("n_do_nwc") }},
+            {{ fj_amt("n_say") }},
+            {{ fj_amt("n_do") }}
 
         from self_stream
 

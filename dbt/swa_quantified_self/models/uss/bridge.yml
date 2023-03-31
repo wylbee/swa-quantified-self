@@ -295,6 +295,32 @@ models:
             (-).
           group_label: LifeOS (-)
           sql: safe_divide(${n_habit_checked},${n_habit_expected})
+        val_std_wc_rate:
+          type: number
+          label: Say to Do Rate (WC)
+          format: percent
+          round: 2
+          description: Say to Do Rate for Weekly Win conditions. Non-additive (-).
+          group_label: LifeOS (-)
+          sql: safe_divide(${n_std_do_wc},${n_std_say_wc})
+        val_std_rate:
+          type: number
+          label: Say to Do Rate
+          format: percent
+          round: 2
+          description: Say to Do Rate for all types. Non-additive (-).
+          group_label: LifeOS (-)
+          sql: safe_divide(${n_std_do},${n_std_say})
+        val_std_weighted_rate:
+          type: number
+          label: Weighted Say to Do Rate
+          format: percent
+          round: 2
+          description: >-
+            Say to Do Rate for all types weighted by WC vs. non-WC. Non-additive
+            (-).
+          group_label: LifeOS (-)
+          sql: (${val_std_wc_rate}+${val_std_rate})/(2)
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -609,6 +635,9 @@ models:
                 Sum of the number targets established in planning. Fully
                 additive (+).
               group_label: LifeOS (+)
+            is_std_expected:
+              type: count
+              hidden: true
       - name: n_do
         description: ""
         meta:
@@ -616,7 +645,7 @@ models:
             type: number
             hidden: true
           metrics:
-            n_std_say_wc:
+            n_std_do:
               type: sum
               label: Total Do
               description: >-

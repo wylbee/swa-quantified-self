@@ -66,5 +66,5 @@ models:
         meta:
           dimension:
             type: string
-            label: Say-to-Do Group
+            label: Say to Do Group
             group_label: Categorical
