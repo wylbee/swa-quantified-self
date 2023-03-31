@@ -22,7 +22,7 @@ models:
           dimension:
             type: number
       - name: cat_area_group
-        description: ""
+        description: "{{doc('cat_area_group')}}"
         meta:
           dimension:
             type: string
@@ -66,3 +66,8 @@ models:
         meta:
           dimension:
             type: number
+      - name: dt_track
+        description: ""
+        meta:
+          dimension:
+            type: date
