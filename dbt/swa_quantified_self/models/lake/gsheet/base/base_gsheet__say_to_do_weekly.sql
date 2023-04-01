@@ -9,20 +9,8 @@ with
                     ["val_calendar_week", "val_calendar_year", "cat_area_group"]
                 )
             }} as id_std,
-            date_add(
-                date_trunc(
-                    parse_date(
-                        '%Y%m%d',
-                        concat(
-                            substr(concat(val_calendar_year, val_calendar_week), 1, 4),
-                            '0104'
-                        )
-                    ),
-                    isoyear
-                ),
-                interval cast(
-                    substr(concat(val_calendar_year, val_calendar_week), -2) as int64
-                ) -1 week
+            parse_timestamp(
+                '%Y%W', concat(val_calendar_year, val_calendar_week)
             ) as dt_track,
             val_calendar_year,
             val_calendar_week,
