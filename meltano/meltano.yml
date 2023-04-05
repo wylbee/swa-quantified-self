@@ -23,4 +23,3 @@ plugins:
     pip_url: git+https://github.com/Datateer/target-gcs.git
     config:
       bucket_name: qs-prod-352513-raw
-      credentials_file: n
