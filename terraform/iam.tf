@@ -18,7 +18,7 @@ resource "google_storage_bucket_iam_member" "raw_bucket_view" {
 resource "google_storage_bucket_iam_member" "raw_bucket_admin" {
   bucket = "${var.project_id}-raw"
   role   = "roles/storage.admin"
-  members = [
+  member = [
     "serviceAccount:${google_service_account.cf_sa.email}",
     "serviceAccount:${google_service_account.dbt_sa.email}"
   ]
