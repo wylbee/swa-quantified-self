@@ -26,4 +26,4 @@ plugins:
 state_backend:
     uri: gs://qs-prod-352513-raw/meltano/state
     gcs:
-      application_credentials: $MELTANO_PROJECT_ROOT/client_secrets.json
+      application_credentials: ${MELTANO_PROJECT_ROOT}/client_secrets.json
