@@ -1,0 +1,34 @@
+version: 2
+models:
+  - name: base_toggl__projects
+    columns:
+      - name: id_toggl_project
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: id_toggl_client
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_project_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_project_active
+        description: ""
+        meta:
+          dimension:
+            type: boolean
+      - name: tm_project_created
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: dt_meta_exported
+        description: ""
+        meta:
+          dimension:
+            type: date

@@ -1,0 +1,44 @@
+version: 2
+models:
+  - name: base_toggl__time_entries
+    columns:
+      - name: id_toggl_time_entry
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: id_toggl_project
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_time_entry_description
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: amt_time_entry_duration_minutes
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: tm_time_entry_updated
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: tm_time_entry_started
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: tm_time_entry_ended
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: dt_meta_exported
+        description: ""
+        meta:
+          dimension:
+            type: date

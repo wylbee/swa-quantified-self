@@ -1,0 +1,19 @@
+version: 2
+models:
+  - name: base_toggl__tags
+    columns:
+      - name: id_toggl_tag
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_tag_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: dt_meta_exported
+        description: ""
+        meta:
+          dimension:
+            type: date
