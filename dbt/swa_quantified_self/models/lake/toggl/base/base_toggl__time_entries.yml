@@ -42,3 +42,28 @@ models:
         meta:
           dimension:
             type: date
+      - name: array_tag_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_tag_meeting
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_tag_deep_work
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_tag_slope_learning
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_tag_most_important_work
+        description: ""
+        meta:
+          dimension:
+            type: number
