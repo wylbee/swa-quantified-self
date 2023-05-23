@@ -1,0 +1,57 @@
+version: 2
+models:
+  - name: creates_client
+    columns:
+      - name: activity
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: activity_id
+        description: ""
+        tests:
+          - unique
+          - not_null
+        meta:
+          dimension:
+            type: number
+      - name: ts
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: customer
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: anonymous_customer_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: link
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: revenue_impact
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: feature_json
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: activity_occurrence
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: activity_repeated_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
