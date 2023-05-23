@@ -8,7 +8,7 @@ models:
           dimension:
             type: number
       - name: str_client_name
-        description: ""
+        description: "{{doc('str_client_name')}}"
         meta:
           dimension:
             type: string

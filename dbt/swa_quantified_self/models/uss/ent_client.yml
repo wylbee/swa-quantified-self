@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: ent_client
+    columns:
+      - name: key_client
+        description: "{{doc('key_client')}}"
+        tests:
+          - unique
+          - not_null
+        meta:
+          dimension:
+            type: string
+            label: Client Name
+      - name: str_client_name
+        description: "{{doc('str_client_name')}}"
+        meta:
+          dimension:
+            type: string

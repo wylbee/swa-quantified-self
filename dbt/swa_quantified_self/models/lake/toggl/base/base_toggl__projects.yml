@@ -13,12 +13,12 @@ models:
           dimension:
             type: number
       - name: str_project_name
-        description: ""
+        description: "{{doc('str_project_name')}}"
         meta:
           dimension:
             type: string
       - name: is_project_active
-        description: ""
+        description: "{{doc('is_project_active')}}"
         meta:
           dimension:
             type: boolean

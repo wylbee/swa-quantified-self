@@ -1,0 +1,1 @@
+{% docs is_tag_most_important_work %} 1/0 Boolean reflecting whether a given time entry was tagged as most important work. {% enddocs %}

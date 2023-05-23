@@ -1,0 +1,1 @@
+{% docs is_project_active %} 1/0 Boolean reflecting whether a given Project is active. {% enddocs %}

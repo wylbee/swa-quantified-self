@@ -13,7 +13,12 @@ with
             {{ fj_str("str_transaction_description") }},
             {{ fj_amt("val_habit_score") }},
             {{ fj_amt("val_habit_score_group_weight") }},
-            {{ fj_str("cat_area_group") }}
+            {{ fj_str("cat_area_group") }},
+            {{ fj_str("str_time_entry_description") }},
+            {{ fj_n("is_tag_meeting") }},
+            {{ fj_n("is_tag_deep_work") }},
+            {{ fj_n("is_tag_slope_learning") }},
+            {{ fj_n("is_tag_most_important_work") }}
 
         from stream
 

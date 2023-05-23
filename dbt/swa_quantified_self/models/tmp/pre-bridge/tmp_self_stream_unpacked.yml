@@ -107,3 +107,18 @@ models:
         meta:
           dimension:
             type: number
+      - name: key_project
+        description: "{{doc('key_project')}}"
+        meta:
+          dimension:
+            type: string
+      - name: key_client
+        description: "{{doc('key_client')}}"
+        meta:
+          dimension:
+            type: string
+      - name: amt_time_entry_duration_minutes
+        description: "{{doc('amt_time_entry_duration_minutes')}}"
+        meta:
+          dimension:
+            type: number
