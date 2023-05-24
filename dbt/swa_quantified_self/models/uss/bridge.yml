@@ -10,6 +10,8 @@ models:
             - key_finaccount
             - key_self
             - key_habit
+            - key_project
+            - key_client
     meta:
       joins:
         - join: ent_activity
@@ -22,6 +24,10 @@ models:
           sql_on: ${bridge.key_finaccount} = ${ent_finaccount.key_finaccount}
         - join: ent_habit
           sql_on: ${bridge.key_habit} = ${ent_habit.key_habit}
+        - join: ent_client
+          sql_on: ${bridge.key_client} = ${ent_client.key_client}
+        - join: ent_project
+          sql_on: ${bridge.key_project} = ${ent_project.key_project}
       metrics:
         savings_rate:
           type: number
@@ -652,3 +658,66 @@ models:
                 Sum of the number of targets completed in the time frame. Fully
                 additive (+).
               group_label: LifeOS (+)
+      - name: key_project
+        description: "{{doc('key_project')}}"
+        meta:
+          dimension:
+            type: string
+      - name: key_client
+        description: "{{doc('key_client')}}"
+        meta:
+          dimension:
+            type: string
+      - name: amt_time_entry_duration_minutes
+        description: "{{doc('amt_time_entry_duration_minutes')}}"
+        meta:
+          dimension:
+            type: number
+            hidden: true
+          metrics:
+            amt_time_entry_duration_minutes_sum:
+              label: Total Tracked Minutes
+              description: Amount of minutes tracked in a time entry. Fully Additive.
+              group_label: LifeOS (+)
+              type: sum
+              round: 2
+            amt_time_entry_duration_minutes_deep_work_sum:
+              label: Total Tracked Minutes (DW)
+              description: >-
+                Amount of minutes tracked in a time entry that are also tagged
+                as Deep Work. Fully Additive.
+              group_label: LifeOS (+)
+              type: sum
+              round: 2
+              filters:
+                - ent_activity.is_tag_deep_work: 1
+            amt_time_entry_duration_minutes_slope_learning_sum:
+              label: Total Tracked Minutes (SL)
+              description: >-
+                Amount of minutes tracked in a time entry that are also tagged
+                as Slope Learning. Fully Additive.
+              group_label: LifeOS (+)
+              type: sum
+              round: 2
+              filters:
+                - ent_activity.is_tag_slope_learning: 1
+            amt_time_entry_duration_minutes_most_important_work_sum:
+              label: Total Tracked Minutes (MIW)
+              description: >-
+                Amount of minutes tracked in a time entry that are also tagged
+                as Most Important Work. Fully Additive.
+              group_label: LifeOS (+)
+              type: sum
+              round: 2
+              filters:
+                - ent_activity.is_tag_most_important_work: 1
+            amt_time_entry_duration_minutes_meeting_sum:
+              label: Total Tracked Minutes (Meet)
+              description: >-
+                Amount of minutes tracked in a time entry that are also tagged
+                as Meetings. Fully Additive.
+              group_label: LifeOS (+)
+              type: sum
+              round: 2
+              filters:
+                - ent_activity.is_tag_meeting: 1

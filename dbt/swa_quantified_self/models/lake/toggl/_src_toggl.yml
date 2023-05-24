@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: gcs_raw
+    database: qs-prod-352513
+    loader: gcloud storage
+  
+    tables:
+      - name: clients
+        external:
+          location: 'gs://qs-prod-352513-raw/meltano/tap_toggl/clients/*'
+          options:
+            format: json
+            hive_partition_uri_prefix: 'gs://qs-prod-352513-raw/meltano/tap_toggl/clients/'
+          partitions:               
+            - name: export_date
+              data_type: date
+      - name: projects
+        external:
+          location: 'gs://qs-prod-352513-raw/meltano/tap_toggl/projects/*'
+          options:
+            format: json
+            hive_partition_uri_prefix: 'gs://qs-prod-352513-raw/meltano/tap_toggl/projects/'
+          partitions:               
+            - name: export_date
+              data_type: date
+      - name: tags
+        external:
+          location: 'gs://qs-prod-352513-raw/meltano/tap_toggl/tags/*'
+          options:
+            format: json
+            hive_partition_uri_prefix: 'gs://qs-prod-352513-raw/meltano/tap_toggl/tags/'
+          partitions:               
+            - name: export_date
+              data_type: date
+      - name: time_entries
+        external:
+          location: 'gs://qs-prod-352513-raw/meltano/tap_toggl/time_entries/*'
+          options:
+            format: json
+            hive_partition_uri_prefix: 'gs://qs-prod-352513-raw/meltano/tap_toggl/time_entries/'
+          partitions:               
+            - name: export_date
+              data_type: date

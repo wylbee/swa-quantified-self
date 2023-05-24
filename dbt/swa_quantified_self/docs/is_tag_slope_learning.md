@@ -1,0 +1,1 @@
+{% docs is_tag_slope_learning %} 1/0 Boolean reflecting whether a given time entry was tagged as slope learning. {% enddocs %}

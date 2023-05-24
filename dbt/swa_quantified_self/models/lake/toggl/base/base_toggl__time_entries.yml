@@ -1,0 +1,69 @@
+version: 2
+models:
+  - name: base_toggl__time_entries
+    columns:
+      - name: id_toggl_time_entry
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: id_toggl_project
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_time_entry_description
+        description: "{{doc('str_time_entry_description')}}"
+        meta:
+          dimension:
+            type: string
+      - name: amt_time_entry_duration_minutes
+        description: "{{doc('amt_time_entry_duration_minutes')}}"
+        meta:
+          dimension:
+            type: number
+      - name: tm_time_entry_updated
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: tm_time_entry_started
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: tm_time_entry_ended
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: dt_meta_exported
+        description: ""
+        meta:
+          dimension:
+            type: date
+      - name: array_tag_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: is_tag_meeting
+        description: "{{doc('is_tag_meeting')}}"
+        meta:
+          dimension:
+            type: number
+      - name: is_tag_deep_work
+        description: "{{doc('is_tag_deep_work')}}"
+        meta:
+          dimension:
+            type: number
+      - name: is_tag_slope_learning
+        description: "{{doc('is_tag_slope_learning')}}"
+        meta:
+          dimension:
+            type: number
+      - name: is_tag_most_important_work
+        description: "{{doc('is_tag_most_important_work')}}"
+        meta:
+          dimension:
+            type: number

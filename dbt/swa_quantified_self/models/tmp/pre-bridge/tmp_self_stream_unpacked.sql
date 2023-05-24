@@ -10,6 +10,8 @@ with
             {{ acid_str("key_finaccount") }},
             {{ acid_str("key_budget") }},
             {{ acid_str("key_habit") }},
+            {{ acid_str("key_project") }},
+            {{ acid_str("key_client") }},
             cast(ts as date) as key_calendar,
             activity as cat_source,
 
@@ -26,7 +28,8 @@ with
             {{ fj_amt("n_say_nwc") }},
             {{ fj_amt("n_do_nwc") }},
             {{ fj_amt("n_say") }},
-            {{ fj_amt("n_do") }}
+            {{ fj_amt("n_do") }},
+            {{ fj_amt("amt_time_entry_duration_minutes") }}
 
         from self_stream
 

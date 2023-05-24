@@ -1,0 +1,1 @@
+{% docs amt_time_entry_duration_minutes %} Amount in minutes of a recorded time entry. Fully additive. {% enddocs %}

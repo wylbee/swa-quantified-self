@@ -1,0 +1,29 @@
+version: 1
+default_environment: dev
+project_id: e3b9bc18-e902-4168-bbb9-598dc40fd655
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-toggl
+    variant: singer-io
+    pip_url: git+https://github.com/singer-io/tap-toggl.git
+    config:
+      detailed_report_trailing_days: 14
+      start_date: '2020-10-01'
+      user_agent: brown5628@gmail.com
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+  - name: target-gcs
+    variant: datateer
+    pip_url: git+https://github.com/Datateer/target-gcs.git
+    config:
+      bucket_name: qs-prod-352513-raw
+state_backend:
+    uri: gs://qs-prod-352513-raw/meltano/state
+    gcs:
+      application_credentials: ${MELTANO_PROJECT_ROOT}/client_secrets.json

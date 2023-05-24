@@ -1,0 +1,1 @@
+{% docs is_tag_deep_work %} 1/0 Boolean reflecting whether a given time entry was tagged as deep work. {% enddocs %}

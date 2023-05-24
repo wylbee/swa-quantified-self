@@ -54,6 +54,9 @@ models:
         +schema: lk_loop_habits
       tiller:
         +schema: lk_tiller
+      toggl:
+        +schema: lk_toggl
+        +materialized: table
       gsheet:
         +schema: lk_gsheet
     uss:

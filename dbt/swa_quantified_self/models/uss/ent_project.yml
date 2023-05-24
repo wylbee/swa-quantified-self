@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: ent_project
+    columns:
+      - name: key_project
+        description: "{{doc('key_project')}}"
+        tests:
+          - unique
+          - not_null
+        meta:
+          dimension:
+            type: string
+      - name: str_project_name
+        description: "{{doc('str_project_name')}}"
+        meta:
+          dimension:
+            type: string
+            label: Project Name
+      - name: is_project_active
+        description: "{{doc('is_project_active')}}"
+        meta:
+          dimension:
+            type: number

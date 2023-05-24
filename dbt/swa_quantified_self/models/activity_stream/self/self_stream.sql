@@ -9,6 +9,9 @@
             ref("updates_eod_balance"),
             ref("tracks_habit"),
             ref("tracks_say_to_do"),
+            ref("tracks_time"),
+            ref("creates_project"),
+            ref("creates_client"),
         ]
     )
 }}

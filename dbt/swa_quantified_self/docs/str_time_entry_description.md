@@ -1,0 +1,1 @@
+{% docs str_time_entry_description %} String reflecting the time entry description as served by Toggl. {% enddocs %}

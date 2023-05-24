@@ -1,0 +1,24 @@
+version: 2
+models:
+  - name: base_toggl__clients
+    columns:
+      - name: id_toggl_client
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: str_client_name
+        description: "{{doc('str_client_name')}}"
+        meta:
+          dimension:
+            type: string
+      - name: tm_client_created
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: dt_meta_exported
+        description: ""
+        meta:
+          dimension:
+            type: date
