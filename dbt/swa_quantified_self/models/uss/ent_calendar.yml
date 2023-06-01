@@ -61,3 +61,63 @@ models:
             type: number
             group_label: True/False
             label: Is First Day of Month
+      - name: is_calendar_month_last_day
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_week_last_day
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_isoweek_last_day
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_today
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_yesterday
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_cisoweek
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_6w_ago_or_today
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_12w_ago_or_today
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_52w_ago_or_today
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_isoweek_last_day_or_yesterday
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_week_last_day_or_yesterday
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: is_calendar_month_last_day_or_today
+        description: ""
+        meta:
+          dimension:
+            type: number

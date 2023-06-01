@@ -242,10 +242,10 @@ models:
           label: Progress to Next Coast Milestone
           description: >-
             % reflecting progress towards moving our Coast year up by 1. Current
-            target is 53. Non-additive (-).
+            target is 52. Non-additive (-).
           group_label: Finance (-)
           round: 2
-          sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_53})
+          sql: safe_divide(${amt_balance_investment_lv_dly},${amt_budget_coast_52})
         val_habit_score_avg:
           type: average
           format: percent
@@ -663,11 +663,15 @@ models:
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Project Key
       - name: key_client
         description: "{{doc('key_client')}}"
         meta:
           dimension:
             type: string
+            group_label: Key & ID
+            label: Client Key
       - name: amt_time_entry_duration_minutes
         description: "{{doc('amt_time_entry_duration_minutes')}}"
         meta:
