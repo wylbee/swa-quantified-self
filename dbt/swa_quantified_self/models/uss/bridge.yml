@@ -236,6 +236,66 @@ models:
           sql: >-
             ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(50-date_diff(current_date(),
             '1990-08-18', year))))
+        amt_budget_coast_49:
+          type: number
+          format: usd
+          label: Annualized Coast Target- 49
+          description: >-
+            Annualized $ amount invested needed to retire at 49 if no addtional
+            $s were invested/saved. Semi-additive at the first day of the month
+            grain (~+)
+          group_label: Finance (~+)
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(49-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_48:
+          type: number
+          format: usd
+          label: Annualized Coast Target- 48
+          description: >-
+            Annualized $ amount invested needed to retire at 48 if no addtional
+            $s were invested/saved. Semi-additive at the first day of the month
+            grain (~+)
+          group_label: Finance (~+)
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(48-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_47:
+          type: number
+          format: usd
+          label: Annualized Coast Target- 47
+          description: >-
+            Annualized $ amount invested needed to retire at 47 if no addtional
+            $s were invested/saved. Semi-additive at the first day of the month
+            grain (~+)
+          group_label: Finance (~+)
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(47-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_46:
+          type: number
+          format: usd
+          label: Annualized Coast Target- 46
+          description: >-
+            Annualized $ amount invested needed to retire at 46 if no addtional
+            $s were invested/saved. Semi-additive at the first day of the month
+            grain (~+)
+          group_label: Finance (~+)
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(46-date_diff(current_date(),
+            '1990-08-18', year))))
+        amt_budget_coast_45:
+          type: number
+          format: usd
+          label: Annualized Coast Target- 45
+          description: >-
+            Annualized $ amount invested needed to retire at 45 if no addtional
+            $s were invested/saved. Semi-additive at the first day of the month
+            grain (~+)
+          group_label: Finance (~+)
+          sql: >-
+            ${amt_budget_retirement_expected_spend_give_tax_annual}/(.035*pow((1+.072),(45-date_diff(current_date(),
+            '1990-08-18', year))))
         progress_to_coast_milestone:
           type: number
           format: percent
