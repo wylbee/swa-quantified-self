@@ -390,7 +390,6 @@ models:
         val_donation_impact:
           type: number
           label: Charity Impact Estimate
-          format: percent
           round: 2
           description: Rough estiamte of impact of charitable giving denominated in lives saved. Amount donated divided by GiveWell's average cost of saving a life for all life-saving grants (https://docs.google.com/spreadsheets/d/1z065ab9PPMu9i5KiQ4yLyQJPFQCfEzHSgtHulPiZeBo/edit#gid=386901628).
           group_label: Finance (-)
