@@ -387,6 +387,14 @@ models:
             (-).
           group_label: LifeOS (-)
           sql: (${val_std_wc_rate}+${val_std_rate})/(2)
+        val_donation_impact:
+          type: number
+          label: Charity Impact Estimate
+          format: percent
+          round: 2
+          description: Rough estiamte of impact of charitable giving denominated in lives saved. Amount donated divided by GiveWell's average cost of saving a life for all life-saving grants (https://docs.google.com/spreadsheets/d/1z065ab9PPMu9i5KiQ4yLyQJPFQCfEzHSgtHulPiZeBo/edit#gid=386901628).
+          group_label: Finance (-)
+          sql: safe_divide(${amt_donation_sum},5000)
     columns:
       - name: _dbt_source_relation
         description: ""
@@ -496,6 +504,16 @@ models:
               round: 2
               format: usd
               sql: ${amt_expense}*-1
+            amt_donation_sum:
+              label: Total Donated
+              description: Amount in $ of donations. Fully additive.
+              group_label: Finance (+)
+              type: sum
+              round: 2
+              format: usd
+              sql: ${amt_expense}*-1
+              filters:
+                - ent_budget.id_tiller_budget: Charity
       - name: amt_budget
         description: "{{doc('amt_budget')}}"
         meta:
