@@ -21,9 +21,9 @@ meltano_source_mount = modal.Mount.from_local_dir(
     condition=lambda path: not any(p.startswith(".") for p in Path(path).parts),
 )
 
-storage = modal.SharedVolume().persist("meltano_volume")
+storage = modal.NetworkFileSystem.persisted("meltano_volume")
 
-meltano_conf = modal.Secret(
+meltano_conf = modal.Secret.from_dict(
     {
         "MELTANO_PROJECT_ROOT": REMOTE_PROJECT_ROOT,
         "MELTANO_DATABASE_URI": f"sqlite:///{REMOTE_DB_PATH}",
@@ -45,7 +45,7 @@ meltano_img = (
     modal.Image.debian_slim()
     .apt_install("git")
     .pip_install("meltano[gcs]")
-    .copy(meltano_source_mount)
+    .copy_mount(meltano_source_mount)
     .run_function(install_project_deps, secret=meltano_conf)
 )
 
@@ -67,7 +67,7 @@ def symlink_logs():
 
 # Run this example using `modal run meltano_modal.py::extract_and_load`
 @stub.function(
-    shared_volumes={PERSISTED_VOLUME_PATH: storage},
+    network_file_systems={PERSISTED_VOLUME_PATH: storage},
     schedule=modal.Period(days=1),
     secret=modal.Secret.from_name("TOGGL_API_KEY")
 )
