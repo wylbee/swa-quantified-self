@@ -13,6 +13,7 @@ with
 
         from raw_data
 
+        qualify row_number() over (partition by id order by export_date desc) = 1
     )
 
 select *
