@@ -77,7 +77,43 @@ with
             ) as amt_budget_2023_11,
             round(
                 safe_cast(json_value(json_meta_attributes.`Dec_2023`) as numeric), 2
-            ) as amt_budget_2023_12
+            ) as amt_budget_2023_12,
+                round(
+                safe_cast(json_value(json_meta_attributes.`Jan_2024`) as numeric), 2
+            ) as amt_budget_2024_01,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Feb_2024`) as numeric), 2
+            ) as amt_budget_2024_02,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Mar_2024`) as numeric), 2
+            ) as amt_budget_2024_03,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Apr_2024`) as numeric), 2
+            ) as amt_budget_2024_04,
+            round(
+                safe_cast(json_value(json_meta_attributes.`May_2024`) as numeric), 2
+            ) as amt_budget_2024_05,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Jun_2024`) as numeric), 2
+            ) as amt_budget_2024_06,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Jul_2024`) as numeric), 2
+            ) as amt_budget_2024_07,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Aug_2024`) as numeric), 2
+            ) as amt_budget_2024_08,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Sep_2024`) as numeric), 2
+            ) as amt_budget_2024_09,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Oct_2024`) as numeric), 2
+            ) as amt_budget_2024_10,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Nov_2024`) as numeric), 2
+            ) as amt_budget_2024_11,
+            round(
+                safe_cast(json_value(json_meta_attributes.`Dec_2024`) as numeric), 2
+            ) as amt_budget_2024_12
 
 
         from last_partition
