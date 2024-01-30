@@ -116,7 +116,7 @@ models:
           format: percent
           sql: >-
             case when extract(year from ${key_calendar}) = 2022 then .215 when
-            extract (year from ${key_calendar})=2023 then .21 end
+            extract (year from ${key_calendar})>=2023 then .21 end
           hidden: true
         amt_budget_retirement_expected_spend_give_tax_annual:
           type: number
