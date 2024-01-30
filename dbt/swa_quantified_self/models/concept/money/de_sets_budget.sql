@@ -26,7 +26,19 @@ with
                     amt_budget_2023_09,
                     amt_budget_2023_10,
                     amt_budget_2023_11,
-                    amt_budget_2023_12
+                    amt_budget_2023_12,
+                    amt_budget_2024_01,
+                    amt_budget_2024_02,
+                    amt_budget_2024_03,
+                    amt_budget_2024_04,
+                    amt_budget_2024_05,
+                    amt_budget_2024_06,
+                    amt_budget_2024_07,
+                    amt_budget_2024_08,
+                    amt_budget_2024_09,
+                    amt_budget_2024_10,
+                    amt_budget_2024_11,
+                    amt_budget_2024_12
                 )
             )
     ),
